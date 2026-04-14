@@ -1,4 +1,8 @@
-.section-1
+.experience
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("https://images.unsplash.com/photo-1523050335392-93851179ae22?auto=format&fit=crop&q=80&w=2070")
+    background-size: cover
+    background-position: center
+    color: #fff
     .content
         align-items: center
         justify-content: center
@@ -17,8 +21,9 @@
             +min(2)
                 display: flex
                 align-items: center
-            svg
+            .section-logo
                 width: 80%
+                filter: brightness(0) invert(1)
                 +min(1)
                     width: 50%
                 +max(2)
@@ -26,23 +31,33 @@
                     margin: 0 auto
                 +min(2)
                     float: left
-                    width: 55%
+                    width: 35%
                     margin: 0 rem(65px) 0 0
                 +min(3)
-                    width: 35%
+                    width: 25%
             article
                 text-align: center
                 +max(2)
                     width: 100%
-                    margin-top: 15px
+                    margin-top: 25px
                 +min(2)
                     text-align: left
+                h2
+                    color: #fff
+                    font-size: 2.5rem
+                    margin-bottom: 20px
+                    +min(1)
+                        font-size: 3.5rem
                 p
                     font-size: 1.3rem
-                    line-height: 1.4
+                    line-height: 1.6
+                    color: rgba(255, 255, 255, 0.9)
                     +min(1)
                         font-size: 1.9rem
                     +min(2)
                         font-size: 1.7rem
                     +min(3)
                         font-size: 1.8rem
+                    strong
+                        color: #fff
+                        font-weight: 700

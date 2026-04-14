@@ -44,8 +44,17 @@
             &[data-direction="prev"]
                 transform: rotate(180deg) translateX(50%)
                 transform-origin: 50% 40%
+    .section-logo
+        max-width: 200px
+        height: auto
+        margin-bottom: 20px
+        filter: brightness(0) invert(1)
+        +min(2)
+            max-width: 300px
+
     // partials
-    @require '_*'
+    @require '_front'
+    @require '_section-1'
     @require '_games'
-    @require '_consulting'
     @require '_interactive-apps'
+    @require '_consulting'
