@@ -1,0 +1,42 @@
+.interactive-apps
+    background: #f0fff0
+    .content
+        flex-flow: column wrap
+        align-items: center
+        justify-content: center
+        padding: 100px 20px
+        +min(1)
+            padding: 100px 0
+        h2
+            font-size: 3rem
+            font-weight: 600
+            margin: 0 0 50px
+            color: #2c3e50
+        div
+            display: flex
+            flex-wrap: wrap
+            align-items: center
+            justify-content: center
+            width: 100%
+            margin-bottom: 40px
+            &:last-child
+                margin-bottom: 0
+            figure
+                width: 100%
+                max-width: 80px
+                margin: 0 auto 20px
+                +min(1)
+                    width: 80px
+                    margin: 0 40px 0 0
+            article
+                width: 100%
+                +min(1)
+                    width: calc(100% - 120px)
+                h3
+                    font-size: 1.8rem
+                    margin: 0 0 15px
+                    color: #27ae60
+                p
+                    font-size: 1.2rem
+                    line-height: 1.6
+                    color: #34495e
