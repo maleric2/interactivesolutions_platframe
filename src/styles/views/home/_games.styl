@@ -1,5 +1,5 @@
 .games
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=2070")
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=2070")
     background-size: cover
     background-position: center
     color: #fff
@@ -15,7 +15,7 @@
         padding: 100px 20px
         +min(1)
             padding: 120px 0
-        > div
+        > div:first-of-type
             display: grid
             grid-template-columns: 1fr
             gap: 40px
@@ -23,28 +23,65 @@
             margin: 0 auto
             +min(1)
                 grid-template-columns: repeat(2, 1fr)
-            figure
+            > div
                 background: rgba(255, 255, 255, 0.05)
                 border-radius: 20px
                 overflow: hidden
-                text-align: center
-                backdrop-filter: blur(5px)
+                backdrop-filter: blur(10px)
                 transition: transform 0.3s ease, box-shadow 0.3s ease
                 border: 1px solid rgba(255,255,255,0.1)
+                display: flex
+                flex-direction: column
                 &:hover
                     transform: translateY(-10px)
                     box-shadow: 0 20px 40px rgba(0,0,0,0.4)
-                img
+                figure
                     width: 100%
+                    margin: 0
+                    padding: 0
                     height: 250px
-                    object-fit: cover
-            article
-                h3
-                    font-size: 2.2rem
-                    margin: 20px 0 15px
-                    color: #fff
-                    font-weight: 600
-                p
-                    font-size: 1.3rem
-                    line-height: 1.6
-                    color: rgba(255, 255, 255, 0.9)
+                    overflow: hidden
+                    img
+                        width: 100%
+                        height: 100%
+                        object-fit: cover
+                        display: block
+                article
+                    padding: 30px
+                    flex: 1
+                    h3
+                        font-size: 2.2rem
+                        margin: 0 0 15px
+                        color: #fff
+                        font-weight: 600
+                    p
+                        font-size: 1.2rem
+                        line-height: 1.6
+                        color: rgba(255, 255, 255, 0.9)
+                        margin: 0
+
+    .section-cta
+        text-align: center
+        margin-top: 60px
+        padding: 40px 20px
+        background: rgba(33, 62, 154, 0.3)
+        border-radius: 20px
+        border: 1px solid rgba(255,255,255,0.2)
+        p
+            font-size: 1.5rem
+            color: #fff
+            margin: 0 0 20px
+            font-weight: 500
+        .cta-button
+            display: inline-block
+            padding: 18px 40px
+            background: #fff
+            color: #242F65
+            text-decoration: none
+            border-radius: 50px
+            font-size: 1.3rem
+            font-weight: 700
+            transition: transform 0.3s ease, box-shadow 0.3s ease
+            &:hover
+                transform: translateY(-5px)
+                box-shadow: 0 15px 30px rgba(0,0,0,0.3)
