@@ -5,12 +5,14 @@
     color: #fff
     h2
         color: #fff
-        font-size: 3.5rem
+        font-size: 1.5rem
         font-weight: 700
-        margin-bottom: 60px
+        margin-bottom: 0
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5)
         +min(1)
-            font-size: 5rem
+            font-size: 3rem
+        +min(2)
+            font-size: 4rem
     .content
         padding: 100px 20px
         +min(1)
@@ -49,6 +51,9 @@
                 article
                     padding: 30px
                     flex: 1
+                    text-align: center
+                    +min(2)
+                        text-align: left
                     h3
                         font-size: 2.2rem
                         margin: 0 0 15px

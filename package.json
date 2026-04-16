@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start": "npm run develop",
-    "develop": "NODE_ENV=development gulp -S",
+    "develop": "set NODE_ENV=development && gulp -S",
     "build": "gulp build",
     "test": "npm run lint",
     "lint": "eslint --fix src/",
