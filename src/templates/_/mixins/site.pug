@@ -29,13 +29,13 @@ mixin tag-list(tags)
             li(class="tag")= tag
 
 mixin service-card(item)
-    article(class="card")
+    article(class="service-card")
         h3(class="card-title")= item.title
         p(class="card-text")= item.text
         +tag-list(item.tags)
 
 mixin work-card(item)
-    article(class="card work-card")
+    article(class="project-card")
         div(class="brand-cover")
             svg(class="brand-cover-mark" aria-hidden="true" focusable="false"): use(xlink:href="/assets/images/_sprites/symbols.svg#brand-mark-white")
             span(class="brand-cover-label")= item.kicker
@@ -127,17 +127,18 @@ mixin pricing-section()
             { label: 'Polished prototype with a small team', value: 'typically €10,000–30,000' },
             { label: 'Complete game or 3D application', value: 'custom scope' },
         ]
-    section(class="page-section page-section--alt" id="pricing")
+    section(class="page-section page-section--showcase has-glow" id="pricing")
         div(class="section-inner")
-            p(class="section-eyebrow") Process &amp; Pricing
-            h2(class="section-title") What budget should I expect?
-            p(class="section-lead").
-                You do not need to know the right technology or team before contacting me. The
-                ranges below show the likely order of magnitude; a short conversation confirms
-                the actual scope.
+            div(class="section-heading")
+                p(class="section-eyebrow") Process &amp; Pricing
+                h2(class="section-title") What budget should I expect?
+                p(class="section-lead").
+                    You do not need to know the right technology or team before contacting me. The
+                    ranges below show the likely order of magnitude; a short conversation confirms
+                    the actual scope.
             div(class="pricing-grid")
                 each band in pricingBands
-                    div(class="pricing-item")
+                    div(class="price-path")
                         p(class="pricing-label")= band.label
                         p(class="pricing-value")= band.value
             p(class="pricing-note").
