@@ -1,72 +1,145 @@
 # Asset inventory
 
-Where artwork for the site lives, and what is approved to publish.
+Where artwork for the site lives, what is approved to publish, and how each
+derivative was produced.
 
-## Where to put images
+## Folder convention
 
-Drop files into the `_linked` folder of the matching project. The `_linked`
-folder is required: the build only processes and deploys images found under a
-`_linked` directory.
-
-```
-src/images/work/light-film/_linked/        ->  /assets/images/work/light-film/_linked/<file>
-src/images/work/hooked-on-math/_linked/
-src/images/work/my-dubrovnik/_linked/
-src/images/work/room8/_linked/
-src/images/work/exordium/_linked/
-
-src/images/tools/mesh-merge/_linked/
-src/images/tools/easy-house/_linked/
-```
-
-### Naming
-
-Use lowercase kebab-case with a two-digit index, one file per intended slot:
+Originals are preserved untouched in a per-project `_source` folder. Website
+files are generated into the sibling `_linked` folder, which is the only place
+the build processes and deploys.
 
 ```
-cover.jpg            wide 16:10 hero/cover for the case card      ~1600x1000
-cover-2x.jpg         optional retina variant                      ~2400x1500
-shot-01.jpg          in-page screenshot or gallery image
-shot-02.jpg
-logo.png             only if display rights are confirmed
+src/images/work/<project>/_source/   originals — never deployed, never edited
+src/images/work/<project>/_linked/   generated derivatives — deployed
+src/images/tools/<tool>/_source/
+src/images/tools/<tool>/_linked/
 ```
 
-Formats: `.jpg` for photos/screenshots, `.png` for UI captures with fine text,
-`.svg` for logos. The build runs `imagemin` automatically, so do not hand-tune.
+Original filenames are kept exactly as supplied, including the existing
+`jurrasic_*` and `*screnshots*` spellings. Corrected spellings are used only in
+derivative filenames (for example `jurassic-cover.jpg`).
 
-### Before adding a file
+## Known asset decisions
 
-1. It is your own capture, or you have written permission to publish it.
-2. Client restrictions are respected (no confidential footage or unreleased UI).
-3. For third-party properties (for example Jurassic World), use an approved
-   screenshot and link to the official live experience. Do not use protected
-   artwork as a large background unless display rights are confirmed.
-4. Record the entry in the table below.
+- **`jurrasic_anewera-cover.png` is not used.** Despite the name it is a film
+  rental promo screen carrying Universal, Amblin, Dolby, RealD and 4DX marks,
+  not game artwork. Publishing it would misrepresent the browser game and use
+  third-party property. The Light Film card cover is composed from the real
+  gameplay capture instead. The file is preserved in `_source`.
+- Jurrasic gameplay screenshots are portrait (697×1238). They are never force
+  cropped; the homepage cover is composed, and the portrait original stays
+  available for the case-study page.
+- Logos are supporting attribution only, never a substitute for project
+  imagery.
+- No stock or fabricated imagery is used anywhere.
 
 ## Status
 
-| Project | Real assets | Permission confirmed | Notes |
+| Project | Real assets | Permission | Notes |
 |---|---|---|---|
-| Light Film / Blue Raven | no | n/a | Awaiting approved screenshots; live public game is linkable |
-| Hooked on Math | no | not yet | Needs images + confirmation of what can be shown |
-| MyDubrovnik | no | not yet | Store imagery may be usable; confirm |
-| Room 8 Studio | no | not yet | Confidential work: branded cover is the safe default |
-| Exordium | no | not yet | Used only if a project is added to the Work page |
-| Mesh Merge | no | own product | Needs 2–4 feature visuals for the tool page |
-| Easy House | no | own product | Needs one real preview image before launch messaging |
+| Light Film / Blue Raven | yes — gameplay capture | own work product | Movie promo screen excluded |
+| Hooked on Math | yes — cover + gameplay | own work (Dubit client project) | |
+| My Dubrovnik | yes — cover + gameplay collage | worked with Async Labs team | Wording: "Worked with the Async Labs team" |
+| Room 8 / Solid Bash | logo only | own employer | No project screenshot; logo is attribution |
+| Exordium Games | yes — 4 titles | directly employed | |
+| Dubit | logo only | own employer | No visuals for BestLife / Phonics / Spelling |
+| Mesh Merge | yes — inspector + animated bake | own product | |
+| Easy House | yes — 2 editor captures | own product | |
 
-Until a project has real, approved imagery it uses a neutral branded cover
-(brand mark + project label) rendered in CSS. Branded covers are intentional
-placeholders, never presented as screenshots.
+## Originals preserved (`_source`)
 
-## Existing approved assets
+| Project | Files |
+|---|---|
+| light-film | `jurrasic_anewera-cover.png` (unused), `jurrasic_anewera-gameplay.png`, `lightFilm-logo.png` |
+| hooked-on-math | `project-hooked-on-math-cover.jpg`, `project-hooked-on-math-gameplay.png`, `videourl.txt` |
+| my-dubrovnik | `project-my-dubrovnik-cover.jpeg`, `project-my-dubrovnik-multiple-gameplay-screnshots.jpeg`, `Async-Labs-logo.jpg`, `videourl.txt` |
+| exordium | `Agenda - Gameplay - Upgrades.jpeg`, `LastEncounter-gameplay-greenbiome.jpg`, `LastEncounter_image-600x293.png`, `ZeroReflex-gameplay-airconsole.jpeg`, `Pottery-cover.jpg`, `agenda_web-600x293.png`, `BWM_web-600x293.png`, `Exordium_Games-logo.png` |
+| room8 | `Room-8-Group-Solid-Bash-logo.jpg` |
+| dubit | `dubit_2026_full_logo_light.svg` |
+| tools/mesh-merge | `MeshCombiner_Inspector.png`, `BakeToAtlas.gif` (99 frames) |
+| tools/easy-house | `EasyHouse_Overview.jpg`, `EasyHouse_Footprint.jpg` |
+
+## Derivatives (`_linked`)
+
+### work/light-film
+
+| File | Size | Source → transform |
+|---|---|---|
+| `jurassic-cover.jpg` | 1600×1000 | composed: gameplay cover-scaled, blurred 54px, brightness 0.30, blended 42% over `#0a1130` tint; framed gameplay (90% height) pasted left with drop shadow and 2px border; IS brand mark watermark right at 85% opacity |
+| `jurassic-cover-800.jpg` | 800×500 | same composition, downscaled |
+| `jurassic-gameplay.jpg` | 680×1210 | `jurrasic_anewera-gameplay.png`, width-scaled, RGBA→RGB |
+| `jurassic-gameplay-400.jpg` | 400×711 | same, 400px |
+| `lightfilm-logo.png` | 540×302 | `lightFilm-logo.png`, uniform black background made transparent |
+
+### work/hooked-on-math
+
+| File | Size | Source → transform |
+|---|---|---|
+| `cover.jpg` / `-800` / `-400` | 1365×768 / 800×450 / 400×225 | `project-hooked-on-math-cover.jpg`, width-scaled |
+| `gameplay.jpg` / `-600` | 1200×675 / 600×338 | `project-hooked-on-math-gameplay.png`, RGBA→RGB, width-scaled |
+
+### work/my-dubrovnik
+
+| File | Size | Source → transform |
+|---|---|---|
+| `cover.jpg` / `-600` / `-400` | 875×500 / 600×343 / 400×229 | `project-my-dubrovnik-cover.jpeg`, width-scaled |
+| `gameplay.jpg` / `-800` | 1600×1082 / 800×541 | `project-my-dubrovnik-multiple-gameplay-screnshots.jpeg`, width-scaled |
+| `async-labs-logo.png` | 300×150 | `Async-Labs-logo.jpg`, grayscale JPEG → PNG (white background retained, shown in a light chip) |
+
+### work/exordium
+
+| File | Size | Source → transform |
+|---|---|---|
+| `cover.jpg` / `-800` | 1600×900 / 800×450 | `Agenda - Gameplay - Upgrades.jpeg` |
+| `last-encounter.jpg` / `-600` | 1200×675 / 600×338 | `LastEncounter-gameplay-greenbiome.jpg` |
+| `zero-reflex.jpg` / `-600` | 1200×750 / 600×375 | `ZeroReflex-gameplay-airconsole.jpeg` |
+| `pottery.jpg` / `-400` | 720×360 / 400×200 | `Pottery-cover.jpg` |
+| `exordium-logo.png` | 600×135 | `Exordium_Games-logo.png` (already transparent) |
+
+### work/room8 and work/dubit
+
+| File | Size | Source → transform |
+|---|---|---|
+| `room8/solid-bash-logo.jpg` / `-320` | 640×360 / 320×180 | `Room-8-Group-Solid-Bash-logo.jpg`, downscaled |
+| `dubit/dubit-logo.svg` | vector | `dubit_2026_full_logo_light.svg`, copied (light version for dark UI) |
+
+### tools
+
+| File | Size | Source → transform |
+|---|---|---|
+| `mesh-merge/inspector.jpg` / `-800` | 1368×766 / 800×448 | `MeshCombiner_Inspector.png`, RGBA→RGB |
+| `mesh-merge/draw-calls.jpg` | 1140×225 | 3× upscale of the inspector crop (815,415)–(1195,490) showing "Draw Calls: 9 → After 1" |
+| `mesh-merge/bake-to-atlas.gif` | 1368×764, 99 frames | `BakeToAtlas.gif`, copied (build optimises via gifsicle) |
+| `easy-house/overview.jpg` / `-800` | 1234×695 / 800×451 | `EasyHouse_Overview.jpg` |
+| `easy-house/footprint.jpg` / `-800` | 1234×700 / 800×454 | `EasyHouse_Footprint.jpg` |
+
+## Attribution logos and links
+
+Displayed as supporting elements only. Never hotlinked from third-party sites.
+
+| Entity | Link |
+|---|---|
+| Dubit Limited | https://dubit.io/ |
+| Room 8 Studio | https://room8studio.com/ |
+| Light Film | https://lightfilm.tv/ |
+| Blue Raven LA | https://www.blueravenla.com/ |
+| Exordium Games | https://exordiumgames.com/ |
+| Jurassic World Rebirth: A New Era | https://www.jurassicworld.com/anewera/ |
+| Park Marjan: Upoznaj botaniku | https://play.google.com/store/apps/details?id=hr.marjanparksuma.upoznajbotaniku |
+
+## Other approved assets
 
 | File | Purpose |
 |---|---|
-| `src/images/global/_linked/hero.jpg` | Homepage hero background (owned low-poly render) |
-| `src/images/global/_linked/og-cover.jpg` | Social share card (1200x630) |
-| `src/images/global/_linked/marko-about.jpg` | About portrait, 900x900 (source `markoAbout.png`) |
-| `src/images/global/_linked/marko-about-480.jpg` | About portrait, 480x480 |
-| `src/images/global/logo_white.svg` | Full logo lockup (source) |
-| `src/images/global/_symbols/brand-mark-white.svg` | Nav/cover brand mark (sprite source) |
+| `src/images/global/_linked/hero.jpg` | Homepage hero background (owned render) |
+| `src/images/global/_linked/og-cover.jpg` | Social share card 1200×630 |
+| `src/images/global/_linked/marko-about.jpg` / `-480` | About portrait |
+| `src/images/global/_symbols/brand-mark-white.svg` | Nav and cover brand mark |
 | `src/static/favicon*`, `apple-touch-icon.png`, `android-chrome-*` | Favicon set |
+
+## Still missing
+
+BestLife, Hooked on Phonics and Hooked on Spelling have no visuals. They appear
+as text credits with a restrained branded fallback until real, approved assets
+exist.
