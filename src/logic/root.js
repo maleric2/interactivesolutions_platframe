@@ -6,6 +6,7 @@
 
 // modules
 import { smooth } from 'modules/scroll';
+import { analytics } from 'modules/analytics';
 
 // components
 import header from 'headers/1/_';
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nav();
     smooth();
+    analytics();
     header();
     footer();
 

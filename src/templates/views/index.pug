@@ -4,15 +4,19 @@ extends ../_/body
 block context
     - bodyId = 'home';
     - bodyClass = 'home';
+    - isHome = true;
     - pageTitle = 'Senior Unity Developer & B2B Unity Engineering | Interactive Solutions';
+    - pageDescription = 'Senior/Lead Unity development, architecture, multiplayer optimization and project support by Marko Alerić. Remote B2B collaboration from Croatia, EU.';
+    - pageCanonical = 'https://interactivesolutions.hr/';
 
 //- body
 block main
 
-    main(role="main")
+    main(role="main" id="main")
 
         include _/front
-        include _/section-1
-        include _games
-        include _interactive-apps
-        include _consulting
+        include _/services
+        include _/work
+        include _/tools
+        include _/about
+        include _/contact

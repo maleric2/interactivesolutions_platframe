@@ -1,0 +1,49 @@
+-
+    const workItems = [
+        {
+            slug: 'light-film',
+            kicker: 'Light Film / Blue Raven',
+            title: 'Multiplayer TV-show games and a unified Unity platform',
+            text: 'Senior Unity development across a 10–20 person team, contributing to multiplayer gameplay and shared platform systems with PlayFab-backed functionality, including work related to Jurassic World. Firebase was evaluated during development.',
+            tags: ['Multiplayer', 'PlayFab', 'Live Systems', 'Platform'],
+            image: '/assets/images/global/_linked/work-light-film.jpg',
+            alt: 'Abstract low-poly artwork used as a placeholder for the Light Film / Blue Raven case study',
+            link: '/work/light-film-blue-raven/',
+        },
+        {
+            slug: 'room-8',
+            kicker: 'Room 8 Studio',
+            title: 'Lead Unity work on Amazon- and Apple-related projects',
+            text: 'Senior and lead Unity development on Amazon- and Apple-related initiatives delivered through Room 8 Studio. Details remain confidential; the scope covered systems, platforms and technical ownership.',
+            tags: ['Amazon-related', 'Apple-related', 'Lead', 'Systems'],
+            image: '/assets/images/global/_linked/work-room8.jpg',
+            alt: 'Abstract low-poly artwork used as a placeholder for confidential Room 8 Studio work',
+        },
+        {
+            slug: 'mydubrovnik',
+            kicker: 'MyDubrovnik',
+            title: 'Lead development of a shipped 3D mobile city-management game',
+            text: 'Led a five-person team from technical planning through delivery, designed core systems and optimized the game for lower-end mobile devices.',
+            tags: ['Lead', 'Mobile', '3D', 'Optimization'],
+            image: '/assets/images/global/_linked/work-mydubrovnik.jpg',
+            alt: 'Abstract low-poly artwork used as a placeholder for the MyDubrovnik case study',
+            link: '/work/mydubrovnik/',
+        },
+    ]
+
+section(class="page-section" id="work")
+
+    div(class="section-inner")
+
+        p(class="section-eyebrow") Selected work
+        h2(class="section-title") Real projects, responsibilities and technical decisions
+        p(class="section-lead").
+            Not a generic capability list — the projects, the role and what was actually delivered.
+
+        div(class="work-grid")
+
+            each item in workItems
+                +work-card(item)
+
+        div(class="section-actions")
+            a(class="btn btn-ghost" href="/work/") See all work →

@@ -1,0 +1,118 @@
+//- site-wide building blocks shared by every page
+
+mixin site-header({ home })
+    header(class="site-header" id="site-header")
+        div(class="site-header-inner")
+
+            a(class="site-brand" href=(home ? "#top" : "/") aria-label="Interactive Solutions — home")
+                span(class="site-brand-mark" aria-hidden="true") IS
+                span(class="site-brand-text") Interactive Solutions
+
+            input(class="nav-toggle" type="checkbox" id="nav-toggle")
+            label(class="nav-toggle-label" for="nav-toggle")
+                span(class="nav-toggle-bars" aria-hidden="true")
+                span(class="visually-hidden") Toggle navigation
+
+            nav(class="site-nav" aria-label="Primary")
+                ul
+                    li: a(href=(home ? "#services" : "/services/")) Services
+                    li: a(href=(home ? "#work" : "/work/")) Work
+                    li: a(href=(home ? "#tools" : "/tools/")) Unity Tools
+                    li: a(href=(home ? "#about" : "/about/")) About
+                    li: a(href=(home ? "#contact" : "/contact/")) Contact
+
+            a(class="site-header-cta" href=(home ? "#contact" : "/contact/") data-analytics="header_cta") Discuss a Project
+
+mixin tag-list(tags)
+    ul(class="tag-list")
+        each tag in tags
+            li(class="tag")= tag
+
+mixin service-card(item)
+    article(class="card")
+        h3(class="card-title")= item.title
+        p(class="card-text")= item.text
+        +tag-list(item.tags)
+
+mixin work-card(item)
+    article(class="card work-card")
+        div(class="card-figure")
+            img(src=item.image alt=item.alt loading="lazy")
+        div(class="card-body")
+            p(class="card-kicker")= item.kicker
+            h3(class="card-title")= item.title
+            p(class="card-text")= item.text
+            +tag-list(item.tags)
+            if item.link
+                a(class="card-link" href=item.link data-analytics=`work_${ item.slug }`) Read the case study →
+
+mixin callout(title, text)
+    aside(class="callout")
+        h4(class="callout-title")= title
+        p(class="callout-text")= text
+
+mixin cta-band(lead, href, label)
+    div(class="cta-band")
+        p(class="cta-band-lead")= lead
+        a(class="btn btn-primary" href=href data-analytics="cta_band")= label
+
+mixin contact-form()
+    form(
+        class="contact-form"
+        name="project-inquiry"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        action="/contact/success/")
+
+        input(type="hidden" name="form-name" value="project-inquiry")
+
+        p(class="hp")
+            label Do not fill this out if you are human:
+                input(name="bot-field")
+
+        div(class="field")
+            label(for="cf-situation") What best describes your situation?
+            select(id="cf-situation" name="situation" required)
+                option(value="" selected disabled) Please choose…
+                option I need an experienced Unity developer
+                option I have an existing Unity project with problems
+                option I want to validate an idea with a prototype
+                option I need a complete game or interactive application
+                option I need help with a Unity tool or plugin
+                option I am not sure yet
+
+        div(class="field-row")
+            div(class="field")
+                label(for="cf-name") Name
+                input(id="cf-name" type="text" name="name" required autocomplete="name")
+            div(class="field")
+                label(for="cf-email") Work email
+                input(id="cf-email" type="email" name="email" required autocomplete="email")
+
+        div(class="field")
+            label(for="cf-company") Company / organisation
+            input(id="cf-company" type="text" name="company" autocomplete="organization")
+
+        div(class="field")
+            label(for="cf-message") What do you need help with?
+            textarea(id="cf-message" name="message" rows="5" required)
+
+        div(class="field")
+            label(for="cf-budget") Budget comfort range
+            select(id="cf-budget" name="budget")
+                option(value="" selected) Not sure yet
+                option Under €3,000
+                option €3,000–10,000
+                option €10,000–30,000
+                option €30,000–60,000
+                option €60,000+
+                option Not applicable
+
+        div(class="field field-consent")
+            input(id="cf-consent" type="checkbox" name="consent" required)
+            label(for="cf-consent")
+                | I agree to my details being used to respond to this inquiry.
+                |  See the #[a(href="/privacy/") privacy policy].
+
+        button(type="submit" class="btn btn-primary" data-analytics="contact_submit") Send inquiry

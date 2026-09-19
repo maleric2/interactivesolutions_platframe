@@ -4,6 +4,10 @@ block body
 
     body(id=bodyId class=bodyClass)
 
+        a(class="skip-link" href="#main") Skip to main content
+
+        +site-header({ home: isHome })
+
         block main
 
         block footer

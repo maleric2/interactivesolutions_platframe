@@ -2,29 +2,57 @@ head
 
     meta(charset="utf-8")
 
-    block description
-        meta(name="description" content="Senior/Lead Unity development, architecture, multiplayer, optimization and project support by Marko Alerić. Remote B2B collaboration from Croatia, EU.")
+    - let _description = (typeof pageDescription !== 'undefined' && pageDescription) ? pageDescription : "Senior/Lead Unity development, architecture, multiplayer optimization and project support by Marko Alerić. Remote B2B collaboration from Croatia, EU."
+    - let _canonical = (typeof pageCanonical !== 'undefined' && pageCanonical) ? pageCanonical : "https://interactivesolutions.hr/"
+    - let _title = (typeof pageTitle !== 'undefined' && pageTitle) ? pageTitle : "Senior Unity Developer & B2B Unity Engineering | Interactive Solutions"
+
+    meta(name="description" content= _description)
 
     meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, minimum-scale=0.5")
     meta(name="generator" content="Platframe")
 
-    link(rel="canonical" href="https://interactivesolutions.hr/")
+    link(rel="canonical" href= _canonical)
 
     meta(property="og:type" content="website")
     meta(property="og:site_name" content="Interactive Solutions")
-    meta(property="og:url" content="https://interactivesolutions.hr/")
-    meta(property="og:title" content=pageTitle || "Senior Unity Developer & B2B Unity Engineering | Interactive Solutions")
-    meta(property="og:description" content="Senior/Lead Unity development, architecture, multiplayer, optimization and project support by Marko Alerić. Remote B2B collaboration from Croatia, EU.")
+    meta(property="og:url" content= _canonical)
+    meta(property="og:title" content= _title)
+    meta(property="og:description" content= _description)
     meta(property="og:image" content="https://interactivesolutions.hr/assets/images/global/_linked/og-cover.jpg")
     meta(property="og:image:width" content="1200")
     meta(property="og:image:height" content="630")
     meta(property="og:image:alt" content="Interactive Solutions — Senior Unity engineering by Marko Alerić")
     meta(name="twitter:card" content="summary_large_image")
-    meta(name="twitter:title" content=pageTitle || "Senior Unity Developer & B2B Unity Engineering | Interactive Solutions")
-    meta(name="twitter:description" content="Senior/Lead Unity development, architecture, multiplayer, optimization and project support by Marko Alerić. Remote B2B collaboration from Croatia, EU.")
+    meta(name="twitter:title" content= _title)
+    meta(name="twitter:description" content= _description)
     meta(name="twitter:image" content="https://interactivesolutions.hr/assets/images/global/_linked/og-cover.jpg")
 
-    title= pageTitle || "Default Title"
+    -
+        const _linkedin = "https://www.linkedin.com/in/markoaleric"
+        const _github = "https://github.com/maleric2"
+        const _assetstore = "https://assetstore.unity.com/publishers/40273"
+        const _structured = {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Interactive Solutions",
+            "description": "Founder-led Unity and interactive-development studio led by Senior/Lead Unity Developer Marko Alerić.",
+            "url": "https://interactivesolutions.hr/",
+            "email": "marko@interactivesolutions.hr",
+            "image": "https://interactivesolutions.hr/assets/images/global/_linked/og-cover.jpg",
+            "areaServed": "Europe",
+            "founder": {
+                "@type": "Person",
+                "name": "Marko Alerić",
+                "jobTitle": "Senior / Lead Unity Developer",
+                "url": "https://interactivesolutions.hr/about/",
+                "sameAs": [_linkedin, _github, _assetstore]
+            },
+            "sameAs": [_linkedin, _github, _assetstore]
+        }
+
+    script(type="application/ld+json")!= JSON.stringify(_structured)
+
+    title= _title
 
     block links
         - if (ENV === 'production')
