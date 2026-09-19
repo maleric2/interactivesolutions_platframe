@@ -2,6 +2,31 @@
 ┃ Shared building blocks used across the homepage and all subpages.  ┃
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
 
+// palette ───────────────────────────────────────────────────────────
+
+_bg_deep      = #0b1126
+_bg_base      = #0f1530
+_bg_alt       = #131a38
+_accent       = #21409A
+_accent_soft  = #6d8bff
+_accent_light = #8ea9ff
+_text         = #e9edf7
+_text_muted   = rgba(233, 237, 247, 0.78)
+_line         = rgba(255, 255, 255, 0.1)
+_panel        = rgba(255, 255, 255, 0.045)
+
+// the base reset removes outlines; restore a visible ring for keyboard users
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible
+    outline: 3px solid _accent_light
+    outline-offset: 2px
+    border-radius: rem(4px)
+
 // utilities ─────────────────────────────────────────────────────────
 
 .visually-hidden
@@ -22,7 +47,7 @@
     z-index: 200
     padding: 10px 18px
     color: #fff
-    background: #213e9a
+    background: _accent
     border-radius: 0 0 8px 8px
     font-weight: 700
     text-decoration: none
@@ -33,8 +58,8 @@
 // dark page shell for subpages ──────────────────────────────────────
 
 .page
-    color: #e9edf7
-    background: #0f1530
+    color: _text
+    background: _bg_base
 
     h1, h2, h3, h4
         color: #fff
@@ -46,9 +71,9 @@
     top: 0
     z-index: 100
     width: 100%
-    background: rgba(12, 18, 40, 0.88)
+    background: rgba(11, 17, 38, 0.9)
     border-bottom: 1px solid rgba(255, 255, 255, 0.08)
-    backdrop-filter: blur(12px)
+    backdrop-filter: blur(14px)
 
 .site-header-inner
     position: relative
@@ -64,23 +89,18 @@
 .site-brand
     display: flex
     align-items: center
-    gap: rem(10px)
+    gap: rem(12px)
     color: #fff
     font-weight: 700
     text-decoration: none
     white-space: nowrap
 
-.site-brand-mark
-    display: inline-flex
-    align-items: center
-    justify-content: center
+.site-brand-logo
+    display: block
     width: rem(34px)
     height: rem(34px)
-    color: #fff
-    background: #213e9a
-    border-radius: rem(8px)
-    font-size: rem(14px)
-    letter-spacing: 1px
+    fill: #fff
+    filter: drop-shadow(0 4px 10px rgba(33, 64, 154, 0.55))
 
 .site-brand-text
     font-size: rem(15px)
@@ -112,16 +132,18 @@
     display: inline-block
     padding: rem(9px) rem(18px)
     color: #fff
-    background: #213e9a
+    background: linear-gradient(135deg, #2b4fbf, _accent)
     border-radius: 50px
     font-size: rem(14px)
     font-weight: 700
     text-decoration: none
     white-space: nowrap
-    transition: background 0.2s ease, color 0.2s ease
+    box-shadow: 0 6px 16px rgba(33, 64, 154, 0.35)
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease
     &:hover, &:focus, &:active
-        color: #213e9a
+        color: _accent
         background: #fff
+        transform: translateY(-1px)
 
 .nav-toggle
     position: absolute
@@ -173,7 +195,7 @@
         left: 0
         width: 100%
         padding: rem(8px) rem(20px) rem(16px)
-        background: rgba(12, 18, 40, 0.98)
+        background: rgba(11, 17, 38, 0.98)
         border-bottom: 1px solid rgba(255, 255, 255, 0.08)
         ul
             flex-direction: column
@@ -195,43 +217,68 @@
     .nav-toggle
         display: none
 
-// sections ─────────────────────────────────────────────────────────
+// sections ──────────────────────────────────────────────────────────
 
 .page-section
+    position: relative
     width: 100%
-    padding: rem(72px) 0
+    padding: rem(84px) 0
     border-top: 1px solid rgba(255, 255, 255, 0.07)
     scroll-margin-top: rem(84px)
     +min(2)
-        padding: rem(96px) 0
+        padding: rem(112px) 0
+
+.page-section--alt
+    background: linear-gradient(180deg, _bg_deep 0%, _bg_base 100%)
+
+.page-section--glow
+    overflow: hidden
+    &::before
+        position: absolute
+        top: 0
+        left: 50%
+        width: 140%
+        height: 70%
+        transform: translateX(-50%)
+        background: radial-gradient(50% 60% at 50% 0%, rgba(33, 64, 154, 0.4), rgba(33, 64, 154, 0) 70%)
+        pointer-events: none
+        content: ''
 
 .section-inner
+    position: relative
+    z-index: 1
     width: 100%
     max-width: 1120px
     margin: 0 auto
     padding: 0 rem(20px)
 
 .section-eyebrow
-    margin: 0 0 rem(10px)
-    color: #8ea9ff
-    font-size: rem(13px)
+    display: inline-block
+    margin: 0 0 rem(14px)
+    padding: rem(5px) rem(14px)
+    color: _accent_light
+    background: rgba(33, 64, 154, 0.28)
+    border: 1px solid rgba(142, 169, 255, 0.25)
+    border-radius: 50px
+    font-size: rem(12px)
     font-weight: 700
-    letter-spacing: 3px
+    letter-spacing: 2px
     text-transform: uppercase
 
 .section-title
-    margin: 0 0 rem(14px)
+    margin: 0 0 rem(16px)
     color: #fff
-    font-size: rem(28px)
+    font-size: rem(30px)
     font-weight: 700
-    line-height: 1.2
+    line-height: 1.15
+    letter-spacing: -0.4px
     +min(2)
-        font-size: rem(40px)
+        font-size: rem(44px)
 
 .section-lead
     max-width: 720px
-    margin: 0 0 rem(36px)
-    color: rgba(233, 237, 247, 0.82)
+    margin: 0 0 rem(42px)
+    color: _text_muted
     font-size: rem(17px)
     line-height: 1.7
 
@@ -249,23 +296,30 @@
 .card
     display: flex
     flex-direction: column
-    padding: rem(26px)
-    background: rgba(255, 255, 255, 0.045)
-    border: 1px solid rgba(255, 255, 255, 0.1)
-    border-radius: rem(16px)
+    padding: rem(28px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03))
+    border: 1px solid _line
+    border-radius: rem(18px)
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25)
+    backdrop-filter: blur(10px)
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease
+    &:hover
+        transform: translateY(-6px)
+        border-color: rgba(142, 169, 255, 0.35)
+        box-shadow: 0 26px 55px rgba(0, 0, 0, 0.4)
 
 .card-title
-    margin: 0 0 rem(10px)
+    margin: 0 0 rem(12px)
     color: #fff
-    font-size: rem(19px)
+    font-size: rem(20px)
     font-weight: 700
     line-height: 1.3
 
 .card-text
-    margin: 0 0 rem(18px)
-    color: rgba(233, 237, 247, 0.82)
+    margin: 0 0 rem(20px)
+    color: _text_muted
     font-size: rem(15px)
-    line-height: 1.65
+    line-height: 1.7
 
 .tag-list
     display: flex
@@ -276,7 +330,7 @@
     list-style: none
 
 .tag
-    padding: rem(4px) rem(10px)
+    padding: rem(4px) rem(11px)
     color: #bcd0ff
     background: rgba(33, 62, 154, 0.35)
     border: 1px solid rgba(142, 169, 255, 0.28)
@@ -297,40 +351,79 @@
     padding: 0
     overflow: hidden
 
-.card-figure
-    width: 100%
-    height: rem(190px)
-    margin: 0
+.brand-cover
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    gap: rem(14px)
+    height: rem(200px)
     overflow: hidden
-    img
-        display: block
-        width: 100%
-        height: 100%
-        object-fit: cover
+    background: linear-gradient(135deg, #1c2c66 0%, #0d1330 70%)
+    &::before
+        position: absolute
+        top: -40%
+        right: -20%
+        width: 70%
+        height: 160%
+        background: radial-gradient(50% 50% at 50% 50%, rgba(109, 139, 255, 0.35), rgba(109, 139, 255, 0) 70%)
+        content: ''
+    &::after
+        position: absolute
+        inset: 0
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(8, 12, 28, 0.75) 100%)
+        content: ''
+
+.brand-cover--wide
+    height: rem(280px)
+    margin: 0 0 rem(36px)
+    border: 1px solid _line
+    border-radius: rem(16px)
+
+.brand-cover-mark
+    position: relative
+    z-index: 1
+    width: rem(58px)
+    height: rem(58px)
+    fill: #fff
+    opacity: 0.92
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.5))
+
+.brand-cover-label
+    position: relative
+    z-index: 1
+    padding: 0 rem(16px)
+    color: #fff
+    font-size: rem(12px)
+    font-weight: 700
+    letter-spacing: 2.4px
+    text-align: center
+    text-transform: uppercase
 
 .card-body
     display: flex
     flex: 1
     flex-direction: column
-    padding: rem(24px)
+    padding: rem(26px)
 
 .card-kicker
     margin: 0 0 rem(8px)
-    color: #8ea9ff
+    color: _accent_light
     font-size: rem(12px)
     font-weight: 700
     letter-spacing: 2px
     text-transform: uppercase
 
 .card-link
-    margin-top: rem(16px)
+    margin-top: rem(18px)
     color: #fff
     font-size: rem(14px)
     font-weight: 700
     text-decoration: underline
     text-underline-offset: 3px
     &:hover, &:focus, &:active
-        color: #bcd0ff
+        color: _accent_light
 
 // tools ─────────────────────────────────────────────────────────────
 
@@ -342,12 +435,12 @@
         grid-template-columns: 3fr 2fr
 
 .tool-card
-    padding: rem(30px)
+    padding: rem(32px)
 
 .tool-badge
     display: inline-block
-    margin: 0 0 rem(14px)
-    padding: rem(4px) rem(12px)
+    margin: 0 0 rem(16px)
+    padding: rem(5px) rem(13px)
     color: #d7ffd9
     background: rgba(38, 128, 62, 0.35)
     border: 1px solid rgba(120, 220, 150, 0.35)
@@ -366,36 +459,38 @@
     display: flex
     flex-wrap: wrap
     gap: rem(12px)
-    margin-top: rem(20px)
+    margin-top: rem(22px)
 
 // buttons ───────────────────────────────────────────────────────────
 
 .btn
     display: inline-block
-    padding: rem(14px) rem(30px)
+    padding: rem(15px) rem(32px)
     border-radius: 50px
     font-size: rem(15px)
     font-weight: 700
     text-align: center
     text-decoration: none
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease
 
 .btn-primary
     color: #fff
-    background: #213e9a
+    background: linear-gradient(135deg, #2b4fbf, _accent)
+    box-shadow: 0 12px 26px rgba(33, 64, 154, 0.4)
     &:hover, &:focus, &:active
-        color: #213e9a
+        color: _accent
         background: #fff
-        transform: translateY(-2px)
+        transform: translateY(-3px)
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.4)
 
 .btn-secondary
     color: #fff
     background: transparent
     border: 2px solid rgba(255, 255, 255, 0.55)
     &:hover, &:focus, &:active
-        color: #213e9a
+        color: _accent
         background: #fff
-        transform: translateY(-2px)
+        transform: translateY(-3px)
 
 .btn-ghost
     color: #bcd0ff
@@ -409,29 +504,42 @@
     display: flex
     flex-wrap: wrap
     gap: rem(14px)
-    margin-top: rem(32px)
+    margin-top: rem(36px)
 
 // about ─────────────────────────────────────────────────────────────
 
 .about-grid
     display: grid
     grid-template-columns: 1fr
-    gap: rem(32px)
+    gap: rem(36px)
     +min(2)
-        grid-template-columns: 1fr 2fr
+        grid-template-columns: 1fr 1.6fr
+
+.about-photo
+    width: 100%
+    max-width: rem(340px)
+    margin: 0 0 rem(24px)
+    overflow: hidden
+    border-radius: rem(18px)
+    border: 1px solid _line
+    box-shadow: 0 22px 48px rgba(0, 0, 0, 0.4)
+    img
+        display: block
+        width: 100%
+        height: auto
 
 .about-body
     p
         margin: 0 0 rem(18px)
         color: rgba(233, 237, 247, 0.85)
         font-size: rem(16px)
-        line-height: 1.75
+        line-height: 1.8
 
 .proof-list
     display: grid
     grid-template-columns: 1fr
-    gap: rem(10px)
-    margin: rem(24px) 0 0
+    gap: rem(12px)
+    margin: rem(26px) 0 0
     padding: 0
     list-style: none
     +min(1)
@@ -439,7 +547,7 @@
     li
         position: relative
         margin: 0
-        padding: 0 0 0 rem(26px)
+        padding: 0 0 0 rem(28px)
         color: rgba(233, 237, 247, 0.88)
         font-size: rem(15px)
         line-height: 1.6
@@ -451,20 +559,21 @@
             content: '\2713'
 
 .availability
-    margin-top: rem(28px)
-    padding: rem(22px)
-    background: rgba(33, 62, 154, 0.22)
-    border: 1px solid rgba(142, 169, 255, 0.25)
-    border-radius: rem(14px)
+    margin-top: rem(6px)
+    padding: rem(24px)
+    background: linear-gradient(180deg, rgba(33, 64, 154, 0.32), rgba(33, 64, 154, 0.12))
+    border: 1px solid rgba(142, 169, 255, 0.28)
+    border-radius: rem(16px)
     h3
-        margin: 0 0 rem(12px)
+        margin: 0 0 rem(14px)
         font-size: rem(17px)
+        line-height: 1.4
     ul
         margin: 0
         padding: 0
         list-style: none
         li
-            margin: 0 0 rem(8px)
+            margin: 0 0 rem(9px)
             padding-left: rem(18px)
             color: rgba(233, 237, 247, 0.85)
             font-size: rem(15px)
@@ -472,16 +581,56 @@
             &::before
                 margin-left: rem(-18px)
                 margin-right: rem(8px)
-                color: #8ea9ff
+                color: _accent_light
                 content: '\2013'
+
+// pricing ───────────────────────────────────────────────────────────
+
+.pricing-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(18px)
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+    +min(2)
+        grid-template-columns: repeat(3, 1fr)
+
+.pricing-item
+    padding: rem(24px)
+    background: _panel
+    border: 1px solid _line
+    border-radius: rem(14px)
+    transition: border-color 0.3s ease, transform 0.3s ease
+    &:hover
+        transform: translateY(-4px)
+        border-color: rgba(142, 169, 255, 0.35)
+
+.pricing-label
+    margin: 0 0 rem(8px)
+    color: #fff
+    font-size: rem(15px)
+    font-weight: 700
+    line-height: 1.4
+
+.pricing-value
+    margin: 0
+    color: _accent_light
+    font-size: rem(22px)
+    font-weight: 700
+
+.pricing-note
+    margin: rem(28px) 0 0
+    color: rgba(233, 237, 247, 0.62)
+    font-size: rem(13px)
+    line-height: 1.7
 
 // callout ───────────────────────────────────────────────────────────
 
 .callout
-    margin-top: rem(28px)
-    padding: rem(22px)
+    margin-top: rem(30px)
+    padding: rem(24px)
     background: rgba(255, 255, 255, 0.05)
-    border-left: 4px solid #213e9a
+    border-left: 4px solid _accent
     border-radius: 0 rem(12px) rem(12px) 0
 
 .callout-title
@@ -492,7 +641,7 @@
     margin: 0
     color: rgba(233, 237, 247, 0.85)
     font-size: rem(15px)
-    line-height: 1.65
+    line-height: 1.7
 
 // cta band ──────────────────────────────────────────────────────────
 
@@ -501,9 +650,9 @@
     flex-direction: column
     align-items: flex-start
     gap: rem(18px)
-    margin-top: rem(36px)
-    padding: rem(30px)
-    background: rgba(33, 62, 154, 0.3)
+    margin-top: rem(8px)
+    padding: rem(32px)
+    background: linear-gradient(135deg, rgba(33, 64, 154, 0.45), rgba(33, 64, 154, 0.15))
     border: 1px solid rgba(255, 255, 255, 0.16)
     border-radius: rem(18px)
     +min(1)
@@ -514,39 +663,55 @@
 .cta-band-lead
     margin: 0
     color: #fff
-    font-size: rem(18px)
+    font-size: rem(19px)
     font-weight: 600
 
 // subpage hero ──────────────────────────────────────────────────────
 
 .page-hero
-    padding: rem(64px) 0 rem(40px)
+    position: relative
+    padding: rem(72px) 0 rem(48px)
+    overflow: hidden
+    background: linear-gradient(180deg, _bg_deep 0%, _bg_base 100%)
+    &::before
+        position: absolute
+        top: 0
+        left: 50%
+        width: 130%
+        height: 120%
+        transform: translateX(-50%)
+        background: radial-gradient(45% 60% at 50% 0%, rgba(33, 64, 154, 0.45), rgba(33, 64, 154, 0) 70%)
+        pointer-events: none
+        content: ''
     +min(2)
-        padding: rem(96px) 0 rem(56px)
+        padding: rem(104px) 0 rem(64px)
 
 .page-hero-inner
+    position: relative
+    z-index: 1
     width: 100%
     max-width: 1120px
     margin: 0 auto
     padding: 0 rem(20px)
     h1
         max-width: 900px
-        margin: 0 0 rem(16px)
+        margin: 0 0 rem(18px)
         color: #fff
-        font-size: rem(30px)
+        font-size: rem(32px)
         font-weight: 700
-        line-height: 1.18
+        line-height: 1.15
+        letter-spacing: -0.5px
         +min(2)
-            font-size: rem(46px)
+            font-size: rem(48px)
     p
         max-width: 720px
         margin: 0
         color: rgba(233, 237, 247, 0.85)
         font-size: rem(17px)
-        line-height: 1.7
+        line-height: 1.75
 
 .breadcrumbs
-    margin: 0 0 rem(18px)
+    margin: 0 0 rem(20px)
     padding: 0
     list-style: none
     li
@@ -571,12 +736,12 @@
 .prose
     max-width: 760px
     h2
-        margin: rem(36px) 0 rem(12px)
+        margin: rem(40px) 0 rem(14px)
         color: #fff
-        font-size: rem(24px)
+        font-size: rem(25px)
         font-weight: 700
     h3
-        margin: rem(28px) 0 rem(10px)
+        margin: rem(30px) 0 rem(10px)
         color: #fff
         font-size: rem(19px)
         font-weight: 700
@@ -584,7 +749,7 @@
         margin: 0 0 rem(16px)
         color: rgba(233, 237, 247, 0.85)
         font-size: rem(16px)
-        line-height: 1.75
+        line-height: 1.8
     ul
         margin: 0 0 rem(18px)
         padding: 0
@@ -595,11 +760,11 @@
             padding-left: rem(24px)
             color: rgba(233, 237, 247, 0.85)
             font-size: rem(16px)
-            line-height: 1.65
+            line-height: 1.7
             &::before
                 position: absolute
                 left: 0
-                color: #8ea9ff
+                color: _accent_light
                 content: '\2013'
     strong
         color: #fff
@@ -609,19 +774,19 @@
 .case-meta
     display: grid
     grid-template-columns: 1fr
-    gap: rem(16px)
-    margin: 0 0 rem(36px)
-    padding: rem(24px)
-    background: rgba(255, 255, 255, 0.045)
-    border: 1px solid rgba(255, 255, 255, 0.1)
-    border-radius: rem(14px)
+    gap: rem(18px)
+    margin: 0 0 rem(40px)
+    padding: rem(26px)
+    background: _panel
+    border: 1px solid _line
+    border-radius: rem(16px)
     +min(1)
         grid-template-columns: repeat(2, 1fr)
     +min(2)
         grid-template-columns: repeat(4, 1fr)
     dt
         margin: 0 0 rem(4px)
-        color: #8ea9ff
+        color: _accent_light
         font-size: rem(12px)
         font-weight: 700
         letter-spacing: 1.5px
@@ -647,7 +812,7 @@
 .contact-grid
     display: grid
     grid-template-columns: 1fr
-    gap: rem(36px)
+    gap: rem(40px)
     +min(2)
         grid-template-columns: 3fr 2fr
 
@@ -656,7 +821,7 @@
         margin: 0 0 rem(14px)
         color: rgba(233, 237, 247, 0.85)
         font-size: rem(15px)
-        line-height: 1.7
+        line-height: 1.75
     a
         color: #bcd0ff
 
@@ -668,10 +833,11 @@
         margin: 0 0 rem(10px)
 
 .contact-form
-    padding: rem(28px)
-    background: rgba(255, 255, 255, 0.045)
-    border: 1px solid rgba(255, 255, 255, 0.1)
-    border-radius: rem(16px)
+    padding: rem(30px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03))
+    border: 1px solid _line
+    border-radius: rem(18px)
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25)
 
 .field
     margin: 0 0 rem(18px)
@@ -683,7 +849,7 @@
         font-weight: 600
     input, select, textarea
         width: 100%
-        padding: rem(12px) rem(14px)
+        padding: rem(13px) rem(15px)
         color: #fff
         background: rgba(8, 12, 28, 0.6)
         border: 1px solid rgba(255, 255, 255, 0.18)
@@ -693,7 +859,7 @@
         &::placeholder
             color: rgba(233, 237, 247, 0.45)
         &:focus
-            outline: 2px solid #8ea9ff
+            outline: 2px solid _accent_light
             outline-offset: 1px
     select
         appearance: none
@@ -727,7 +893,7 @@
     margin: rem(16px) 0 0
     color: rgba(233, 237, 247, 0.6)
     font-size: rem(13px)
-    line-height: 1.6
+    line-height: 1.7
 
 .hp
     position: absolute
@@ -742,16 +908,16 @@
 .success-panel
     max-width: 640px
     margin: 0 auto
-    padding: rem(40px) rem(32px)
+    padding: rem(44px) rem(34px)
     text-align: center
-    background: rgba(255, 255, 255, 0.05)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03))
     border: 1px solid rgba(255, 255, 255, 0.12)
     border-radius: rem(18px)
     h1
         margin: 0 0 rem(14px)
         font-size: rem(30px)
     p
-        margin: 0 0 rem(22px)
+        margin: 0 0 rem(24px)
         color: rgba(233, 237, 247, 0.85)
         font-size: rem(16px)
-        line-height: 1.7
+        line-height: 1.75
