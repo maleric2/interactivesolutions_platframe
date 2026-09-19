@@ -4,6 +4,21 @@ Short handoff for publishing this repo to Netlify and rolling back safely.
 Source of truth for the build is this repo plus `netlify.toml`; the Netlify
 dashboard must mirror the values below.
 
+## Current handoff state (2026-09-19)
+
+- Preview branch: `preview/pre-deploy-pass` (pushed; `master` untouched).
+- PR: <https://github.com/maleric2/interactivesolutions_platframe/pull/1>
+  — open, **do not merge until the human smoke tests pass**.
+- Netlify site slug: `naughty-goldberg-dfe5e7`.
+- Deploy preview:
+  <https://deploy-preview-1--naughty-goldberg-dfe5e7.netlify.app>
+- Agent-verified on that preview: all 22 routes/assets HTTP 200, per-page
+  titles/canonicals, JSON-LD, favicon set, sitemap, `project-inquiry` form
+  markup with `/contact/success/` action, brand mark sprite, pricing block.
+- Left for human verification: an actual `project-inquiry` submission showing
+  up under Forms, the mobile nav behavior at 320/375 px, and the share card
+  preview after go-live.
+
 ## Exact Netlify configuration
 
 | Setting | Value |
