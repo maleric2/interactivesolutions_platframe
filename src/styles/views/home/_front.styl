@@ -5,14 +5,16 @@
 
     .hero-bg
         position: absolute
-        inset: 0
+        inset: -3%
         background: url("/assets/images/global/_linked/hero.jpg") center / cover no-repeat
-        opacity: 0.55
+        transform: scale(1.04)
+        animation: hero-drift 30s ease-in-out infinite alternate
 
+    // directional overlay keeps left-side text legible while the render shows through
     &::after
         position: absolute
         inset: 0
-        background: linear-gradient(180deg, rgba(5, 8, 15, 0.86) 0%, rgba(5, 8, 15, 0.5) 44%, _c_cinema 100%)
+        background: linear-gradient(90deg, rgba(5, 8, 15, 0.96) 0%, rgba(5, 8, 15, 0.86) 34%, rgba(5, 8, 15, 0.38) 68%, rgba(5, 8, 15, 0.6) 100%), radial-gradient(130% 100% at 74% 46%, rgba(5, 8, 15, 0) 36%, rgba(5, 8, 15, 0.75) 100%)
         content: ''
 
     .hero-content
@@ -20,45 +22,36 @@
         z-index: 1
         display: flex
         flex-direction: column
-        align-items: center
-        justify-content: center
+        align-items: flex-start
         width: 100%
-        padding: rem(132px) _pad_x rem(96px)
-        text-align: center
-
-    .hero-logo
-        display: block
-        width: 100%
-        max-width: rem(250px)
-        height: auto
-        margin: 0 auto rem(24px)
-        +min(2)
-            max-width: rem(320px)
+        max-width: _w_wide
+        margin: 0 auto
+        padding: rem(140px) _pad_x rem(100px)
+        text-align: left
 
     .section-eyebrow
-        margin: 0 0 rem(16px)
+        margin: 0 0 rem(20px)
 
     .hero-title
-        max-width: rem(920px)
-        margin: 0 auto rem(22px)
+        max-width: rem(880px)
+        margin: 0 0 rem(24px)
         color: #fff
-        font-size: rem(36px)
+        font-size: rem(38px)
         font-weight: 700
         line-height: 1.06
         letter-spacing: -1.2px
-        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.65)
+        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.55)
         +min(1)
-            font-size: rem(52px)
+            font-size: rem(54px)
         +min(2)
-            font-size: rem(66px)
+            font-size: rem(68px)
 
     .hero-sub
-        max-width: rem(680px)
-        margin: 0 auto rem(36px)
+        max-width: rem(650px)
+        margin: 0 0 rem(38px)
         color: _c_text_soft
         font-size: rem(16px)
-        line-height: 1.78
-        text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6)
+        line-height: 1.8
         strong
             color: #fff
         +min(1)
@@ -73,43 +66,20 @@
         max-width: rem(320px)
         +min(1)
             flex-direction: row
-            justify-content: center
             align-items: center
-            max-width: none
             width: auto
+            max-width: none
         .btn
             width: 100%
             +min(1)
                 width: auto
 
-    .hero-tools
-        margin-top: rem(26px)
-        color: #fff
-        font-size: rem(15px)
-        font-weight: 600
-        text-decoration: underline
-        text-underline-offset: 4px
-        &:hover, &:focus, &:active
-            color: _c_accent_pale
-
     .hero-proof
-        margin: rem(32px) auto 0
-        max-width: rem(780px)
-        color: rgba(238, 241, 250, 0.76)
+        max-width: rem(700px)
+        margin: rem(42px) 0 0
+        padding-top: rem(22px)
+        border-top: 1px solid rgba(255, 255, 255, 0.14)
+        color: rgba(238, 241, 250, 0.8)
         font-size: rem(14px)
-        line-height: 1.85
+        line-height: 1.8
         letter-spacing: 0.2px
-
-    .hero-links
-        margin: rem(16px) auto 0
-        color: rgba(238, 241, 250, 0.78)
-        font-size: rem(14px)
-        a
-            color: #fff
-            font-weight: 600
-            text-decoration: underline
-            text-underline-offset: 3px
-            &:hover, &:focus, &:active
-                color: _c_accent_pale
-        span
-            margin: 0 rem(9px)
