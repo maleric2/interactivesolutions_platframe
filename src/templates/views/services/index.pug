@@ -26,26 +26,7 @@ block main
             div(class="section-inner")
 
                 div(class="card-grid")
-                    +service-card({
-                        title: 'Unity Development & Feature Delivery',
-                        text: 'Gameplay systems, UI, tools, integrations and production-ready features delivered inside an existing codebase or as part of a new project.',
-                        tags: ['Gameplay', 'UI', 'Mobile', 'PC', 'Console', 'Addressables'],
-                    })
-                    +service-card({
-                        title: 'Architecture, Performance & Project Rescue',
-                        text: 'Architecture reviews, refactoring plans and hands-on remediation for Unity projects that have become difficult to extend, debug or ship.',
-                        tags: ['MVP', 'Profiling', 'Refactoring', 'Legacy Projects', 'Build Stability'],
-                    })
-                    +service-card({
-                        title: 'Multiplayer, Backend & Live Systems',
-                        text: 'Multiplayer gameplay, backend-driven features, content delivery and live-game systems using technologies such as PlayFab and production APIs.',
-                        tags: ['Multiplayer', 'PlayFab', 'Live Ops', 'Remote Content', 'Monetization'],
-                    })
-                    +service-card({
-                        title: 'Technical Leadership & Scoping',
-                        text: 'Technical direction, project scoping, mentoring and practical leadership for teams that need senior decision-making without hiring a full-time lead.',
-                        tags: ['Team Leadership', 'Estimation', 'Hiring Support', 'Mentoring', 'Roadmaps'],
-                    })
+                    +services-grid()
 
         section(class="page-section")
             div(class="section-inner")

@@ -4,8 +4,8 @@ block context
     - bodyId = 'case-light-film';
     - bodyClass = 'page';
     - isHome = false;
-    - pageTitle = 'Multiplayer TV-show games and a unified Unity platform — Case Study | Interactive Solutions';
-    - pageDescription = 'Case study: senior Unity development on multiplayer TV-show games and a shared Unity platform, including PlayFab-backed systems.';
+    - pageTitle = 'Jurassic World Rebirth: A New Era — official browser game | Interactive Solutions';
+    - pageDescription = 'Case study: building the official Jurassic World Rebirth: A New Era browser game from scratch in Phaser, alongside senior Unity work on multiplayer TV-show games and a unified platform.';
     - pageCanonical = 'https://interactivesolutions.hr/work/light-film-blue-raven/';
 
 block main
@@ -18,71 +18,87 @@ block main
                     li: a(href="/") Home
                     li: a(href="/work/") Work
                     li Light Film / Blue Raven
-                h1 Multiplayer TV-show games and a unified Unity platform
-                p Senior Unity development across multiplayer gameplay and shared platform systems.
+                h1 Jurassic World Rebirth: A New Era — official browser game
+                p Built from scratch in JavaScript using Phaser as part of the Light Film team, alongside senior Unity work on multiplayer TV-show games and a shared platform.
 
-        section(class="page-section")
+        section(class="page-section page-section--editorial")
             div(class="section-inner")
 
                 dl(class="case-meta")
                     div
                         dt Role
-                        dd Senior Unity Developer
+                        dd Senior developer — full game implementation
                     div
-                        dt Client / employer
+                        dt Team context
                         dd Light Film / Blue Raven
                     div
-                        dt Team
+                        dt Team size
                         dd 10–20 people
                     div
-                        dt Focus
-                        dd Multiplayer · Platform · Live systems
+                        dt Stack
+                        dd JavaScript · Phaser · Unity · PlayFab
 
                 div(class="prose")
 
                     h2 Context
                     p.
                         Light Film / Blue Raven produced multiplayer games tied to TV-show formats,
-                        alongside a shared Unity platform that multiple games could build on. Work in
-                        this space included projects related to Jurassic World. Engineering was delivered
-                        within a team of roughly ten to twenty people.
+                        alongside a shared Unity platform that multiple titles could build on. Work in
+                        this space included projects related to Jurassic World, delivered within teams
+                        of roughly ten to twenty people.
 
                     h2 My role
                     p.
-                        As a Senior Unity Developer I contributed to both the games and the shared
-                        platform layer — implementing gameplay and platform systems rather than working
-                        on a single isolated feature.
+                        I built the official #[strong Jurassic World Rebirth: A New Era] browser game
+                        from scratch in JavaScript using Phaser — a full, playable implementation
+                        rather than a single feature inside an existing engine.
 
                     h2 Technical challenge
                     p.
-                        Multiplayer experiences tied to live formats have to be reliable under real
-                        session pressure while still supporting platform features shared across several
-                        titles. Keeping shared systems reusable without coupling individual games to each
-                        other was the central engineering problem.
+                        A browser game tied to a global entertainment property has to load quickly,
+                        play consistently across browsers and devices, and hold up as a finished
+                        public experience. Building it from zero meant owning the whole
+                        implementation rather than slotting into an established codebase.
 
                     h2 Decisions and implementation
                     ul
-                        li Built multiplayer gameplay and shared platform systems in Unity.
-                        li Implemented backend-backed functionality using PlayFab.
-                        li Evaluated Firebase during development as an alternative for parts of the stack.
-                        li Contributed to systems intended to be reused across multiple titles.
+                        li Implemented the complete game from scratch in JavaScript with Phaser.
+                        li Delivered it as a responsive browser experience.
+                        li Worked within a 10–20 person team alongside the studio's other titles.
 
                     h2 Outcome
                     p.
-                        Multiplayer titles and a shared platform were delivered as part of the team's
-                        production. Specific client metrics and unreleased details are covered by
-                        confidentiality and are not published here.
+                        The game shipped and is live as the official experience:
+                        #[a(href="https://www.jurassicworld.com/anewera/" target="_blank" rel="noopener") jurassicworld.com/anewera].
+
+                    h2 Broader Unity scope at Light Film
+                    p.
+                        Alongside the browser game, I did senior Unity development on multiplayer
+                        TV-show games and a unified platform — contributing to multiplayer gameplay
+                        and shared platform systems, with PlayFab-backed functionality. Firebase was
+                        evaluated during development.
 
                     h2 Technologies
-                    p Unity · C# · PlayFab · Multiplayer networking · Live platform systems
+                    p JavaScript · Phaser · Unity · C# · PlayFab
+
+                figure(class="case-figure case-figure--narrow")
+                    img(
+                        src="/assets/images/work/light-film/_linked/jurassic-gameplay.jpg"
+                        srcset="/assets/images/work/light-film/_linked/jurassic-gameplay-400.jpg 400w, /assets/images/work/light-film/_linked/jurassic-gameplay.jpg 680w"
+                        sizes="(min-width: 1024px) 440px, 92vw"
+                        width="680"
+                        height="1210"
+                        alt="Jurassic World Rebirth: A New Era browser game in play, showing a boat and a dinosaur in the water"
+                        loading="lazy")
+                    figcaption Gameplay from the official browser game built in Phaser.
 
                 div(class="callout")
                     h4(class="callout-title") A note on attribution
                     p(class="callout-text").
-                        This work was delivered within a team and through the named studio. It is
-                        presented to describe the role and contribution accurately, not to claim sole
-                        authorship of the titles or brands involved.
+                        This work was completed as part of the Light Film team. It is presented to
+                        describe my own contribution accurately and does not imply direct employment
+                        or commissioning by the brand owners. Some project detail remains confidential.
 
-        section(class="page-section")
+        section(class="page-section page-section--cinematic has-glow")
             div(class="section-inner")
-                +cta-band('Working on a multiplayer or live-systems project?', '/contact/', 'Discuss Your Unity Project')
+                +cta-band('Working on a browser or Unity project?', '/contact/', 'Discuss Your Unity Project')

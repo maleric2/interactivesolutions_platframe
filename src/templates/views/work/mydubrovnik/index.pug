@@ -4,8 +4,8 @@ block context
     - bodyId = 'case-mydubrovnik';
     - bodyClass = 'page';
     - isHome = false;
-    - pageTitle = 'MyDubrovnik — shipped 3D mobile city-management game — Case Study | Interactive Solutions';
-    - pageDescription = 'Case study: leading development of MyDubrovnik, a shipped 3D mobile city-management game, from technical planning to delivery.';
+    - pageTitle = 'My Dubrovnik — 3D mobile city-management game — Case Study | Interactive Solutions';
+    - pageDescription = 'Case study: leading a 3D mobile city-management game from concept to first release with the Async Labs team, building the MVP in about ten months.';
     - pageCanonical = 'https://interactivesolutions.hr/work/mydubrovnik/';
 
 block main
@@ -17,11 +17,11 @@ block main
                 ul(class="breadcrumbs")
                     li: a(href="/") Home
                     li: a(href="/work/") Work
-                    li MyDubrovnik
-                h1 MyDubrovnik — a shipped 3D mobile city-management game
-                p Leading a small team from technical planning through delivery and optimization.
+                    li My Dubrovnik
+                h1 My Dubrovnik — a 3D mobile city-management game
+                p Led development from concept to first release with the Async Labs team, building the MVP in about ten months.
 
-        section(class="page-section")
+        section(class="page-section page-section--editorial")
             div(class="section-inner")
 
                 dl(class="case-meta")
@@ -29,11 +29,11 @@ block main
                         dt Role
                         dd Lead Unity Developer
                     div
-                        dt Project
-                        dd MyDubrovnik
-                    div
                         dt Team
-                        dd 5 people
+                        dd Async Labs team
+                    div
+                        dt MVP
+                        dd ~10 months
                     div
                         dt Platform
                         dd Mobile · 3D
@@ -42,42 +42,55 @@ block main
 
                     h2 Context
                     p.
-                        MyDubrovnik was a 3D mobile city-management game built around a real-world
-                        location. The project needed a small team to move from concept to a shipped
-                        product that would run acceptably on lower-end mobile hardware.
+                        My Dubrovnik is a 3D city-management game based on the real city of Dubrovnik.
+                        Representing that location convincingly on a phone, with complex management
+                        mechanics on top, was the defining constraint of the project.
 
-                    h2 My role
+                    h2 Responsibility
                     p.
-                        I led Unity development for a five-person team, owning technical planning,
-                        core system design and the optimization work needed to reach mobile devices.
+                        I led development from the idea to the first release, with broad ownership of
+                        both engineering and the product decisions that shaped it.
 
-                    h2 Technical challenge
-                    p.
-                        A 3D city-management game on mobile has to balance visual scope against device
-                        limits. Lower-end devices were the constraint that shaped architectural and
-                        content decisions from early on.
-
-                    h2 Decisions and implementation
+                    h2 Challenges
                     ul
-                        li Planned the technical approach and system structure for the team.
-                        li Designed and implemented core gameplay and management systems.
-                        li Drove optimization work targeting lower-end mobile devices.
-                        li Coordinated delivery across the small team through to release.
+                        li Complex, interlocking management mechanics.
+                        li The visual scope of a detailed real-city representation on mobile.
+                        li Keeping performance acceptable on lower-end devices.
+                        li A tight schedule from concept to release.
+
+                    h2 Contribution
+                    ul
+                        li Built the MVP from scratch in roughly ten months.
+                        li Implemented and owned economy, tasks, progression and tutorial systems.
+                        li Delivered buildings, advertising and crowd and camera systems.
+                        li Performed substantial optimization for mobile.
 
                     h2 Outcome
                     p.
-                        The game was completed and shipped as a 3D mobile title. Store links,
-                        screenshots and public ratings can be provided on request.
+                        An MVP built from scratch and shipped as a 3D mobile title within about ten
+                        months, delivered under a tight schedule with demanding gameplay requirements.
 
                     h2 Technologies
                     p Unity · C# · Mobile optimization · 3D content pipelines
 
-                div(class="callout")
-                    h4(class="callout-title") Team delivery
-                    p(class="callout-text").
-                        This was a team effort. The role described here is technical leadership and
-                        hands-on development within that team, not independent authorship of the title.
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/work/my-dubrovnik/_linked/gameplay.jpg"
+                        srcset="/assets/images/work/my-dubrovnik/_linked/gameplay-800.jpg 800w, /assets/images/work/my-dubrovnik/_linked/gameplay.jpg 1600w"
+                        sizes="(min-width: 1024px) 740px, 92vw"
+                        width="1600"
+                        height="1082"
+                        alt="Collage of My Dubrovnik gameplay screens showing city management systems"
+                        loading="lazy")
+                    figcaption A selection of systems from My Dubrovnik.
 
-        section(class="page-section")
+                div(class="callout")
+                    h4(class="callout-title") A note on attribution
+                    p(class="callout-text").
+                        I worked embedded with the Async Labs team to develop My Dubrovnik, while being
+                        formally employed through a partner company. The role described here is technical
+                        leadership and hands-on development within that team.
+
+        section(class="page-section page-section--cinematic has-glow")
             div(class="section-inner")
-                +cta-band('Need a senior lead for a small, focused team?', '/contact/', 'Discuss Your Unity Project')
+                +cta-band('Need end-to-end Unity product delivery?', '/contact/', 'Discuss Your Unity Project')

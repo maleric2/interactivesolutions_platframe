@@ -1,0 +1,99 @@
+extends ../../../_/body
+
+block context
+    - bodyId = 'case-hooked-on-math';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Hooked on Math — lead Unity developer — Case Study | Interactive Solutions';
+    - pageDescription = 'Case study: leading Unity development on Hooked on Math at Dubit Limited, from planning through launch and post-release across multiple stores.';
+    - pageCanonical = 'https://interactivesolutions.hr/work/hooked-on-math/';
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li: a(href="/work/") Work
+                    li Hooked on Math
+                h1 Hooked on Math — leading a cross-functional team to launch
+                p Lead Unity Developer at #[a(href="https://dubit.io/" target="_blank" rel="noopener") Dubit Limited], owning technical delivery from early planning through post-release.
+
+        section(class="page-section page-section--editorial")
+            div(class="section-inner")
+
+                dl(class="case-meta")
+                    div
+                        dt Role
+                        dd Lead Unity Developer
+                    div
+                        dt Studio
+                        dd Dubit Limited
+                    div
+                        dt Team
+                        dd ~10 people
+                    div
+                        dt Delivery
+                        dd Google · Apple · Windows · Amazon
+
+                div(class="prose")
+
+                    h2 Context
+                    p.
+                        Hooked on Math is an educational product built around a large amount of
+                        interactive learning content. Producing that content repeatably — and getting
+                        it into players' hands across several stores — was the core delivery problem.
+
+                    h2 Responsibility
+                    p.
+                        As Lead Unity Developer I was responsible for technical delivery and for how
+                        the team executed against it, from project start through launch and the
+                        releases that followed.
+
+                    h2 Challenges
+                    ul
+                        li Repeatable production of a large volume of interactive learning content.
+                        li Downloadable and purchasable content delivered at runtime.
+                        li Shipping consistently across several mobile and tablet stores.
+                        li Coordinating release work across a team of around ten people.
+
+                    h2 Contribution
+                    ul
+                        li Produced estimates and decomposed major features into implementable tasks.
+                        li Created tooling for designers so content could be built without engineering help.
+                        li Worked on an optimized content workflow with Addressables-based delivery.
+                        li Supported purchasable content and reward systems.
+                        li Led the MVP launch across the Google, Apple, Windows and Amazon stores.
+                        li Supported extensive QA and the significant releases that followed the MVP.
+
+                    h2 Outcome
+                    p.
+                        The MVP shipped and was followed by major updates across several stores, with
+                        the content pipeline and designer tooling supporting continued production.
+
+                    h2 Technologies
+                    p Unity · C# · Addressables · Multi-store delivery · Designer tooling
+
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/work/hooked-on-math/_linked/gameplay.jpg"
+                        srcset="/assets/images/work/hooked-on-math/_linked/gameplay-600.jpg 600w, /assets/images/work/hooked-on-math/_linked/gameplay.jpg 1200w"
+                        sizes="(min-width: 1024px) 740px, 92vw"
+                        width="1200"
+                        height="675"
+                        alt="Hooked on Math gameplay showing an interactive maths activity"
+                        loading="lazy")
+                    figcaption Hooked on Math gameplay.
+
+                div(class="callout")
+                    h4(class="callout-title") A note on attribution
+                    p(class="callout-text").
+                        This was client project work delivered at Dubit Limited. It is presented to
+                        describe the role and contribution accurately, not to imply that I was employed
+                        by the product owner or publisher.
+
+        section(class="page-section page-section--cinematic has-glow")
+            div(class="section-inner")
+                +cta-band('Need a senior lead for a content-heavy Unity product?', '/contact/', 'Discuss Your Unity Project')

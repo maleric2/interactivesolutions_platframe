@@ -1,27 +1,3 @@
--
-    const serviceItems = [
-        {
-            title: 'Unity Development & Feature Delivery',
-            text: 'Gameplay systems, UI, tools, integrations and production-ready features delivered inside an existing codebase or as part of a new project.',
-            tags: ['Gameplay', 'UI', 'Mobile', 'PC', 'Console', 'Addressables'],
-        },
-        {
-            title: 'Architecture, Performance & Project Rescue',
-            text: 'Architecture reviews, refactoring plans and hands-on remediation for Unity projects that have become difficult to extend, debug or ship.',
-            tags: ['MVP', 'Profiling', 'Refactoring', 'Legacy Projects', 'Build Stability'],
-        },
-        {
-            title: 'Multiplayer, Backend & Live Systems',
-            text: 'Multiplayer gameplay, backend-driven features, content delivery and live-game systems using technologies such as PlayFab and production APIs.',
-            tags: ['Multiplayer', 'PlayFab', 'Live Ops', 'Remote Content', 'Monetization'],
-        },
-        {
-            title: 'Technical Leadership & Scoping',
-            text: 'Technical direction, project scoping, mentoring and practical leadership for teams that need senior decision-making without hiring a full-time lead.',
-            tags: ['Team Leadership', 'Estimation', 'Hiring Support', 'Mentoring', 'Roadmaps'],
-        },
-    ]
-
 section(class="page-section page-section--editorial" id="services")
 
     div(class="section-inner")
@@ -33,10 +9,7 @@ section(class="page-section page-section--editorial" id="services")
                 Join an existing team, unblock a difficult codebase or deliver a clearly scoped
                 feature with hands-on senior ownership.
 
-        div(class="card-grid")
-
-            each item in serviceItems
-                +service-card(item)
+        +services-grid()
 
         div(class="section-actions")
             a(class="btn btn-ghost" href="/services/") See all services →

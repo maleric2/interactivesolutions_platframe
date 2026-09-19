@@ -32,19 +32,44 @@ mixin service-card(item)
     article(class="service-card")
         h3(class="card-title")= item.title
         p(class="card-text")= item.text
-        +tag-list(item.tags)
+        ul(class="example-list")
+            each example in item.examples
+                li(class="example-item")= example
+        p(class="card-proof")= item.proof
 
 mixin work-card(item)
-    article(class="project-card")
-        div(class="brand-cover")
-            svg(class="brand-cover-mark" aria-hidden="true" focusable="false"): use(xlink:href="/assets/images/_sprites/symbols.svg#brand-mark-white")
-            span(class="brand-cover-label")= item.kicker
+    article(class="project-card" + (item.featured ? " project-card--featured" : ""))
+        div(class="project-media")
+            img(
+                src=item.image
+                srcset=item.srcset
+                sizes=item.sizes
+                width=item.width
+                height=item.height
+                alt=item.alt
+                loading="lazy")
         div(class="card-body")
+            p(class="card-kicker")= item.kicker
             h3(class="card-title")= item.title
             p(class="card-text")= item.text
-            +tag-list(item.tags)
+            +tag-list(item.proof)
             if item.link
-                a(class="card-link" href=item.link data-analytics=`work_${ item.slug }`) Read the case study →
+                a(class="card-link" href=item.link data-analytics=`work_${ item.slug }`)= item.linkText
+
+mixin project-row(item)
+    li(class="project-row")
+        div(class="project-row-main")
+            h3(class="project-row-title")
+                if item.link
+                    a(href=item.link target=item.external ? "_blank" : false rel=item.external ? "noopener" : false)= item.name
+                else
+                    = item.name
+            p(class="project-row-meta")= item.studio
+        p(class="project-row-role")= item.role
+
+mixin logo-chip(src, alt, width, height)
+    figure(class="logo-chip")
+        img(src=src alt=alt width=width height=height loading="lazy")
 
 mixin callout(title, text)
     aside(class="callout")
