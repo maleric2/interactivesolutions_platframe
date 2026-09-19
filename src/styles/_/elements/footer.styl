@@ -1,1 +1,25 @@
-footer-3()
++footer-3()
+
+    // legal line — full legibility, no inherited list spacing
+    .legal
+        li
+            margin: 0
+            line-height: 1.5
+
+    // supporting links — intentionally secondary, sub-text scale
+    .links
+        margin-top: rem(4px)
+        li
+            margin: 0
+            font-size: rem(12px)
+            line-height: 1.9
+            letter-spacing: 0.2px
+            &:not(:last-of-type)::after
+                content: '\00B7'
+                margin: 0 rem(7px)
+                opacity: 0.55
+        a
+            color: rgba(255, 255, 255, 0.62)
+            font-weight: 400
+            &:hover, &:focus, &:active
+                color: #fff
