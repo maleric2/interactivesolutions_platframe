@@ -1,0 +1,10 @@
+# Netlify configuration for interactivesolutions.hr
+# Exact, declarative deploy settings. The Netlify dashboard should mirror these;
+# if dashboard values differ, this file takes precedence for the build itself.
+
+[build]
+  command = "npm run build"
+  publish = "prd"
+
+[build.environment]
+  NODE_VERSION = "22"

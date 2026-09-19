@@ -17,6 +17,9 @@
   },
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": "22.x"
+  },
   "homepage": "http://example.com",
   "author": "Name <you@example.com>",
   "description": "Project description.",
