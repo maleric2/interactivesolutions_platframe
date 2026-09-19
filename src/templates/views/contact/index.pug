@@ -1,0 +1,37 @@
+extends ../../_/body
+
+block context
+    - bodyId = 'contact';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Contact — Discuss a Unity Project | Interactive Solutions';
+    - pageDescription = 'Tell me what you are building or where the project is stuck. Senior/Lead Unity development and B2B engagements from Croatia, EU.';
+    - pageCanonical = 'https://interactivesolutions.hr/contact/';
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li Contact
+                h1 Tell me what you're building — or where the project is stuck
+                p Share a short overview and I'll reply with the most useful next step. No sales deck required.
+
+        section(class="page-section")
+            div(class="section-inner")
+                div(class="contact-grid")
+                    +contact-form()
+                    div(class="contact-aside")
+                        p Prefer email? Write to me directly — I read every message.
+                        ul(class="contact-links")
+                            li: a(href="mailto:marko@interactivesolutions.hr" data-analytics="contact_page_email") marko@interactivesolutions.hr
+                            li: a(href="https://www.linkedin.com/in/markoaleric" target="_blank" rel="noopener" data-analytics="contact_page_linkedin") LinkedIn
+                            li: a(href="https://github.com/maleric2" target="_blank" rel="noopener" data-analytics="contact_page_github") GitHub
+                            li: a(href="https://assetstore.unity.com/publishers/40273" target="_blank" rel="noopener" data-analytics="contact_page_publisher") Unity Asset Store
+                            li: a(href="/assets/images/global/_linked/_verbatim/CV_Marko_Aleric_EN.pdf" data-analytics="contact_page_cv") Download CV
+                        p(class="form-note").
+                            Your details are used only to respond to this inquiry and are not shared
+                            with third parties. See the #[a(href="/privacy/") privacy policy].

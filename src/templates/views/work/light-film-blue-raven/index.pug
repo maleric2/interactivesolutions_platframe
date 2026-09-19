@@ -1,0 +1,88 @@
+extends ../../../_/body
+
+block context
+    - bodyId = 'case-light-film';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Multiplayer TV-show games and a unified Unity platform — Case Study | Interactive Solutions';
+    - pageDescription = 'Case study: senior Unity development on multiplayer TV-show games and a shared Unity platform, including PlayFab-backed systems.';
+    - pageCanonical = 'https://interactivesolutions.hr/work/light-film-blue-raven/';
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li: a(href="/work/") Work
+                    li Light Film / Blue Raven
+                h1 Multiplayer TV-show games and a unified Unity platform
+                p Senior Unity development across multiplayer gameplay and shared platform systems.
+
+        section(class="page-section")
+            div(class="section-inner")
+
+                dl(class="case-meta")
+                    div
+                        dt Role
+                        dd Senior Unity Developer
+                    div
+                        dt Client / employer
+                        dd Light Film / Blue Raven
+                    div
+                        dt Team
+                        dd 10–20 people
+                    div
+                        dt Focus
+                        dd Multiplayer · Platform · Live systems
+
+                div(class="prose")
+
+                    h2 Context
+                    p.
+                        Light Film / Blue Raven produced multiplayer games tied to TV-show formats,
+                        alongside a shared Unity platform that multiple games could build on. Work in
+                        this space included projects related to Jurassic World. Engineering was delivered
+                        within a team of roughly ten to twenty people.
+
+                    h2 My role
+                    p.
+                        As a Senior Unity Developer I contributed to both the games and the shared
+                        platform layer — implementing gameplay and platform systems rather than working
+                        on a single isolated feature.
+
+                    h2 Technical challenge
+                    p.
+                        Multiplayer experiences tied to live formats have to be reliable under real
+                        session pressure while still supporting platform features shared across several
+                        titles. Keeping shared systems reusable without coupling individual games to each
+                        other was the central engineering problem.
+
+                    h2 Decisions and implementation
+                    ul
+                        li Built multiplayer gameplay and shared platform systems in Unity.
+                        li Implemented backend-backed functionality using PlayFab.
+                        li Evaluated Firebase during development as an alternative for parts of the stack.
+                        li Contributed to systems intended to be reused across multiple titles.
+
+                    h2 Outcome
+                    p.
+                        Multiplayer titles and a shared platform were delivered as part of the team's
+                        production. Specific client metrics and unreleased details are covered by
+                        confidentiality and are not published here.
+
+                    h2 Technologies
+                    p Unity · C# · PlayFab · Multiplayer networking · Live platform systems
+
+                div(class="callout")
+                    h4(class="callout-title") A note on attribution
+                    p(class="callout-text").
+                        This work was delivered within a team and through the named studio. It is
+                        presented to describe the role and contribution accurately, not to claim sole
+                        authorship of the titles or brands involved.
+
+        section(class="page-section")
+            div(class="section-inner")
+                +cta-band('Working on a multiplayer or live-systems project?', '/contact/', 'Discuss Your Unity Project')

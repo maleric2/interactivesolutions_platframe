@@ -1,0 +1,57 @@
+extends ../../_/body
+
+block context
+    - bodyId = 'tools';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Unity Tools & Editor Plugins | Interactive Solutions';
+    - pageDescription = 'Unity tools built from production problems: Mesh Merge, a mesh combiner and texture array baker, and Easy House, procedural house generation for Unity.';
+    - pageCanonical = 'https://interactivesolutions.hr/tools/';
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li Unity Tools
+                h1 Unity tools built from production problems
+                p Editor tools and workflows designed to remove repetitive work and improve runtime efficiency.
+
+        section(class="page-section")
+            div(class="section-inner")
+                div(class="tools-grid")
+
+                    article(class="card tool-card")
+                        span(class="tool-badge") Available on the Unity Asset Store
+                        h3(class="card-title") Mesh Merge — Mesh Combiner &amp; Texture Array Baker
+                        p(class="card-text").
+                            Combine geometry and reduce material complexity using atlas or
+                            texture-array workflows designed for real Unity production needs.
+                        +tag-list(['Mesh Combining', 'Texture Arrays', 'Draw Call Reduction', 'Editor Tools'])
+                        div(class="tool-actions")
+                            a(class="btn btn-primary" href="/tools/mesh-merge/") Learn about Mesh Merge →
+                            a(class="btn btn-ghost" href="https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726" target="_blank" rel="noopener" data-analytics="tools_store") View on the Asset Store
+
+                    article(class="card tool-card")
+                        span(class="tool-badge tool-badge-soon") Coming soon
+                        h3(class="card-title") Easy House — procedural house generation for Unity
+                        p(class="card-text").
+                            Build and customize exterior houses using reusable parts, roof styles and
+                            production-friendly export tools. A free-first release is planned to collect
+                            real feedback before expanding the product.
+                        +tag-list(['Procedural Generation', 'Editor Tools', 'Modular Parts'])
+                        div(class="tool-actions")
+                            a(class="btn btn-ghost" href="/tools/easy-house/") Join the launch list →
+
+        section(class="page-section")
+            div(class="section-inner")
+                p(class="section-eyebrow") More from the publisher
+                h2(class="section-title") All Unity tools by Interactive Solutions
+                div(class="section-actions")
+                    a(class="btn btn-secondary" href="https://assetstore.unity.com/publishers/40273" target="_blank" rel="noopener" data-analytics="tools_page_publisher") View the publisher profile →
+                div(class="callout")
+                    h4(class="callout-title") More tools in development
+                    p(class="callout-text") More Unity production tools are in development. No release dates are promised before a public demo exists.

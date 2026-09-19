@@ -1,0 +1,73 @@
+extends ../../_/body
+
+block context
+    - bodyId = 'about';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Marko Alerić — Senior / Lead Unity Developer | Interactive Solutions';
+    - pageDescription = 'Marko Alerić is a Senior/Lead Unity Developer with 10+ years of Unity experience, based in Croatia and available for remote B2B engagements.';
+    - pageCanonical = 'https://interactivesolutions.hr/about/';
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li About
+                h1 Senior Unity expertise, without enterprise overhead
+                p Work directly with the person responsible for technical decisions and delivery.
+
+        section(class="page-section")
+            div(class="section-inner")
+                div(class="about-grid")
+                    div
+                        div(class="availability")
+                            h3 Available for Senior/Lead Unity roles and B2B engagements
+                            ul
+                                li Remote from Croatia / EU time zones
+                                li Full-time, part-time or clearly scoped project work
+                                li Short-term project rescue and overflow support
+                                li Direct collaboration with founders, producers and engineering teams
+                    div(class="about-body")
+                        p.
+                            I'm Marko Alerić, a Senior/Lead Unity Developer based in Croatia. I have
+                            10+ years of hands-on Unity experience and have worked in game development
+                            since 2013, across mobile, PC, console, multiplayer and live-game projects.
+                        p.
+                            I combine hands-on engineering with technical leadership, project scoping and
+                            mentoring, and I teach Unity and game programming at Algebra Bernays University.
+                        p.
+                            Through Interactive Solutions, I work with studios that need senior ownership,
+                            practical problem-solving and reliable delivery — whether that means joining an
+                            existing team, stabilizing a difficult codebase or shipping a clearly scoped feature.
+                        ul(class="proof-list")
+                            li 10+ years of hands-on Unity experience
+                            li Mobile, PC and console delivery
+                            li Multiplayer, PlayFab and live systems
+                            li Architecture, refactoring and performance work
+                            li Team leadership and technical mentoring
+                            li Unity Asset Store publisher
+                        div(class="section-actions")
+                            a(class="btn btn-secondary" href="/assets/images/global/_linked/_verbatim/CV_Marko_Aleric_EN.pdf" data-analytics="about_page_cv") Download CV
+                            a(class="btn btn-ghost" href="https://www.linkedin.com/in/markoaleric" target="_blank" rel="noopener" data-analytics="about_page_linkedin") LinkedIn
+                            a(class="btn btn-ghost" href="https://github.com/maleric2" target="_blank" rel="noopener" data-analytics="about_page_github") GitHub
+
+        section(class="page-section")
+            div(class="section-inner")
+                p(class="section-eyebrow") Experience
+                h2(class="section-title") Employers and collaborators
+                div(class="prose")
+                    p.
+                        Experience includes work at or with Room 8 Studio, Dubit, Exordium Games,
+                        Async Labs, Light Film / Blue Raven and Algebra Bernays University, including
+                        projects related to Amazon, Apple and Jurassic World.
+                    p.
+                        Brand relationships are described as accurately as confidentiality allows.
+                        Where a project was delivered through another studio, it is presented that way.
+
+        section(class="page-section")
+            div(class="section-inner")
+                +cta-band('Want to talk about a role or an engagement?', '/contact/', 'Get in Touch')
