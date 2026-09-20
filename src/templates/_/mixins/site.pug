@@ -73,7 +73,7 @@ mixin logo-chip(src, alt, width, height)
 
 mixin callout(title, text)
     aside(class="callout")
-        h4(class="callout-title")= title
+        h3(class="callout-title")= title
         p(class="callout-text")= text
 
 mixin cta-band(lead, href, label)
@@ -142,32 +142,61 @@ mixin contact-form()
 
         button(type="submit" class="btn btn-primary" data-analytics="contact_submit") Send inquiry
 
+mixin contact-expectations()
+    ul(class="contact-expectations")
+        li Marko personally reviews every inquiry — no sales team in between.
+        li The first reply focuses on the most useful next step.
+        li An NDA can be discussed before you share sensitive details.
+        li If the scope needs more disciplines, the proposed team and responsibilities are made explicit.
+
 mixin pricing-section()
     -
-        const pricingBands = [
-            { label: 'Idea and feasibility session', value: 'from €350' },
-            { label: 'Unity project review', value: 'from €900' },
-            { label: 'Focused development engagement', value: 'from €1,200' },
-            { label: 'Functional prototype', value: 'typically €3,500–8,000' },
-            { label: 'Polished prototype with a small team', value: 'typically €10,000–30,000' },
-            { label: 'Complete game or 3D application', value: 'custom scope' },
+        const engagementPaths = [
+            {
+                title: 'Start small',
+                lead: 'For clients who need clarity before development begins.',
+                items: [
+                    { label: 'Idea / feasibility session', value: 'from €350' },
+                    { label: 'Unity technical review', value: 'from €900' },
+                ],
+            },
+            {
+                title: 'Build a focused result',
+                lead: 'For a defined feature, prototype or technical problem.',
+                items: [
+                    { label: 'Focused Unity development', value: 'from €1,200' },
+                    { label: 'Solo prototype / vertical slice', value: 'typically €3,500–€8,000' },
+                ],
+            },
+            {
+                title: 'Scale delivery',
+                lead: 'For broader scopes that need several disciplines or longer ownership.',
+                items: [
+                    { label: 'Team prototype / broader production phase', value: 'typically €10,000–€30,000+' },
+                    { label: 'Complete project', value: 'custom scope' },
+                ],
+            },
         ]
     section(class="page-section page-section--showcase has-glow" id="pricing")
         div(class="section-inner")
             div(class="section-heading")
-                p(class="section-eyebrow") Process &amp; Pricing
-                h2(class="section-title") What budget should I expect?
+                p(class="section-eyebrow") Engagement &amp; Pricing
+                h2(class="section-title") Three ways to start
                 p(class="section-lead").
-                    You do not need to know the right technology or team before contacting me. The
-                    ranges below show the likely order of magnitude; a short conversation confirms
-                    the actual scope.
+                    You do not need to know the right technology or team before contacting me.
+                    Pick the path that matches where you are now; a short conversation confirms the rest.
             div(class="pricing-grid")
-                each band in pricingBands
+                each path in engagementPaths
                     div(class="price-path")
-                        p(class="pricing-label")= band.label
-                        p(class="pricing-value")= band.value
+                        h3(class="price-path-title")= path.title
+                        p(class="price-path-lead")= path.lead
+                        ul(class="price-path-items")
+                            each item in path.items
+                                li(class="price-path-item")
+                                    span(class="price-path-label")= item.label
+                                    span(class="price-path-value")= item.value
             p(class="pricing-note").
-                These are indicative ranges, not binding quotations. Final pricing depends on
-                scope, platforms, content, integrations, timeline and team composition.
+                These ranges are directional. Final estimates depend on scope, technical risk, content
+                requirements, integrations and team composition.
             div(class="section-actions")
                 a(class="btn btn-ghost" href="/contact/" data-analytics="pricing_cta") Discuss your project →
