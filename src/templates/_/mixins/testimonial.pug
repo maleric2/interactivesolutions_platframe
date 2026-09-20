@@ -1,0 +1,9 @@
+mixin testimonial(item)
+    figure(class="testimonial")
+        blockquote(class="testimonial-quote")
+            p= item.quote
+        figcaption(class="testimonial-meta")
+            span(class="testimonial-name")= item.name
+            span(class="testimonial-role")= item.role
+            if item.relationship
+                span(class="testimonial-context")= item.relationship

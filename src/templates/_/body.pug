@@ -14,6 +14,16 @@ block body
 
             include ../../components/footers/3/_
 
+        div(class="consent-banner" data-consent-banner hidden)
+
+            p(class="consent-text").
+                This site uses Google Analytics to understand how the pages are used.
+                Nothing is loaded until you choose. See the #[a(href="/privacy/") privacy policy].
+
+            div(class="consent-actions")
+                button(type="button" class="btn btn-primary" data-consent-accept) Accept
+                button(type="button" class="btn btn-ghost" data-consent-decline) Decline
+
         //- end-of-body script insertion
         block inject
 

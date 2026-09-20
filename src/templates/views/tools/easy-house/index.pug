@@ -25,6 +25,19 @@ block main
             div(class="section-inner")
 
                 figure(class="case-figure case-figure--wide")
+                    video(
+                        class="tool-video"
+                        controls
+                        preload="metadata"
+                        playsinline
+                        width="1234"
+                        height="694"
+                        poster="/assets/images/tools/easy-house/_linked/showcase-poster.jpg")
+                        source(src="/media/easy-house-showcase.mp4" type="video/mp4")
+                        | Your browser does not support embedded video. Download the showcase from the #[a(href="/media/easy-house-showcase.mp4") MP4 file].
+                    figcaption A short showcase of the Easy House editor: walls, roof and material work in Unity.
+
+                figure(class="case-figure case-figure--wide")
                     img(
                         src="/assets/images/tools/easy-house/_linked/overview.jpg"
                         srcset="/assets/images/tools/easy-house/_linked/overview-800.jpg 800w, /assets/images/tools/easy-house/_linked/overview.jpg 1234w"

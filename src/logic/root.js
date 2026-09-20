@@ -6,6 +6,7 @@
 
 // modules
 import { smooth } from 'modules/scroll';
+import { consent } from 'modules/consent';
 import { analytics } from 'modules/analytics';
 
 // components
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nav();
     navMenu();
     smooth();
+    consent();
     analytics();
     header();
     footer();

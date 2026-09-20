@@ -1,11 +1,11 @@
-/*━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  SITE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Shared building blocks for the homepage and all subpages.          ┃
-┃ Phase 1 of the visual redesign: design tokens, three deliberate    ┃
-┃ section treatments, a real type hierarchy and component-scoped     ┃
-┃ classes instead of fragile DOM-nesting selectors.                  ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+﻿/*â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”  SITE  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”“
+â”ƒ Shared building blocks for the homepage and all subpages.          â”ƒ
+â”ƒ Phase 1 of the visual redesign: design tokens, three deliberate    â”ƒ
+â”ƒ section treatments, a real type hierarchy and component-scoped     â”ƒ
+â”ƒ classes instead of fragile DOM-nesting selectors.                  â”ƒ
+â”—â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
-/*━━━━━━━━━━━━━  TOKENS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  TOKENS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 // surfaces
 _c_page        = #080d1c
@@ -48,7 +48,7 @@ _w_prose   = 740px
 // rhythm
 _pad_x = clamp(1rem, 4vw, 4rem)
 
-/*━━━━━━━━━━━━━  UTILITIES  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  UTILITIES  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .visually-hidden
     position: absolute
@@ -88,7 +88,7 @@ summary:focus-visible,
     outline-offset: 2px
     border-radius: rem(4px)
 
-/*━━━━━━━━━━━━━  PAGE SHELL  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  PAGE SHELL  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .page
     color: _c_text
@@ -97,7 +97,7 @@ summary:focus-visible,
     h1, h2, h3, h4
         color: #fff
 
-/*━━━━━━━━━━━━━  HEADER / NAV  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  HEADER / NAV  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .site-header
     position: sticky
@@ -262,7 +262,7 @@ summary:focus-visible,
     .nav-toggle
         display: none
 
-/*━━━━━━━━━━━━━  LAYOUT WIDTHS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  LAYOUT WIDTHS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .section-inner
     position: relative
@@ -278,7 +278,7 @@ summary:focus-visible,
 .section-inner--prose
     max-width: _w_prose
 
-/*━━━━━━━━━━━━━  SECTION TREATMENTS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SECTION TREATMENTS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .page-section
     position: relative
@@ -288,16 +288,16 @@ summary:focus-visible,
     +min(2)
         padding: rem(120px) 0
 
-// 1 · editorial — clean, spacious, minimal framing
+// 1 Â· editorial â€” clean, spacious, minimal framing
 .page-section--editorial
     background: _c_surface
 
-// 2 · showcase — elevated, blue-tinted surface for products / conversion
+// 2 Â· showcase â€” elevated, blue-tinted surface for products / conversion
 .page-section--showcase
     background: linear-gradient(180deg, _c_alt 0%, _c_surface 100%)
     border-top: 1px solid _c_line_soft
 
-// 3 · cinematic — full-bleed dark field with depth
+// 3 Â· cinematic â€” full-bleed dark field with depth
 .page-section--cinematic
     overflow: hidden
     background: _c_cinema
@@ -317,7 +317,7 @@ summary:focus-visible,
         pointer-events: none
         content: ''
 
-/*━━━━━━━━━━━━━  TYPE HIERARCHY  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  TYPE HIERARCHY  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .section-heading
     margin: 0 0 rem(48px)
@@ -350,7 +350,7 @@ summary:focus-visible,
     +min(2)
         font-size: rem(18px)
 
-/*━━━━━━━━━━━━━  BUTTONS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  BUTTONS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .btn
     display: inline-flex
@@ -404,7 +404,7 @@ summary:focus-visible,
     gap: rem(14px)
     margin-top: rem(40px)
 
-/*━━━━━━━━━━━━━  SERVICE CARDS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SERVICE CARDS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .card-grid
     display: grid
@@ -458,7 +458,7 @@ summary:focus-visible,
         color: rgba(157, 180, 255, 0.55)
         content: '\00B7'
 
-/*━━━━━━━━━━━━━  PROJECT CARDS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  PROJECT CARDS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .work-grid
     display: grid
@@ -498,7 +498,7 @@ summary:focus-visible,
     &:hover, &:focus, &:active
         color: _c_accent_pale
 
-/*━━━━━━━━━━━━━  TOOLS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  TOOLS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .tools-grid
     display: grid
@@ -539,7 +539,7 @@ summary:focus-visible,
     gap: rem(12px)
     margin-top: rem(24px)
 
-/*━━━━━━━━━━━━━  ABOUT  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  ABOUT  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .about-grid
     display: grid
@@ -621,7 +621,7 @@ summary:focus-visible,
                 color: _c_accent_pale
                 content: '\2013'
 
-/*━━━━━━━━━━━━━  PRICING / ENGAGEMENT PATHS  ━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  PRICING / ENGAGEMENT PATHS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .pricing-grid
     display: grid
@@ -688,7 +688,7 @@ summary:focus-visible,
     font-size: rem(14px)
     line-height: 1.75
 
-/*━━━━━━━━━━━━━  CALL OUT / CTA BAND  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  CALL OUT / CTA BAND  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .callout
     margin-top: rem(32px)
@@ -728,7 +728,7 @@ summary:focus-visible,
     font-weight: 600
     line-height: 1.4
 
-/*━━━━━━━━━━━━━  SUBPAGE HERO / PROSE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SUBPAGE HERO / PROSE  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .page-hero
     position: relative
@@ -871,7 +871,7 @@ summary:focus-visible,
         width: 100%
         height: auto
 
-/*━━━━━━━━━━━━━  CONTACT  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  CONTACT  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .contact-grid
     display: grid
@@ -1003,7 +1003,7 @@ summary:focus-visible,
     clip: rect(0 0 0 0)
     white-space: nowrap
 
-/*━━━━━━━━━━━━━  SUCCESS PANEL  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SUCCESS PANEL  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .success-panel
     max-width: rem(640px)
@@ -1242,7 +1242,7 @@ summary:focus-visible,
         font-size: rem(13px)
         line-height: 1.6
 
-/*━━━━━━━━━━━━━  CINEMATIC CLOSE  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  CINEMATIC CLOSE  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 #contact
     padding: rem(104px) 0 rem(96px)
@@ -1277,3 +1277,105 @@ summary:focus-visible,
         width: 100%
         height: 100%
         object-fit: cover
+.tool-video
+    display: block
+    width: 100%
+    height: auto
+    background: #05080f
+    border: 1px solid _c_line_soft
+    border-radius: _r_lg
+/*━━━━━━━━━━━━━  RECOMMENDATIONS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.testimonial-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(22px)
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+    +min(2)
+        grid-template-columns: repeat(3, 1fr)
+
+.testimonial
+    display: flex
+    flex-direction: column
+    margin: 0
+    padding: rem(30px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))
+    border: 1px solid _c_line
+    border-radius: _r_lg
+
+.testimonial-quote
+    margin: 0 0 rem(22px)
+    padding: 0 0 0 rem(18px)
+    border: 0
+    border-left: 2px solid rgba(157, 180, 255, 0.45)
+    p
+        margin: 0
+        color: _c_text_soft
+        font-size: rem(15.5px)
+        font-style: normal
+        line-height: 1.75
+
+.testimonial-meta
+    display: flex
+    flex-direction: column
+    gap: rem(3px)
+    margin: auto 0 0
+    padding-top: rem(18px)
+    border-top: 1px solid _c_line_soft
+
+.testimonial-name
+    color: #fff
+    font-size: rem(15px)
+    font-weight: 700
+
+.testimonial-role
+    color: _c_accent_pale
+    font-size: rem(13.5px)
+    line-height: 1.45
+
+.testimonial-context
+    color: _c_text_muted
+    font-size: rem(12.5px)
+    line-height: 1.45
+/*━━━━━━━━━━━━━  CONSENT BANNER  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.consent-banner
+    position: fixed
+    left: rem(16px)
+    right: rem(16px)
+    bottom: rem(16px)
+    z-index: 150
+    display: flex
+    flex-direction: column
+    gap: rem(16px)
+    max-width: rem(680px)
+    margin: 0 auto
+    padding: rem(20px) rem(22px)
+    background: rgba(8, 13, 28, 0.97)
+    border: 1px solid _c_line_strong
+    border-radius: _r_md
+    box-shadow: _sh_2
+    +min(1)
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+    &[hidden]
+        display: none
+
+.consent-text
+    margin: 0
+    color: _c_text_soft
+    font-size: rem(13.5px)
+    line-height: 1.65
+    a
+        color: _c_accent_pale
+
+.consent-actions
+    display: flex
+    flex: 0 0 auto
+    gap: rem(10px)
+    .btn
+        min-height: rem(42px)
+        padding: 0 rem(20px)
+        font-size: rem(14px)
