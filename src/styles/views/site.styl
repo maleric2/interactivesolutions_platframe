@@ -402,7 +402,12 @@ summary:focus-visible,
     display: flex
     flex-wrap: wrap
     gap: rem(14px)
-    margin-top: rem(40px)
+    margin: rem(40px) 0 rem(44px)
+
+// when the action row closes a section, the section padding already provides
+// the exit space; the extra margin would double it
+.section-actions:last-child
+    margin-bottom: 0
 
 /*â”â”â”â”â”â”â”â”â”â”â”â”â”  SERVICE CARDS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
@@ -485,6 +490,14 @@ summary:focus-visible,
     flex: 1
     flex-direction: column
     padding: rem(26px)
+
+.card-kicker
+    margin: 0 0 rem(8px)
+    color: _c_accent_pale
+    font-size: rem(12.5px)
+    font-weight: 700
+    letter-spacing: 1.5px
+    text-transform: uppercase
 
 .card-link
     margin-top: rem(18px)
@@ -892,6 +905,8 @@ summary:focus-visible,
     border: 1px solid _c_line
     border-radius: _r_lg
     box-shadow: _sh_2
+    +max(1)
+        padding: rem(22px)
 
 .contact-form
     // the panel provides the surface; the form itself is unstyled chrome
