@@ -8,64 +8,7 @@ section(class="page-section page-section--showcase has-glow" id="tools")
             p(class="section-lead").
                 Editor tools and workflows designed to remove repetitive work and improve runtime efficiency.
 
-        div(class="tools-grid")
-
-            article(class="tool-card tool-card--featured")
-
-                div(class="tool-media")
-                    img(
-                        src="/assets/images/tools/mesh-merge/_linked/inspector.jpg"
-                        srcset="/assets/images/tools/mesh-merge/_linked/inspector-800.jpg 800w, /assets/images/tools/mesh-merge/_linked/inspector.jpg 1368w"
-                        sizes="(min-width: 1024px) 640px, 92vw"
-                        width="1368"
-                        height="766"
-                        alt="MeshMerge Mesh Combiner component in the Unity inspector, showing Merge Now, Bake to Texture Array and Bake to Atlas, and Draw Calls going from 9 to 1"
-                        loading="lazy")
-
-                div(class="tool-body")
-
-                    span(class="tool-badge") Available on the Unity Asset Store
-                    h3(class="card-title") MeshMerge — Mesh Combiner &amp; Texture Array Baker
-                    p(class="card-text").
-                        Combine meshes and materials so scenes and prefabs render with fewer draw
-                        calls, using either an atlas or a texture-array workflow.
-                    +tag-list(['Mesh Combining', 'Texture Arrays', 'Draw Call Reduction', 'Editor Tools'])
-                    div(class="tool-actions")
-                        a(class="btn btn-primary" href="https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726" target="_blank" rel="noopener" data-analytics="meshmerge_store") View on the Asset Store
-                        a(class="btn btn-ghost" href="/tools/mesh-merge/") Learn more →
-
-                    figure(class="tool-proof")
-                        img(
-                            src="/assets/images/tools/mesh-merge/_linked/draw-calls.jpg"
-                            width="1140"
-                            height="225"
-                            alt="MeshMerge statistics panel showing Draw Calls: 9 before merging and 1 after"
-                            loading="lazy")
-                        figcaption Draw calls: 9 → 1 after merging. Results vary by scene and material setup.
-
-            article(class="tool-card")
-
-                div(class="tool-media")
-                    img(
-                        src="/assets/images/tools/easy-house/_linked/overview.jpg"
-                        srcset="/assets/images/tools/easy-house/_linked/overview-800.jpg 800w, /assets/images/tools/easy-house/_linked/overview.jpg 1234w"
-                        sizes="(min-width: 1024px) 420px, 92vw"
-                        width="1234"
-                        height="695"
-                        alt="Easy House editor in Unity showing a Tudor Cottage with a footprint, walls and floors panel"
-                        loading="lazy")
-
-                div(class="tool-body")
-
-                    span(class="tool-badge tool-badge-soon") Coming soon
-                    h3(class="card-title") Easy House — procedural house generation for Unity
-                    p(class="card-text").
-                        Design reusable houses from configurable parts and roof styles, with
-                        production-oriented export workflows. A free-first release is planned to
-                        collect real feedback before expanding the product.
-                    +tag-list(['Procedural Generation', 'Editor Tools', 'Modular Parts'])
-                    div(class="tool-actions")
-                        a(class="btn btn-ghost" href="/tools/easy-house/") Join the launch list →
+        +tools-grid()
 
         div(class="section-actions")
             a(class="btn btn-ghost" href="https://assetstore.unity.com/publishers/40273" target="_blank" rel="noopener" data-analytics="tools_publisher") View all Unity tools by Interactive Solutions →
