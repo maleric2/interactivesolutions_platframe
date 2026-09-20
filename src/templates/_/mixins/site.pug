@@ -58,6 +58,16 @@ mixin work-card(item)
 
 mixin project-row(item)
     li(class="project-row")
+        if item.image
+            figure(class="project-row-thumb")
+                img(
+                    src=item.image
+                    srcset=item.imageSrcset
+                    sizes="104px"
+                    width=item.imageWidth
+                    height=item.imageHeight
+                    alt=item.imageAlt
+                    loading="lazy")
         div(class="project-row-main")
             h3(class="project-row-title")
                 if item.link

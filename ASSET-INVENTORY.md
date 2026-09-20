@@ -55,7 +55,7 @@ derivative filenames (for example `jurassic-cover.jpg`).
 | My Dubrovnik | yes — cover + gameplay collage | worked with Async Labs team | Wording: "Worked with the Async Labs team" |
 | Room 8 / Solid Bash | logo only | own employer | No project screenshot; logo is attribution |
 | Exordium Games | yes — 4 titles | directly employed | |
-| Dubit | logo only | own employer | No visuals for BestLife / Phonics / Spelling |
+| Dubit | yes — 3 title visuals | own employer | BestLife, Hooked on Phonics, Hooked on Spelling |
 | Mesh Merge | yes — inspector + animated bake | own product | |
 | Easy House | yes — 2 editor captures | own product | |
 
@@ -68,7 +68,7 @@ derivative filenames (for example `jurassic-cover.jpg`).
 | my-dubrovnik | `project-my-dubrovnik-cover.jpeg`, `project-my-dubrovnik-multiple-gameplay-screnshots.jpeg`, `Async-Labs-logo.jpg`, `videourl.txt` |
 | exordium | `Agenda - Gameplay - Upgrades.jpeg`, `LastEncounter-gameplay-greenbiome.jpg`, `LastEncounter_image-600x293.png`, `ZeroReflex-gameplay-airconsole.jpeg`, `Pottery-cover.jpg`, `agenda_web-600x293.png`, `BWM_web-600x293.png`, `Exordium_Games-logo.png` |
 | room8 | `Room-8-Group-Solid-Bash-logo.jpg` |
-| dubit | `dubit_2026_full_logo_light.svg` |
+| dubit | `dubit_2026_full_logo_light.svg`, `bestlife_1.avif`, `hookedOnPhonicsGameCover.jpg`, `hookedOnPhonics_gameplay.webp`, `hookedOnPhonics_logo.jpg`, `hookedOnSpelling_cover.webp`, `hookedOnSpelling_cover-singlescreen.webp`, `hookedOnSpelling_smallLogo.jpg` |
 | tools/mesh-merge | `MeshCombiner_Inspector.png`, `BakeToAtlas.gif` (99 frames) |
 | tools/easy-house | `EasyHouse_Overview.jpg`, `EasyHouse_Footprint.jpg` |
 
@@ -117,6 +117,17 @@ derivative filenames (for example `jurassic-cover.jpg`).
 |---|---|---|
 | `room8/solid-bash-logo.jpg` / `-320` | 640×360 / 320×180 | `Room-8-Group-Solid-Bash-logo.jpg`, downscaled |
 | `dubit/dubit-logo.svg` | vector | `dubit_2026_full_logo_light.svg`, copied (light version for dark UI) |
+| `dubit/bestlife.jpg` / `-320` | 640×640 / 320×320 | `bestlife_1.avif` (AVIF decoded via pillow-avif-plugin), RGBA flattened to RGB |
+| `dubit/phonics-cover.jpg` / `-320` | 422×750 / 320×569 | `hookedOnPhonicsGameCover.jpg`, width-scaled |
+| `dubit/spelling-cover.jpg` / `-320` | 640×400 / 320×200 | `hookedOnSpelling_cover-singlescreen.webp`, width-scaled |
+
+Supplied but not currently placed on a page, so kept as originals only:
+`hookedOnPhonics_gameplay.webp`, `hookedOnPhonics_logo.jpg`,
+`hookedOnSpelling_cover.webp`, `hookedOnSpelling_smallLogo.jpg`.
+
+Note on formats: the supplied WebP and AVIF files are preserved as originals.
+Derivatives are JPEG because that is the format the existing build pipeline
+optimises and deploys reliably; it has no AVIF step and an unusual WebP step.
 
 ### tools
 
@@ -154,6 +165,6 @@ Displayed as supporting elements only. Never hotlinked from third-party sites.
 
 ## Still missing
 
-BestLife, Hooked on Phonics and Hooked on Spelling have no visuals. They appear
-as text credits with a restrained branded fallback until real, approved assets
-exist.
+BestLife, Hooked on Phonics and Hooked on Spelling are now covered by supplied
+title visuals on the Work page. Still outstanding: Mesh Merge demonstration video,
+Easy House launch imagery, and two or three attributed recommendations.
