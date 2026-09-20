@@ -121,7 +121,7 @@ derivative filenames (for example `jurassic-cover.jpg`).
 
 | File | Size | Source → transform |
 |---|---|---|
-| `room8/solid-bash-logo.jpg` / `-320` | 640×360 / 320×180 | `Room-8-Group-Solid-Bash-logo.jpg`, downscaled |
+| `room8/solid-bash-logo.jpg` | 640×220 | `Room-8-Group-Solid-Bash-logo.jpg`, cropped to the wordmark. The original is a blue 1280×720 field whose mark occupies only the middle 43% of the height (~206px empty above, ~202px below). Cropped to the content bbox plus 60px padding — (18,146)–(1274,578) — rather than a blunt 30%-per-side crop, which would have cut the wordmark itself. |
 | `dubit/dubit-logo.svg` | vector | `dubit_2026_full_logo_light.svg`, copied (light version for dark UI) |
 | `dubit/bestlife.jpg` / `-320` | 640×640 / 320×320 | `bestlife_1.avif` (AVIF decoded via pillow-avif-plugin), RGBA flattened to RGB |
 | `dubit/phonics-cover.jpg` / `-320` | 422×750 / 320×569 | `hookedOnPhonicsGameCover.jpg`, width-scaled |
