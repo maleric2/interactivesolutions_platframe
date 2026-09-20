@@ -22,6 +22,12 @@ derivative filenames (for example `jurassic-cover.jpg`).
 
 ## Known asset decisions
 
+- **The Dubit title visuals were supplied directly by the owner** (`bestlife_1.avif`,
+  `hookedOnPhonicsGameCover.jpg`, `hookedOnSpelling_cover-singlescreen.webp` and the
+  four unused files). Nothing was downloaded from third-party pages or hotlinked.
+  They are Dubit client-product artwork; publishing them is the owner's call as the
+  Lead developer on those products. If that permission is not certain, swap the three
+  Work-page rows back to branded covers rather than risk a brand claim.
 - **`jurrasic_anewera-cover.png` is not used and is not committed.** Despite the
   name it is a film rental promo screen carrying Universal, Amblin, Dolby, RealD
   and 4DX marks — movie campaign artwork, not browser-game artwork. Publishing it

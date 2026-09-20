@@ -28,13 +28,14 @@ mixin tag-list(tags)
         each tag in tags
             li(class="tag")= tag
 
-mixin service-card(item)
+mixin service-card(item, compact)
     article(class="service-card")
         h3(class="card-title")= item.title
         p(class="card-text")= item.text
-        ul(class="example-list")
-            each example in item.examples
-                li(class="example-item")= example
+        if !compact
+            ul(class="example-list")
+                each example in item.examples
+                    li(class="example-item")= example
         p(class="card-proof")= item.proof
 
 mixin work-card(item)

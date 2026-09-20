@@ -1,6 +1,6 @@
 //- shared content grids; single source of truth for services, featured work and tools
 
-mixin services-grid()
+mixin services-grid(compact)
     -
         const serviceItems = [
             {
@@ -54,7 +54,7 @@ mixin services-grid()
         ]
     div(class="card-grid")
         each item in serviceItems
-            +service-card(item)
+            +service-card(item, compact)
 
 mixin work-grid()
     -
