@@ -1275,7 +1275,9 @@ summary:focus-visible,
 
 /*â”â”â”â”â”â”â”â”â”â”â”â”â”  CINEMATIC CLOSE  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
-#contact
+// NOTE: deliberately a class, not `#contact`. The contact page's <body> carries
+// id="contact", so an ID selector here also padded the whole page body.
+.section-close
     padding: rem(104px) 0 rem(96px)
     +min(2)
         padding: rem(156px) 0 rem(140px)
