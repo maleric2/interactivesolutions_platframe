@@ -24,9 +24,27 @@ block main
         section(class="page-section")
             div(class="section-inner")
 
-                div(class="brand-cover brand-cover--wide")
-                    svg(class="brand-cover-mark" aria-hidden="true" focusable="false"): use(xlink:href="/assets/images/_sprites/symbols.svg#brand-mark-white")
-                    span(class="brand-cover-label") Easy House
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/tools/easy-house/_linked/overview.jpg"
+                        srcset="/assets/images/tools/easy-house/_linked/overview-800.jpg 800w, /assets/images/tools/easy-house/_linked/overview.jpg 1234w"
+                        sizes="(min-width: 1024px) 740px, 92vw"
+                        width="1234"
+                        height="695"
+                        alt="Easy House editor in Unity showing a Tudor Cottage, its dimensions and a footprint, walls and floors panel"
+                        loading="lazy")
+                    figcaption The Easy House editor with footprint, wall and floor settings.
+
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/tools/easy-house/_linked/footprint.jpg"
+                        srcset="/assets/images/tools/easy-house/_linked/footprint-800.jpg 800w, /assets/images/tools/easy-house/_linked/footprint.jpg 1234w"
+                        sizes="(min-width: 1024px) 740px, 92vw"
+                        width="1234"
+                        height="700"
+                        alt="Easy House footprint editing, showing editable ground points on a house"
+                        loading="lazy")
+                    figcaption Editing the building footprint from editable ground points.
 
                 div(class="prose")
                     p.

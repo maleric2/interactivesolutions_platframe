@@ -1200,3 +1200,41 @@ summary:focus-visible,
             display: block
             width: 100%
             height: auto
+/*?????????????  TOOL MEDIA  ???????????????????????????????????????*/
+
+.tool-card--featured
+    padding: 0
+    overflow: hidden
+
+.tool-media
+    position: relative
+    aspect-ratio: 16 / 9
+    overflow: hidden
+    background: _c_alt
+    border-bottom: 1px solid _c_line_soft
+    img
+        display: block
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.tool-body
+    display: flex
+    flex-direction: column
+    padding: rem(30px)
+
+.tool-proof
+    margin: rem(24px) 0 0
+    padding-top: rem(22px)
+    border-top: 1px solid _c_line_soft
+    img
+        display: block
+        width: 100%
+        height: auto
+        border: 1px solid _c_line_soft
+        border-radius: _r_sm
+    figcaption
+        margin-top: rem(10px)
+        color: _c_text_muted
+        font-size: rem(13px)
+        line-height: 1.6
