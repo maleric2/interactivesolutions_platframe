@@ -34,3 +34,10 @@ node_modules/
 ### ARCHIVES
 *.zip
 
+
+### UNPUBLISHED / THIRD-PARTY-SENSITIVE SOURCE CAPTURES
+### kept on disk in _source, never committed (public repo)
+src/images/work/light-film/_source/jurrasic_anewera-cover.png
+src/images/work/light-film/_source/jurrasic_anewera-dev-gameplay-lvl2.png
+src/images/work/light-film/_source/jurrasic_anewera-dev-only-gameplay-lvl2.png
+

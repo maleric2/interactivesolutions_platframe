@@ -22,16 +22,28 @@ derivative filenames (for example `jurassic-cover.jpg`).
 
 ## Known asset decisions
 
-- **`jurrasic_anewera-cover.png` is not used.** Despite the name it is a film
-  rental promo screen carrying Universal, Amblin, Dolby, RealD and 4DX marks,
-  not game artwork. Publishing it would misrepresent the browser game and use
-  third-party property. The Light Film card cover is composed from the real
-  gameplay capture instead. The file is preserved in `_source`.
-- Jurrasic gameplay screenshots are portrait (697×1238). They are never force
-  cropped; the homepage cover is composed, and the portrait original stays
+- **`jurrasic_anewera-cover.png` is not used and is not committed.** Despite the
+  name it is a film rental promo screen carrying Universal, Amblin, Dolby, RealD
+  and 4DX marks — movie campaign artwork, not browser-game artwork. Publishing it
+  would misrepresent the game and use third-party property. It is kept on disk in
+  `_source` but listed in `.gitignore` (this repository is public). The Light Film
+  card cover is composed from the real gameplay capture instead.
+- **The development captures are not published and not committed.**
+  `jurrasic_anewera-dev-gameplay-lvl2.png` shows the internal debug and balancing
+  panel (Speed, Obst Gap, Side Enemy, Move Time, Pickup Gap, God Mode, …) and
+  `jurrasic_anewera-dev-only-gameplay-lvl2.png` is a dev-only partial capture.
+  Both are preserved on disk in `_source` and listed in `.gitignore`. The debug
+  panel is the reason: the repository is public and exact tuning values should
+  not be exposed. If published later, the intended caption is:
+  "Internal browser-based debug and balancing controls used during development to
+  tune speed, obstacle spacing, pickup frequency and difficulty."
+- `jurrasic_anewera-gameplay-lvl2.png` (clean Level 2 capture) **is** committed
+  and used as a second image on the Light Film case study. It is not used as the
+  homepage cover because the tutorial modal covers much of the play area.
+- Jurrasic gameplay screenshots are portrait (698×1238). They are never force
+  cropped; the homepage cover is composed, and the portrait originals stay
   available for the case-study page.
-- Logos are supporting attribution only, never a substitute for project
-  imagery.
+- Logos are supporting attribution only, never a substitute for project imagery.
 - No stock or fabricated imagery is used anywhere.
 
 ## Status
@@ -51,7 +63,7 @@ derivative filenames (for example `jurassic-cover.jpg`).
 
 | Project | Files |
 |---|---|
-| light-film | `jurrasic_anewera-cover.png` (unused), `jurrasic_anewera-gameplay.png`, `lightFilm-logo.png` |
+| light-film | `jurrasic_anewera-gameplay.png`, `jurrasic_anewera-gameplay-lvl2.png`, `lightFilm-logo.png` — plus three files kept on disk but **not committed** (movie promo `jurrasic_anewera-cover.png` and the two dev captures) |
 | hooked-on-math | `project-hooked-on-math-cover.jpg`, `project-hooked-on-math-gameplay.png`, `videourl.txt` |
 | my-dubrovnik | `project-my-dubrovnik-cover.jpeg`, `project-my-dubrovnik-multiple-gameplay-screnshots.jpeg`, `Async-Labs-logo.jpg`, `videourl.txt` |
 | exordium | `Agenda - Gameplay - Upgrades.jpeg`, `LastEncounter-gameplay-greenbiome.jpg`, `LastEncounter_image-600x293.png`, `ZeroReflex-gameplay-airconsole.jpeg`, `Pottery-cover.jpg`, `agenda_web-600x293.png`, `BWM_web-600x293.png`, `Exordium_Games-logo.png` |
@@ -70,6 +82,8 @@ derivative filenames (for example `jurassic-cover.jpg`).
 | `jurassic-cover-800.jpg` | 800×500 | same composition, downscaled |
 | `jurassic-gameplay.jpg` | 680×1210 | `jurrasic_anewera-gameplay.png`, width-scaled, RGBA→RGB |
 | `jurassic-gameplay-400.jpg` | 400×711 | same, 400px |
+| `jurassic-gameplay-lvl2.jpg` | 680×1206 | `jurrasic_anewera-gameplay-lvl2.png` (clean Level 2), width-scaled, RGBA→RGB |
+| `jurassic-gameplay-lvl2-400.jpg` | 400×709 | same, 400px |
 | `lightfilm-logo.png` | 540×302 | `lightFilm-logo.png`, uniform black background made transparent |
 
 ### work/hooked-on-math
