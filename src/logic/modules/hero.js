@@ -7,7 +7,7 @@
  *
  * Only transforms and opacity are touched, so nothing here can cause layout. */
 
-const PARTICLES = 14;
+const PARTICLES = 24;
 
 export default function hero() {
 
@@ -31,12 +31,12 @@ export default function hero() {
     if (field) {
         for (let i = 0; i < PARTICLES; i += 1) {
             const dot = document.createElement('span');
-            const scale = 0.6 + (Math.random() * 1.1);
+            const scale = 0.7 + (Math.random() * 1.2);
             dot.style.left = `${Math.round(Math.random() * 100)}%`;
             dot.style.top = `${Math.round(Math.random() * 100)}%`;
-            dot.style.width = `${(2.4 * scale).toFixed(1)}px`;
-            dot.style.height = `${(2.4 * scale).toFixed(1)}px`;
-            dot.style.opacity = (0.22 + (Math.random() * 0.45)).toFixed(2);
+            dot.style.width = `${(3.2 * scale).toFixed(1)}px`;
+            dot.style.height = `${(3.2 * scale).toFixed(1)}px`;
+            dot.style.opacity = (0.30 + (Math.random() * 0.50)).toFixed(2);
             dot.style.animationDuration = `${(11 + (Math.random() * 14)).toFixed(1)}s`;
             dot.style.animationDelay = `${(-Math.random() * 20).toFixed(1)}s`;
             field.appendChild(dot);
@@ -66,10 +66,10 @@ export default function hero() {
         const height = hero.offsetHeight || 1;
         const progress = Math.min(1, Math.max(0, window.scrollY / height));
 
-        parallax.style.transform = `translate3d(${ (-currentX * 16).toFixed(2) }px, ${ ((-currentY * 11) + (progress * 46)).toFixed(2) }px, 0)`;
+        parallax.style.transform = `translate3d(${ (-currentX * 26).toFixed(2) }px, ${ ((-currentY * 16) + (progress * 46)).toFixed(2) }px, 0)`;
 
         if (glow) {
-            glow.style.transform = `translate3d(${ (currentX * 30).toFixed(2) }px, ${ ((currentY * 20) - (progress * 22)).toFixed(2) }px, 0)`;
+            glow.style.transform = `translate3d(${ (currentX * 48).toFixed(2) }px, ${ ((currentY * 30) - (progress * 22)).toFixed(2) }px, 0)`;
         }
 
         if (content) {

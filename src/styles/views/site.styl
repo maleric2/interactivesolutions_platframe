@@ -1065,10 +1065,19 @@ summary:focus-visible,
     to
         transform: translate3d(0, -26px, 0)
 
+// ambient glow pulse; opacity only, so it never fights the JS parallax transform
+@keyframes hero-breathe
+    from
+        opacity: 0.75
+    to
+        opacity: 1
+
 @media (prefers-reduced-motion: reduce)
     .hero-bg
         animation: none !important
         transform: scale(1.04) !important
+    .hero-glow
+        animation: none !important
     .hero-particles
         display: none !important
 /*?????????????  SERVICE CARD DETAIL  ??????????????????????????????*/
@@ -1307,8 +1316,8 @@ summary:focus-visible,
     line-height: 1.32
 .project-row-thumb
     flex: 0 0 auto
-    width: rem(104px)
-    aspect-ratio: 1 / 1
+    width: rem(140px)
+    height: rem(140px)
     margin: 0
     overflow: hidden
     background: _c_alt
