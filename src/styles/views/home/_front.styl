@@ -3,19 +3,49 @@
     background: _c_cinema
     overflow: hidden
 
+    // Scene layers. The hero is fully readable without any of this; the layers
+    // only add depth when motion is allowed and JavaScript is available.
+    .hero-scene
+        position: absolute
+        inset: 0
+        pointer-events: none
+
+    .hero-parallax
+        position: absolute
+        inset: 0
+        will-change: transform
+
     .hero-bg
         position: absolute
-        inset: -3%
+        inset: -4%
         background: url("/assets/images/global/_linked/hero.jpg") center / cover no-repeat
         transform: scale(1.04)
         animation: hero-drift 30s ease-in-out infinite alternate
 
     // directional overlay keeps left-side text legible while the render shows through
-    &::after
+    .hero-veil
         position: absolute
         inset: 0
         background: linear-gradient(90deg, rgba(5, 8, 15, 0.96) 0%, rgba(5, 8, 15, 0.86) 34%, rgba(5, 8, 15, 0.38) 68%, rgba(5, 8, 15, 0.6) 100%), radial-gradient(130% 100% at 74% 46%, rgba(5, 8, 15, 0) 36%, rgba(5, 8, 15, 0.75) 100%)
-        content: ''
+
+    .hero-glow
+        position: absolute
+        inset: -12%
+        background: radial-gradient(36% 44% at 66% 42%, rgba(95, 124, 240, 0.36), rgba(95, 124, 240, 0) 72%)
+        will-change: transform
+
+    .hero-particles
+        position: absolute
+        inset: 0
+        overflow: hidden
+        span
+            position: absolute
+            border-radius: 50%
+            background: rgba(157, 180, 255, 0.9)
+            animation-name: hero-float
+            animation-timing-function: ease-in-out
+            animation-direction: alternate
+            animation-iteration-count: infinite
 
     .hero-content
         position: relative

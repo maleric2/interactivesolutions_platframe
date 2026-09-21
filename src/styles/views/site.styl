@@ -1058,10 +1058,19 @@ summary:focus-visible,
     to
         transform: scale(1.12) translate3d(-1.5%, -1%, 0)
 
+// slow bob for the hero's decorative particle field
+@keyframes hero-float
+    from
+        transform: translate3d(0, 16px, 0)
+    to
+        transform: translate3d(0, -26px, 0)
+
 @media (prefers-reduced-motion: reduce)
     .hero-bg
         animation: none !important
         transform: scale(1.04) !important
+    .hero-particles
+        display: none !important
 /*?????????????  SERVICE CARD DETAIL  ??????????????????????????????*/
 
 .example-list
