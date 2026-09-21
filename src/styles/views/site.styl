@@ -281,6 +281,42 @@ summary:focus-visible,
 .section-inner--prose
     max-width: _w_prose
 
+.proof-strip
+    padding: rem(28px) 0
+    background: rgba(33, 64, 154, 0.16)
+    border-top: 1px solid _c_line_soft
+    border-bottom: 1px solid _c_line_soft
+
+.proof-strip-inner
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: rem(22px) rem(24px)
+    width: 100%
+    max-width: _w_wide
+    margin: 0 auto
+    padding: 0 _pad_x
+    +min(2)
+        grid-template-columns: repeat(4, 1fr)
+
+.proof-stat
+    display: flex
+    flex-direction: column
+    gap: rem(5px)
+    min-width: 0
+    padding-left: rem(16px)
+    border-left: 2px solid rgba(157, 180, 255, 0.42)
+
+.proof-stat-value
+    color: #fff
+    font-size: rem(16px)
+    font-weight: 700
+    line-height: 1.3
+
+.proof-stat-label
+    color: _c_text_muted
+    font-size: rem(12.5px)
+    line-height: 1.45
+
 /*â”â”â”â”â”â”â”â”â”â”â”â”â”  SECTION TREATMENTS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
 
 .page-section
@@ -450,6 +486,12 @@ summary:focus-visible,
     font-size: rem(15px)
     line-height: 1.72
 
+.service-card-fit
+    margin: rem(-8px) 0 rem(20px)
+    color: _c_accent_pale
+    font-size: rem(13.5px)
+    line-height: 1.55
+
 .tag-list
     display: flex
     flex-wrap: wrap
@@ -567,6 +609,38 @@ summary:focus-visible,
     border-top: 1px solid _c_line_soft
     .card-link
         margin-top: 0
+
+.case-related
+    margin-top: rem(34px)
+    padding: rem(20px) rem(22px)
+    background: rgba(33, 64, 154, 0.12)
+    border: 1px solid _c_line_soft
+    border-radius: _r_md
+
+.case-related-label
+    margin: 0 0 rem(10px)
+    color: _c_accent_pale
+    font-size: rem(12px)
+    font-weight: 700
+    letter-spacing: 1.5px
+    text-transform: uppercase
+
+.case-related ul
+    display: flex
+    flex-wrap: wrap
+    gap: rem(8px) rem(22px)
+    margin: 0
+    padding: 0
+    list-style: none
+
+.case-related a
+    color: _c_text_soft
+    font-size: rem(14px)
+    line-height: 1.55
+    text-decoration: underline
+    text-underline-offset: 3px
+    &:hover, &:focus, &:active
+        color: #fff
 
 .case-nav--next
     justify-content: flex-end
