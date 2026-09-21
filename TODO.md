@@ -4,6 +4,22 @@ Tracked work that is not yet done. Newest context first.
 
 ---
 
+## Completed autonomously (no owner action needed)
+
+- **CI added** - `.github/workflows/ci.yml` runs `npm ci`, `npm run build` and
+  `npm test` on pushes to master/visual-redesign/preview branches and on PRs to
+  master, then verifies the key build outputs exist.
+- **Dependabot added** - `.github/dependabot.yml` opens weekly npm PRs for
+  minor/patch updates only (majors are ignored by rule because ESLint 7,
+  Rollup 2, Babel 7 and cssnano 4 predate current lines and must be upgraded
+  in isolation).
+- **Spacing audited** - all 57 distinct values in the stylesheet were
+  inventoried. Margin/padding specifically are already consistent (mostly
+  12/16/20/24/32, with five deliberate micro-values for chevron clearance and
+  list indents). No refactor was warranted; normalising them would be churn
+  with no visible benefit.
+
+
 ## P0 — blockers before the site goes live
 
 ### 1. ~~Contact form does not submit~~ — RESOLVED, awaiting one real submission
