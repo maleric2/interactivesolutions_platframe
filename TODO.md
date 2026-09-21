@@ -6,37 +6,37 @@ Tracked work that is not yet done. Newest context first.
 
 ## P0 — blockers before the site goes live
 
-### 1. Contact form does not submit (owner: enable Netlify setting)
+### 1. ~~Contact form does not submit~~ — RESOLVED, awaiting one real submission
 
-**Symptom:** submitting the contact form sends no email, and the browser lands on
+**Status:** Netlify form detection was enabled by the owner and a redeploy ran.
+Verified against the deployed HTML: `data-netlify="true"` has now been **stripped
+by Netlify** and the form is registered, exactly as their docs describe for a
+working form:
+
+```html
+<form action='/contact/success/' class='contact-form' method='POST' name='project-inquiry'>
+```
+
+**Still to confirm by hand:** submit the form once and check the entry appears
+under **Forms → project-inquiry** and the browser lands on `/contact/success/`
+without a 404. Use a real email address and full sentences, or Akismet may file
+the test as spam (check the **Spam submissions** tab before concluding it failed).
+
+<details>
+<summary>Original diagnosis (kept for the record)</summary>
+
+**Symptom:** submitting the contact form sent no email, and the browser landed on
 `/contact/success/` showing Netlify's "Page not found" 404.
 
-**Diagnosis (verified against Netlify's docs, not guessed):**
-Netlify's form handling parses the HTML **at deploy time** and, when it registers a
-form, it **strips `data-netlify="true"` and injects the hidden `form-name` input**.
-On the deployed preview that attribute is **still present**, which proves form
-detection never ran for this site.
+**Cause:** Netlify parses the HTML **at deploy time** and, when it registers a
+form, strips `data-netlify="true"` and injects the hidden `form-name` input. The
+attribute was still present in the deployed HTML, which proved detection had never
+run. With no form registered the POST was not handled and landed on the `action`
+path as a plain request — hence the 404. The success page itself was always fine
+(it is generated and returns 200).
 
-Because no form is registered, the POST is not handled and lands on the `action`
-path as a plain request — hence the 404. The success page itself is fine: it is
-generated at `prd/contact/success/index.html` and returns **200** on the preview.
-
-Netlify's own troubleshooting guide lists "Form detection disabled" as a cause of
-missing submissions.
-
-**Fix (Netlify UI — cannot be done from the repo):**
-1. Netlify UI → the site → **Forms** → **Enable form detection**.
-2. **Redeploy** the site (detection only runs on a new deploy).
-3. Re-submit the form and confirm:
-   - the submission appears under **Forms → project-inquiry**, and
-   - the browser lands on `/contact/success/` with no 404.
-
-**Note for testing:** use a real email address and write full sentences in the
-message field, or Akismet may file the test as spam (check the **Spam
-submissions** tab before concluding it failed).
-
-**After enabling detection, the deployed HTML should no longer contain
-`data-netlify="true"`.** That is the quickest way to confirm it worked.
+**Fix applied:** enabling form detection in the Netlify UI, then redeploying.
+</details>
 
 ### 2. Production has never been deployed
 
@@ -62,12 +62,13 @@ in `prd/`. See `DEPLOY.md` for the exact Netlify settings and the rollback steps
 
 ## P1 — design
 
-- **Cinematic interactive hero.** The one deliberate "wow" moment: subtle
-  cursor-reactive parallax, foreground/background depth, gentle camera drift, a
-  strong transition into Selected Work. Must respect `prefers-reduced-motion`,
-  degrade to the current static hero, and require no interaction to read content.
-  Keep it in its own bundle so the rest of the site stays fast.
-- **More real imagery, fewer repeated navy card surfaces.**
+- ~~**Cinematic interactive hero.**~~ **DONE** — pointer parallax on the background
+  and glow at different rates, a 14-dot particle field, a scroll-driven fade and
+  shift into Selected Work, gated behind `prefers-reduced-motion` (which returns
+  the static hero untouched) and paused when the hero is off screen. Lives in its
+  own module (`logic/modules/hero.js`); only transform and opacity are animated.
+- **More real imagery, fewer repeated navy card surfaces.** The homepage is still
+  largely card-on-navy. Real screenshots where they exist would lift it further.
 - **Nav order** — the header still lists Services before Work while the homepage
   now leads with Work. Deliberate (site-wide IA vs homepage narrative); change only
   if it proves confusing.
