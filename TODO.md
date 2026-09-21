@@ -29,6 +29,13 @@ Tracked work that is not yet done. Newest context first.
   `/work/my-dubrovnik/` with a legacy redirect, standardized all case-study
   metadata bars, added career timeline markers, and highlighted honest/cautionary
   product notes without duplicating the existing callout component.
+- **Qwen review follow-up** - Asset Store links carry UTM tracking; the obrt is
+  explained for international clients; privacy links open in a new tab so form
+  state is preserved; the success page states that every inquiry is reviewed
+  personally with no sales team in between. Declined: hero rephrase, homepage
+  Tools removal, homepage logo banner (all against settled trailer decisions);
+  Easy House email capture deferred until the launch-list flow exists; layoff
+  wording left as the owner wrote it (see open question below).
 
 
 ## P0 — blockers before the site goes live
