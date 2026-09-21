@@ -1,0 +1,120 @@
+extends ../../../_/body
+
+block context
+    - bodyId = 'case-light-film';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Official browser game & cross-device Unity platform — Case Study | Interactive Solutions';
+    - pageDescription = 'Case study: the official Jurassic World Rebirth: A New Era browser game built in Phaser, plus extensive Unity work on an unreleased cross-device multiplayer entertainment platform.';
+    - pageCanonical = 'https://interactivesolutions.hr/work/light-film-blue-raven/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Official browser game and cross-device Unity platform", "description": pageDescription, "mainEntityOfPage": pageCanonical, "author": {"@type": "Person", "name": "Marko Alerić", "url": "https://interactivesolutions.hr/about/"}};
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li: a(href="/work/") Work
+                    li Light Film / Blue Raven
+                h1 Official browser game &amp; cross-device Unity platform
+                p A publicly released branded browser game, alongside extensive work on an unreleased multi-title Unity platform.
+
+        section(class="page-section page-section--editorial")
+            div(class="section-inner")
+
+                dl(class="case-meta")
+                    div
+                        dt(class="case-meta-term") Role
+                        dd(class="case-meta-value") Senior Unity Developer
+                    div
+                        dt(class="case-meta-term") Studio / team
+                        dd(class="case-meta-value") Light Film / Blue Raven · 10–20 people
+                    div
+                        dt(class="case-meta-term") Timeline
+                        dd(class="case-meta-value") Platform work + shipped browser game
+                    div
+                        dt(class="case-meta-term") Platform / stack
+                        dd(class="case-meta-value") Unity · C# · PlayFab · Phaser
+
+                div(class="prose")
+
+                    h2 Role overview
+                    p.
+                        Senior Unity Developer working across a multi-title cross-device platform,
+                        multiplayer game experiences and a publicly released branded Phaser game.
+
+                    h2 Cross-device Unity platform (unreleased)
+                    p.
+                        Worked extensively on an unreleased multi-title Unity platform designed for
+                        shared multiplayer experiences across TVs, laptops, PCs and tablets, with phones
+                        used as player controllers. Implemented and evolved core systems including PlayFab
+                        integration, authentication, accounts and profiles, avatars, invitations and
+                        support for multiple game modes.
+                    ul
+                        li Shared platform development across multiple game experiences.
+                        li Host experience on TV, desktop and tablet, with phones used as player controllers.
+                        li PlayFab-backed platform services.
+                        li Accounts and profiles, including support for multiple accounts.
+                        li Avatar and invitation systems.
+                        li Multiple game modes, including team play, solo play and shared-room experiences.
+                        li Work alongside teams of approximately 10–20 people.
+                    p.
+                        This was a shared entertainment platform with its own games, user accounts,
+                        profiles and cross-device player flows.
+
+                    h2 Jurassic World Rebirth: A New Era (shipped)
+                    p.
+                        Built the official Jurassic World Rebirth: A New Era browser game from scratch in
+                        JavaScript using Phaser as part of the Light Film team. It is public and playable:
+                        #[a(href="https://www.jurassicworld.com/anewera/" target="_blank" rel="noopener") jurassicworld.com/anewera].
+
+                    h2 Technologies
+                    p Unity · C# · PlayFab · Phaser · JavaScript · Cross-device systems
+
+                div(class="callout")
+                    h3(class="callout-title") Confidentiality
+                    p(class="callout-text").
+                        Additional platform and game work remains unreleased and is described at a high
+                        level. The Jurassic World Rebirth browser game and the Unity platform work were
+                        completed as part of the Light Film team; brand names are used to describe the
+                        work accurately and do not imply direct employment or commissioning by the brand
+                        owners.
+
+                nav(class="case-nav case-nav--next" aria-label="More case studies")
+                    a(class="card-link" href="/work/hooked-on-math/") Next: Hooked on Math →
+
+        section(class="page-section page-section--showcase")
+            div(class="section-inner")
+                div(class="section-heading")
+                    p(class="section-eyebrow") Gameplay
+                    h2(class="section-title") Jurassic World Rebirth: A New Era
+                    p(class="section-lead") Real captures from the published browser game.
+
+                figure(class="case-figure case-figure--narrow")
+                    img(
+                        src="/assets/images/work/light-film/_linked/jurassic-gameplay.jpg"
+                        srcset="/assets/images/work/light-film/_linked/jurassic-gameplay-400.jpg 400w, /assets/images/work/light-film/_linked/jurassic-gameplay.jpg 680w"
+                        sizes="(min-width: 1024px) 440px, 92vw"
+                        width="680"
+                        height="1210"
+                        alt="Jurassic World Rebirth: A New Era browser game in play, showing a boat and a dinosaur in the water"
+                        loading="lazy")
+                    figcaption The opening level of the published browser game.
+
+                figure(class="case-figure case-figure--narrow")
+                    img(
+                        src="/assets/images/work/light-film/_linked/jurassic-gameplay-lvl2.jpg"
+                        srcset="/assets/images/work/light-film/_linked/jurassic-gameplay-lvl2-400.jpg 400w, /assets/images/work/light-film/_linked/jurassic-gameplay-lvl2.jpg 680w"
+                        sizes="(min-width: 1024px) 440px, 92vw"
+                        width="680"
+                        height="1206"
+                        alt="Level 2 of the Jurassic World Rebirth browser game, showing the tutorial prompt over rocky terrain"
+                        loading="lazy")
+                    figcaption Level 2, introduced by its tutorial prompt.
+
+        section(class="page-section page-section--cinematic has-glow")
+            div(class="section-inner")
+                +cta-band('Working on a Unity or cross-platform product?', '/contact/', 'Discuss Your Unity Project')

@@ -1,0 +1,39 @@
+extends ../../_/body
+
+block context
+    - bodyId = 'tools';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Unity Tools & Editor Plugins | Interactive Solutions';
+    - pageDescription = 'Unity tools built from production problems: Mesh Merge, a mesh combiner and texture array baker, and Easy House, procedural house generation for Unity.';
+    - pageCanonical = 'https://interactivesolutions.hr/tools/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "CollectionPage", "name": pageTitle, "description": pageDescription, "url": pageCanonical, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "MeshMerge — Mesh Combiner and Texture Array Baker", "url": "https://interactivesolutions.hr/tools/mesh-merge/"}, {"@type": "ListItem", "position": 2, "name": "Easy House — procedural house generation for Unity", "url": "https://interactivesolutions.hr/tools/easy-house/"}]}};
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li Unity Tools
+                h1 Unity tools built from production problems
+                p Editor tools and workflows designed to remove repetitive work and improve runtime efficiency.
+
+        section(class="page-section")
+            div(class="section-inner")
+                div(class="section-heading")
+                    h2(class="section-subtitle") Products
+                +tools-grid()
+
+        section(class="page-section")
+            div(class="section-inner")
+                div(class="section-heading")
+                    p(class="section-eyebrow") More from the publisher
+                    h2(class="section-title") All Unity tools by Interactive Solutions
+                div(class="section-actions")
+                    a(class="btn btn-secondary" href="https://assetstore.unity.com/publishers/40273?utm_source=portfolio&utm_medium=website" target="_blank" rel="noopener" data-analytics="tools_page_publisher") View the publisher profile →
+                div(class="callout")
+                    h3(class="callout-title") What comes next
+                    p(class="callout-text") New tools are published only when they solve a verified production problem. The publisher profile above always shows what is currently available.

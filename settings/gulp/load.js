@@ -1,7 +1,13 @@
 import log from 'fancy-log';
+import { join } from 'path';
 import { watch } from 'gulp';
 import context from 'dotenv';
 import { spawn } from 'child_process';
+
+// Resolve gulp's CLI entry and run it with the current Node binary.
+// Spawning the "gulp" shell script directly fails on Windows, where the
+// executable is "gulp.cmd" and cannot be launched without a shell.
+const gulpCli = join(process.cwd(), 'node_modules', 'gulp-cli', 'bin', 'gulp.js');
 
 export default async ({ task, flag }) => {
 
@@ -33,7 +39,7 @@ export default async ({ task, flag }) => {
             context.config();
         }
 
-        child = spawn('gulp', [task, flag], { stdio: 'inherit' });
+        child = spawn(process.execPath, [gulpCli, task, flag], { stdio: 'inherit' });
 
     }
 

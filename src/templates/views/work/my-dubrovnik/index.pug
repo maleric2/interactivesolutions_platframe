@@ -1,0 +1,100 @@
+extends ../../../_/body
+
+block context
+    - bodyId = 'case-my-dubrovnik';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'My Dubrovnik — 3D mobile city-management game — Case Study | Interactive Solutions';
+    - pageDescription = 'Case study: leading a 3D mobile city-management game from concept to first release with the Async Labs team, building the MVP in about ten months.';
+    - pageCanonical = 'https://interactivesolutions.hr/work/my-dubrovnik/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "My Dubrovnik — a 3D mobile city-management game", "description": pageDescription, "mainEntityOfPage": pageCanonical, "author": {"@type": "Person", "name": "Marko Alerić", "url": "https://interactivesolutions.hr/about/"}};
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li: a(href="/work/") Work
+                    li My Dubrovnik
+                h1 My Dubrovnik — a 3D mobile city-management game
+                p Led development from concept to first release with the Async Labs team, building the MVP in about ten months.
+
+        section(class="page-section page-section--editorial")
+            div(class="section-inner")
+
+                dl(class="case-meta")
+                    div
+                        dt(class="case-meta-term") Role
+                        dd(class="case-meta-value") Lead Unity Developer
+                    div
+                        dt(class="case-meta-term") Studio / team
+                        dd(class="case-meta-value") Async Labs team
+                    div
+                        dt(class="case-meta-term") Timeline
+                        dd(class="case-meta-value") Concept → first release (~10 months)
+                    div
+                        dt(class="case-meta-term") Platform / stack
+                        dd(class="case-meta-value") Unity · C# · Mobile · 3D
+
+                div(class="prose")
+
+                    h2 Context
+                    p.
+                        My Dubrovnik is a 3D city-management game based on the real city of Dubrovnik.
+                        Representing that location convincingly on a phone, with complex management
+                        mechanics on top, was the defining constraint of the project.
+
+                    h2 Responsibility
+                    p.
+                        I led development from the idea to the first release, with broad ownership of
+                        both engineering and the product decisions that shaped it.
+
+                    h2 Challenges
+                    ul
+                        li Complex, interlocking management mechanics.
+                        li The visual scope of a detailed real-city representation on mobile.
+                        li Keeping performance acceptable on lower-end devices.
+                        li A tight schedule from concept to release.
+
+                    h2 Contribution
+                    ul
+                        li Built the MVP from scratch in roughly ten months.
+                        li Implemented and owned economy, tasks, progression and tutorial systems.
+                        li Delivered buildings, advertising and crowd and camera systems.
+                        li Performed substantial optimization for mobile.
+
+                    h2 Outcome
+                    p.
+                        An MVP built from scratch and shipped as a 3D mobile title within about ten
+                        months, delivered under a tight schedule with demanding gameplay requirements.
+
+                    h2 Technologies
+                    p Unity · C# · Mobile optimization · 3D content pipelines
+
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/work/my-dubrovnik/_linked/gameplay.jpg"
+                        srcset="/assets/images/work/my-dubrovnik/_linked/gameplay-800.jpg 800w, /assets/images/work/my-dubrovnik/_linked/gameplay.jpg 1600w"
+                        sizes="(min-width: 1024px) 740px, 92vw"
+                        width="1600"
+                        height="1082"
+                        alt="Collage of My Dubrovnik gameplay screens showing city management systems"
+                        loading="lazy")
+                    figcaption A selection of systems from My Dubrovnik.
+
+                div(class="callout")
+                    h3(class="callout-title") A note on attribution
+                    p(class="callout-text").
+                        I worked embedded with the Async Labs team to develop My Dubrovnik, while being
+                        formally employed through a partner company. The role described here is technical
+                        leadership and hands-on development within that team.
+
+                nav(class="case-nav" aria-label="More case studies")
+                    a(class="card-link" href="/work/hooked-on-math/") ← Previous: Hooked on Math
+
+        section(class="page-section page-section--cinematic has-glow")
+            div(class="section-inner")
+                +cta-band('Need end-to-end Unity product delivery?', '/contact/', 'Discuss Your Unity Project')

@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: "deps"
+    open-pull-requests-limit: 5
+    # Review updates individually; several majors (ESLint 7, Rollup 2, Babel 7,
+    # cssnano 4) predate current LTS lines and must land on isolated branches.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]

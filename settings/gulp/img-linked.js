@@ -43,8 +43,8 @@ export default function imgLinked() {
 
         // stream: verbatim
         src([
-            `${ source.images }/**/_linked/**/_verbatim/**/*.{png,gif,jpg,jpeg}`,
-            `${ source.components }/**/images/_linked/_verbatim/**/*.{png,gif,jpg,jpeg}`,
+            `${ source.images }/**/_linked/**/_verbatim/**/*.{png,gif,jpg,jpeg,pdf}`,
+            `${ source.components }/**/images/_linked/_verbatim/**/*.{png,gif,jpg,jpeg,pdf}`,
         ], {
             since: lastRun(imgLinked)
         })
@@ -98,8 +98,8 @@ export function imgAdded() {
 
         // stream: verbatim
         src([
-            `${ source.images }/**/_linked/**/_verbatim/**/*.{png,gif,jpg,jpeg}`,
-            `${ source.components }/**/images/_linked/_verbatim/**/*.{png,gif,jpg,jpeg}`,
+            `${ source.images }/**/_linked/**/_verbatim/**/*.{png,gif,jpg,jpeg,pdf}`,
+            `${ source.components }/**/images/_linked/_verbatim/**/*.{png,gif,jpg,jpeg,pdf}`,
         ])
             .pipe(dest(ctx.path.images)),
 

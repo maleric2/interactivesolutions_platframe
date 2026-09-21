@@ -5,4 +5,4 @@ mixin nav-1({ target = "home", direction = "next", icon = "nav-1-fill" })
         data-target= target
         data-direction= direction)
 
-        button: svg: use(xlink:href=`/assets/images/_sprites/symbols.svg#${ icon }`)
+        button(aria-label=`Scroll to ${ target }`): svg(aria-hidden="true"): use(xlink:href=`/assets/images/_sprites/symbols.svg#${ icon }`)

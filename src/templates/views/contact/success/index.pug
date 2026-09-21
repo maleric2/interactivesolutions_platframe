@@ -1,0 +1,24 @@
+extends ../../../_/body
+
+block context
+    - bodyId = 'contact-success';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Message sent | Interactive Solutions';
+    - pageDescription = 'Your message has been sent to Interactive Solutions.';
+    - pageCanonical = 'https://interactivesolutions.hr/contact/success/';
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-section")
+            div(class="section-inner")
+                div(class="success-panel")
+                    h1 Message sent
+                    p.
+                        Thank you — your inquiry has been received. I review every inquiry
+                        personally, with no sales team in between, and reply with the most
+                        useful next step, usually within a couple of working days.
+                    p
+                        a(class="btn btn-primary" href="/") Back to the homepage

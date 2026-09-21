@@ -4,11 +4,25 @@ block body
 
     body(id=bodyId class=bodyClass)
 
+        a(class="skip-link" href="#main") Skip to main content
+
+        +site-header({ home: isHome })
+
         block main
 
         block footer
 
             include ../../components/footers/3/_
+
+        div(class="consent-banner" data-consent-banner hidden)
+
+            p(class="consent-text").
+                This site uses Google Analytics to understand how the pages are used.
+                Nothing is loaded until you choose. See the #[a(href="/privacy/" target="_blank" rel="noopener") privacy policy].
+
+            div(class="consent-actions")
+                button(type="button" class="btn btn-primary" data-consent-accept) Accept
+                button(type="button" class="btn btn-ghost" data-consent-decline) Decline
 
         //- end-of-body script insertion
         block inject

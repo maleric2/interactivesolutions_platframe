@@ -1,0 +1,131 @@
+extends ../../_/body
+
+block context
+    - bodyId = 'work';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Selected Unity Work & Case Studies | Interactive Solutions';
+    - pageDescription = 'Selected Unity and browser-game projects: the official Jurassic World Rebirth browser game, Hooked on Math, and the shipped 3D mobile game My Dubrovnik.';
+    - pageCanonical = 'https://interactivesolutions.hr/work/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "CollectionPage", "name": pageTitle, "description": pageDescription, "url": pageCanonical, "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Official browser game and cross-device Unity platform", "url": "https://interactivesolutions.hr/work/light-film-blue-raven/"}, {"@type": "ListItem", "position": 2, "name": "Hooked on Math — leading a cross-functional team to launch", "url": "https://interactivesolutions.hr/work/hooked-on-math/"}, {"@type": "ListItem", "position": 3, "name": "My Dubrovnik — a 3D mobile city-management game", "url": "https://interactivesolutions.hr/work/my-dubrovnik/"}]}};
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li Work
+                h1 Selected work
+                p Real projects, the role held and the decisions that mattered — with the studios involved named accurately.
+
+        section(class="page-section page-section--editorial")
+            div(class="section-inner section-inner--wide")
+                div(class="section-heading")
+                    h2(class="section-subtitle") Featured projects
+                +work-grid()
+
+        section(class="page-section page-section--showcase")
+            div(class="section-inner")
+                div(class="section-heading")
+                    p(class="section-eyebrow") Additional shipped projects
+                    h2(class="section-title") More delivered work
+                    p(class="section-lead").
+                        Roles described as held. Where a project was delivered through a studio or
+                        partner, it is presented that way rather than as a direct client relationship.
+
+                ul(class="project-list")
+                    +project-row({
+                        name: 'BestLife',
+                        studio: 'Dubit Limited · Lead Unity Developer',
+                        role: 'Led development from the beginning through the first released version. Backend-driven multiplayer features through API calls to the team backend — not real-time client networking or netcode work.',
+                        image: '/assets/images/work/dubit/_linked/bestlife.jpg',
+                        imageSrcset: '/assets/images/work/dubit/_linked/bestlife-320.jpg 320w, /assets/images/work/dubit/_linked/bestlife.jpg 640w',
+                        imageWidth: 640,
+                        imageHeight: 640,
+                        imageAlt: 'BestLife artwork showing children playing sport',
+                    })
+                    +project-row({
+                        name: 'Hooked on Phonics',
+                        studio: 'Dubit Limited · Unity Developer',
+                        role: 'Hands-on Unity development on a client educational product.',
+                        image: '/assets/images/work/dubit/_linked/phonics-cover.jpg',
+                        imageSrcset: '/assets/images/work/dubit/_linked/phonics-cover-320.jpg 320w, /assets/images/work/dubit/_linked/phonics-cover.jpg 422w',
+                        imageWidth: 422,
+                        imageHeight: 750,
+                        imageAlt: 'Hooked on Phonics cover showing a spelling activity on a phone',
+                    })
+                    +project-row({
+                        name: 'Hooked on Spelling',
+                        studio: 'Dubit Limited · Unity Developer',
+                        role: 'Hands-on Unity development on a client educational product.',
+                        image: '/assets/images/work/dubit/_linked/spelling-cover.jpg',
+                        imageSrcset: '/assets/images/work/dubit/_linked/spelling-cover-320.jpg 320w, /assets/images/work/dubit/_linked/spelling-cover.jpg 640w',
+                        imageWidth: 640,
+                        imageHeight: 400,
+                        imageAlt: 'Hooked on Spelling cover showing the game running on tablets',
+                    })
+                    +project-row({
+                        name: 'Client Unity projects',
+                        studio: 'Room 8 Studio · Solid Bash department',
+                        role: 'Client project work completed at Room 8 Studio, covering pre-production analysis, architecture, Addressables and gameplay systems in teams of roughly 10–20.',
+                        link: 'https://room8studio.com/',
+                        external: true,
+                    })
+                    +project-row({
+                        name: 'Agenda, Bear With Me, Last Encounter, Zero Reflex, Pottery, Legends of Learning',
+                        studio: 'Exordium Games · Unity Developer',
+                        role: 'Multiple released titles worked on while directly employed at Exordium Games, plus client projects such as Legends of Learning.',
+                        link: 'https://exordiumgames.com/',
+                        external: true,
+                    })
+                    +project-row({
+                        name: 'Park Marjan: Upoznaj botaniku',
+                        studio: 'Educational mobile game · Project lead and developer',
+                        role: 'Led and developed an educational mobile game created under a tightly constrained production budget.',
+                        link: 'https://play.google.com/store/apps/details?id=hr.marjanparksuma.upoznajbotaniku',
+                        external: true,
+                    })
+
+                p(class="project-row-meta" style="margin-top:1.5rem") Selected titles from Exordium Games
+
+                div(class="work-strip")
+                    figure
+                        img(src="/assets/images/work/exordium/_linked/cover.jpg" srcset="/assets/images/work/exordium/_linked/cover-800.jpg 800w, /assets/images/work/exordium/_linked/cover.jpg 1600w" sizes="(min-width: 1024px) 300px, 45vw" width="1600" height="900" alt="Agenda gameplay showing the upgrade screen" loading="lazy")
+                    figure
+                        img(src="/assets/images/work/exordium/_linked/last-encounter.jpg" srcset="/assets/images/work/exordium/_linked/last-encounter-600.jpg 600w, /assets/images/work/exordium/_linked/last-encounter.jpg 1200w" sizes="(min-width: 1024px) 300px, 45vw" width="1200" height="675" alt="Last Encounter gameplay in a green biome" loading="lazy")
+                    figure
+                        img(src="/assets/images/work/exordium/_linked/zero-reflex.jpg" srcset="/assets/images/work/exordium/_linked/zero-reflex-600.jpg 600w, /assets/images/work/exordium/_linked/zero-reflex.jpg 1200w" sizes="(min-width: 1024px) 300px, 45vw" width="1200" height="750" alt="Zero Reflex gameplay" loading="lazy")
+                    figure
+                        img(src="/assets/images/work/exordium/_linked/pottery.jpg" srcset="/assets/images/work/exordium/_linked/pottery-400.jpg 400w, /assets/images/work/exordium/_linked/pottery.jpg 720w" sizes="(min-width: 1024px) 300px, 45vw" width="720" height="360" alt="Pottery cover art" loading="lazy")
+
+        section(class="page-section page-section--editorial")
+            div(class="section-inner")
+                div(class="section-heading")
+                    p(class="section-eyebrow") Studios and collaborators
+                    h2(class="section-title") Where this work happened
+                    p(class="section-lead").
+                        Company relationships are described as accurately as confidentiality allows.
+
+                div(class="studio-strip")
+                    +logo-chip('/assets/images/work/dubit/_linked/dubit-logo.svg', 'Dubit Limited', 220, 60)
+                    +logo-chip('/assets/images/work/light-film/_linked/lightfilm-logo.png', 'Light Film International', 220, 123)
+                    +logo-chip('/assets/images/work/exordium/_linked/exordium-logo.png', 'Exordium Games', 240, 54)
+                    +logo-chip('/assets/images/work/room8/_linked/solid-bash-logo.jpg', 'Solid Bash, Room 8 Studio', 200, 113)
+                    +logo-chip('/assets/images/work/my-dubrovnik/_linked/async-labs-logo.png', 'Async Labs', 180, 90)
+
+                div(class="callout")
+                    h3(class="callout-title") A note on attribution
+                    p(class="callout-text").
+                        Multiplayer TV-show games, the unified Unity platform and the Jurassic World
+                        Rebirth browser game were completed as part of the Light Film team. Client
+                        projects at Dubit Limited and Room 8 Studio were delivered for those studios'
+                        clients. My Dubrovnik was built with the Async Labs team. Brand names are used
+                        to describe the work accurately, not to imply direct employment or commissioning
+                        by the brand owners.
+
+        section(class="page-section page-section--cinematic has-glow")
+            div(class="section-inner")
+                +cta-band('Need senior Unity ownership on your project?', '/contact/', 'Discuss Your Unity Project')

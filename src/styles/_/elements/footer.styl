@@ -1,1 +1,31 @@
-footer-3()
++footer-3()
+
+    // breathing room: footer content sat flush against the top edge
+    > div
+        padding: rem(36px) rem(20px) rem(28px)
+
+    // legal line — full legibility, no inherited list spacing
+    .legal
+        li
+            margin: 0
+            font-size: rem(13px)
+            line-height: 1.6
+            color: rgba(255, 255, 255, 0.8)
+
+    // supporting links — secondary, but still comfortably legible on dark
+    .links
+        margin-top: rem(6px)
+        li
+            margin: 0
+            font-size: rem(13.5px)
+            line-height: 1.9
+            letter-spacing: 0.2px
+            &:not(:last-of-type)::after
+                content: '\00B7'
+                margin: 0 rem(7px)
+                opacity: 0.55
+        a
+            color: rgba(255, 255, 255, 0.78)
+            font-weight: 400
+            &:hover, &:focus, &:active
+                color: #fff

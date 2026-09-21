@@ -1,0 +1,95 @@
+extends ../../../_/body
+
+block context
+    - bodyId = 'easy-house';
+    - bodyClass = 'page';
+    - isHome = false;
+    - pageTitle = 'Easy House — Procedural House Generation for Unity | Interactive Solutions';
+    - pageDescription = 'Easy House is an upcoming Unity tool for procedural exterior house generation with reusable parts, roof styles and production-friendly export workflows.';
+    - pageCanonical = 'https://interactivesolutions.hr/tools/easy-house/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy House — procedural house generation for Unity", "applicationCategory": "DeveloperApplication", "description": pageDescription, "url": pageCanonical};
+
+block main
+
+    main(role="main" id="main")
+
+        section(class="page-hero")
+            div(class="page-hero-inner")
+                ul(class="breadcrumbs")
+                    li: a(href="/") Home
+                    li: a(href="/tools/") Unity Tools
+                    li Easy House
+                h1 Easy House — procedural house generation for Unity
+                p Design reusable houses with configurable parts, roof styles and production-oriented export workflows.
+
+        section(class="page-section")
+            div(class="section-inner")
+
+                figure(class="case-figure case-figure--wide")
+                    video(
+                        class="tool-video"
+                        controls
+                        preload="metadata"
+                        playsinline
+                        width="1234"
+                        height="694"
+                        poster="/assets/images/tools/easy-house/_linked/showcase-poster.jpg")
+                        source(src="/media/easy-house-showcase.mp4" type="video/mp4")
+                        | Your browser does not support embedded video. Download the showcase from the #[a(href="/media/easy-house-showcase.mp4") MP4 file].
+                    figcaption A short showcase of the Easy House editor: walls, roof and material work in Unity.
+
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/tools/easy-house/_linked/overview.jpg"
+                        srcset="/assets/images/tools/easy-house/_linked/overview-800.jpg 800w, /assets/images/tools/easy-house/_linked/overview.jpg 1234w"
+                        sizes="(min-width: 1024px) 740px, 92vw"
+                        width="1234"
+                        height="695"
+                        alt="Easy House editor in Unity showing a Tudor Cottage, its dimensions and a footprint, walls and floors panel"
+                        loading="lazy")
+                    figcaption The Easy House editor with footprint, wall and floor settings.
+
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/tools/easy-house/_linked/footprint.jpg"
+                        srcset="/assets/images/tools/easy-house/_linked/footprint-800.jpg 800w, /assets/images/tools/easy-house/_linked/footprint.jpg 1234w"
+                        sizes="(min-width: 1024px) 740px, 92vw"
+                        width="1234"
+                        height="700"
+                        alt="Easy House footprint editing, showing editable ground points on a house"
+                        loading="lazy")
+                    figcaption Editing the building footprint from editable ground points.
+
+                div(class="prose")
+                    p.
+                        Easy House is an upcoming Unity editor tool for generating and customizing
+                        exterior houses procedurally. The goal is to let designers assemble houses from
+                        reusable parts and roof styles, then export the result into a production-friendly
+                        workflow instead of hand-building every variation.
+                    h2 Planned approach
+                    ul
+                        li Reusable, configurable building parts.
+                        li Multiple roof styles and exterior variations.
+                        li Production-oriented export so results can be used in real projects.
+                        li A free-first release to collect genuine feedback before a Pro version.
+
+                div(class="callout callout--caution")
+                    h3(class="callout-title") Scope of the first release
+                    p(class="callout-text").
+                        Scope is deliberately limited while the tool is in development. Interior
+                        generation, an advanced runtime API and Pro features are not promised until their
+                        scope is confirmed and a public build exists.
+
+                div(class="callout")
+                    h3(class="callout-title") Join the launch list
+                    p(class="callout-text").
+                        Want to be notified when a demo or free version is available? Send a short email
+                        and you'll be contacted when there is something real to try — not before.
+
+                div(class="section-actions")
+                    a(class="btn btn-primary" href="mailto:marko@interactivesolutions.hr?subject=Easy%20House%20launch%20list" data-analytics="easyhouse_waitlist") Join the launch list
+                    a(class="btn btn-ghost" href="/tools/mesh-merge/") See Mesh Merge →
+
+        section(class="page-section")
+            div(class="section-inner")
+                +cta-band('Interested in procedural Unity tooling?', '/contact/', 'Get in Touch')

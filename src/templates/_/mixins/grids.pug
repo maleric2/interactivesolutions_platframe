@@ -1,0 +1,171 @@
+//- shared content grids; single source of truth for services, featured work and tools
+
+mixin services-grid(compact)
+    -
+        const serviceItems = [
+            {
+                title: 'Unity Development & Feature Delivery',
+                text: 'Production-ready gameplay, UI and tooling delivered inside an existing codebase or as part of a new project.',
+                examples: [
+                    'Gameplay systems',
+                    'UI and player-facing features',
+                    'Editor and content tools',
+                    'Platform integration',
+                    'Addressables content delivery',
+                ],
+                proof: '10+ years shipping Unity features',
+            },
+            {
+                title: 'Architecture, Performance & Project Rescue',
+                text: 'Reviews and hands-on remediation for Unity projects that have become difficult to extend, debug or ship.',
+                examples: [
+                    'Architecture review',
+                    'Refactoring strategy',
+                    'Profiling and optimization',
+                    'Legacy project stabilization',
+                    'Build and release pipeline',
+                ],
+                proof: 'Production rescues and refactors',
+            },
+            {
+                title: 'Multiplayer, Backend & Live Systems',
+                text: 'Multiplayer gameplay and backend-driven features for live products, using PlayFab and production APIs.',
+                examples: [
+                    'Multiplayer gameplay modes',
+                    'PlayFab integration',
+                    'Backend-driven features',
+                    'Live content and remote configuration',
+                    'Progression and monetization',
+                ],
+                proof: 'PlayFab-backed live systems',
+            },
+            {
+                title: 'Technical Leadership & Scoping',
+                text: 'Senior technical direction and planning for teams that need it without hiring a full-time lead.',
+                examples: [
+                    'Technical direction',
+                    'Scoping and estimates',
+                    'Mentoring and code review',
+                    'Hiring support',
+                    'Roadmaps and task planning',
+                ],
+                proof: 'Lead roles on 3–20 person teams',
+            },
+        ]
+    div(class="card-grid")
+        each item in serviceItems
+            +service-card(item, compact)
+
+mixin work-grid()
+    -
+        const workItems = [
+            {
+                slug: 'light-film',
+                featured: true,
+                kicker: 'Light Film / Blue Raven',
+                title: 'Official browser game & cross-device Unity platform',
+                text: 'Built the official Jurassic World Rebirth: A New Era browser game from scratch in Phaser, alongside extensive Unity development on an unreleased cross-device multiplayer entertainment platform.',
+                proof: ['Unity', 'Phaser', 'PlayFab', 'Cross-device systems', 'Multiplayer platform'],
+                image: '/assets/images/work/light-film/_linked/jurassic-cover.jpg',
+                srcset: '/assets/images/work/light-film/_linked/jurassic-cover-800.jpg 800w, /assets/images/work/light-film/_linked/jurassic-cover.jpg 1600w',
+                sizes: '(min-width: 1024px) 640px, 92vw',
+                width: 1600,
+                height: 1000,
+                alt: 'Gameplay from Jurassic World Rebirth: A New Era, the browser game built in Phaser',
+                link: '/work/light-film-blue-raven/',
+                linkText: 'Read the case study →',
+            },
+            {
+                slug: 'hooked-on-math',
+                kicker: 'Dubit Limited',
+                title: 'Hooked on Math — lead Unity developer',
+                text: 'Led a cross-functional team of about ten people from early planning through launch and post-release, owning estimates, feature breakdown, Unity tooling and an Addressables-based content workflow.',
+                proof: ['Team leadership', 'Addressables', 'Multi-store delivery'],
+                image: '/assets/images/work/hooked-on-math/_linked/cover.jpg',
+                srcset: '/assets/images/work/hooked-on-math/_linked/cover-400.jpg 400w, /assets/images/work/hooked-on-math/_linked/cover-800.jpg 800w, /assets/images/work/hooked-on-math/_linked/cover.jpg 1365w',
+                sizes: '(min-width: 1024px) 520px, 92vw',
+                width: 1365,
+                height: 768,
+                alt: 'Hooked on Math cover art showing a boat and tablets running the game',
+                link: '/work/hooked-on-math/',
+                linkText: 'Read the case study →',
+            },
+            {
+                slug: 'my-dubrovnik',
+                kicker: 'My Dubrovnik',
+                title: 'My Dubrovnik — 3D mobile city-management game',
+                text: 'Worked with the Async Labs team to lead a 3D mobile city-management game from concept to its first release, building the MVP in about ten months and owning core gameplay systems and optimization.',
+                proof: ['End-to-end delivery', 'Mobile optimization', '3D city simulation'],
+                image: '/assets/images/work/my-dubrovnik/_linked/cover.jpg',
+                srcset: '/assets/images/work/my-dubrovnik/_linked/cover-400.jpg 400w, /assets/images/work/my-dubrovnik/_linked/cover-600.jpg 600w, /assets/images/work/my-dubrovnik/_linked/cover.jpg 875w',
+                sizes: '(min-width: 1024px) 520px, 92vw',
+                width: 875,
+                height: 500,
+                alt: 'My Dubrovnik cover art showing characters in front of a 3D map of Dubrovnik',
+                link: '/work/my-dubrovnik/',
+                linkText: 'Read the case study →',
+            },
+        ]
+    div(class="work-grid")
+        each item in workItems
+            +work-card(item)
+
+mixin tools-grid()
+    div(class="tools-grid")
+
+        article(class="tool-card tool-card--featured")
+
+            div(class="tool-media")
+                img(
+                    src="/assets/images/tools/mesh-merge/_linked/inspector.jpg"
+                    srcset="/assets/images/tools/mesh-merge/_linked/inspector-800.jpg 800w, /assets/images/tools/mesh-merge/_linked/inspector.jpg 1368w"
+                    sizes="(min-width: 1024px) 640px, 92vw"
+                    width="1368"
+                    height="766"
+                    alt="MeshMerge Mesh Combiner component in the Unity inspector, showing Merge Now, Bake to Texture Array and Bake to Atlas, and Draw Calls going from 9 to 1"
+                    loading="lazy")
+
+            div(class="tool-body")
+
+                span(class="tool-badge") Available on the Unity Asset Store
+                h3(class="card-title") MeshMerge — Mesh Combiner &amp; Texture Array Baker
+                p(class="card-text").
+                    Combine meshes and materials so scenes and prefabs render with fewer draw
+                    calls, using either an atlas or a texture-array workflow.
+                +tag-list(['Mesh Combining', 'Texture Arrays', 'Draw Call Reduction', 'Editor Tools'])
+                div(class="tool-actions")
+                    a(class="btn btn-primary" href="https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726?utm_source=portfolio&utm_medium=website" target="_blank" rel="noopener" data-analytics="meshmerge_store") View on the Asset Store
+                    a(class="btn btn-ghost" href="/tools/mesh-merge/") Learn more →
+
+                figure(class="tool-proof")
+                    img(
+                        src="/assets/images/tools/mesh-merge/_linked/draw-calls.jpg"
+                        width="1140"
+                        height="225"
+                        alt="MeshMerge statistics panel showing Draw Calls: 9 before merging and 1 after"
+                        loading="lazy")
+                    figcaption Draw calls: 9 → 1 after merging. Results vary by scene and material setup.
+
+        article(class="tool-card")
+
+            div(class="tool-media")
+                img(
+                    src="/assets/images/tools/easy-house/_linked/overview.jpg"
+                    srcset="/assets/images/tools/easy-house/_linked/overview-800.jpg 800w, /assets/images/tools/easy-house/_linked/overview.jpg 1234w"
+                    sizes="(min-width: 1024px) 420px, 92vw"
+                    width="1234"
+                    height="695"
+                    alt="Easy House editor in Unity showing a Tudor Cottage with a footprint, walls and floors panel"
+                    loading="lazy")
+
+            div(class="tool-body")
+
+                span(class="tool-badge tool-badge-soon") Coming soon
+                h3(class="card-title") Easy House — procedural house generation for Unity
+                p(class="card-text").
+                    Design reusable houses from configurable parts and roof styles, with
+                    production-oriented export workflows. A free-first release is planned to
+                    collect real feedback before expanding the product.
+                +tag-list(['Procedural Generation', 'Editor Tools', 'Modular Parts'])
+                div(class="tool-actions")
+                    a(class="btn btn-ghost" href="/tools/easy-house/") Watch the showcase →

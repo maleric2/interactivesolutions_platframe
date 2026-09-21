@@ -1,78 +1,123 @@
 .front
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("/assets/images/_sprites/pexels-designdrunkard-4158594.jpg")
-    background-size: cover
-    background-position: center
-    .content
+    position: relative
+    background: _c_cinema
+    overflow: hidden
+
+    // Scene layers. The hero is fully readable without any of this; the layers
+    // only add depth when motion is allowed and JavaScript is available.
+    .hero-scene
+        position: absolute
+        inset: 0
+        pointer-events: none
+
+    .hero-parallax
+        position: absolute
+        inset: 0
+        will-change: transform
+
+    .hero-bg
+        position: absolute
+        inset: -4%
+        background: url("/assets/images/global/_linked/hero.jpg") center / cover no-repeat
+        transform: scale(1.04)
+        animation: hero-drift 30s ease-in-out infinite alternate
+
+    // directional overlay keeps left-side text legible while the render shows through
+    .hero-veil
+        position: absolute
+        inset: 0
+        background: linear-gradient(90deg, rgba(5, 8, 15, 0.96) 0%, rgba(5, 8, 15, 0.86) 34%, rgba(5, 8, 15, 0.38) 68%, rgba(5, 8, 15, 0.6) 100%), radial-gradient(130% 100% at 74% 46%, rgba(5, 8, 15, 0) 36%, rgba(5, 8, 15, 0.75) 100%)
+
+    .hero-glow
+        position: absolute
+        inset: -12%
+        background: radial-gradient(36% 44% at 66% 42%, rgba(95, 124, 240, 0.36), rgba(95, 124, 240, 0) 72%), radial-gradient(24% 30% at 30% 68%, rgba(53, 200, 189, 0.16), rgba(53, 200, 189, 0) 70%)
+        will-change: transform
+        animation: hero-breathe 9s ease-in-out infinite alternate
+
+    .hero-particles
+        position: absolute
+        inset: 0
+        overflow: hidden
+        span
+            position: absolute
+            border-radius: 50%
+            background: rgba(157, 180, 255, 0.9)
+            animation-name: hero-float
+            animation-timing-function: ease-in-out
+            animation-direction: alternate
+            animation-iteration-count: infinite
+
+    .hero-content
+        position: relative
+        z-index: 1
         display: flex
         flex-direction: column
-        align-items: center
-        justify-content: center
+        align-items: flex-start
         width: 100%
-        padding: 60px 20px
-        text-align: center
+        max-width: _w_wide
+        margin: 0 auto
+        padding: rem(140px) _pad_x rem(100px)
+        text-align: left
+
+    .section-eyebrow
+        margin: 0 0 rem(20px)
+
+    .hero-title
+        max-width: rem(880px)
+        margin: 0 0 rem(24px)
+        color: #fff
+        font-size: rem(38px)
+        font-weight: 700
+        line-height: 1.06
+        letter-spacing: -1.2px
+        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.55)
+        +min(1)
+            font-size: rem(54px)
         +min(2)
-            margin-top: -20px
-        .contactButton
-            width: 100%
-            display: flex
-            flex-direction: column
-            align-items: center
-            justify-content: center
-            margin: 0 auto
-        h1
-            display: block
-            width: 100%
-            max-width: 850px
-            font-size: 1.6rem
-            font-weight: 700
+            font-size: rem(68px)
+
+    .hero-sub
+        max-width: rem(650px)
+        margin: 0 0 rem(38px)
+        color: _c_text_soft
+        font-size: rem(16px)
+        line-height: 1.8
+        strong
             color: #fff
-            text-align: center
-            margin: 10px auto 25px
-            text-transform: uppercase
-            letter-spacing: 2px
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8)
-            line-height: 1.2
-            +min(1)
-                font-size: 2.5rem
-            +min(2)
-                font-size: 3.2rem
-        div
-            display: flex
-            flex-direction: column
+        +min(1)
+            font-size: rem(18px)
+
+    .hero-actions
+        display: flex
+        flex-direction: column
+        align-items: stretch
+        gap: rem(14px)
+        width: 100%
+        max-width: rem(320px)
+        +min(1)
+            flex-direction: row
             align-items: center
-            justify-content: center
+            width: auto
+            max-width: none
+        .btn
             width: 100%
-            div
-                display: flex
-                flex-direction: column
-                align-items: center
-                justify-content: center
-                width: 100%
-                +min(1)
-                    flex-direction: row
-                    width: auto
-                a
-                    button(large, color: #213e9a)
-                    margin: rem(8px) 0
-                    min-width: 60%
-                    background: #213e9a
-                    color: #fff
-                    font-weight: 700
-                    border: none
-                    border-radius: 50px
-                    transition: all 0.3s ease
-                    &:hover
-                        background: #fff
-                        color: #213e9a
-                        transform: scale(1.05)
-                    +min(1)
-                        min-width: auto
-                        font-size: 1.2rem
-                        margin: 0
-                        padding: rem(16px) rem(40px)
-                    +min(2)
-                        font-size: 1.25rem
-                        padding: rem(17px) rem(45px)
-                    +min(3)
-                        font-size: 1.4rem
-                        padding: rem(20px) rem(50px)
+            +min(1)
+                width: auto
+
+    .hero-proof
+        max-width: rem(700px)
+        margin: rem(48px) 0 0
+        padding-top: rem(22px)
+        border-top: 1px solid rgba(255, 255, 255, 0.14)
+        color: rgba(238, 241, 250, 0.8)
+        font-size: rem(14px)
+        line-height: 1.8
+        letter-spacing: 0.2px
+
+    .hero-recruiter
+        margin: rem(16px) 0 0
+        color: _c_text_muted
+        font-size: rem(14px)
+        a
+            color: _c_accent_pale

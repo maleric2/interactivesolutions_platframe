@@ -1,0 +1,1542 @@
+﻿/*â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”  SITE  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”“
+â”ƒ Shared building blocks for the homepage and all subpages.          â”ƒ
+â”ƒ Phase 1 of the visual redesign: design tokens, three deliberate    â”ƒ
+â”ƒ section treatments, a real type hierarchy and component-scoped     â”ƒ
+â”ƒ classes instead of fragile DOM-nesting selectors.                  â”ƒ
+â”—â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  TOKENS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+// surfaces
+_c_page        = #080d1c
+_c_surface     = #0d1330
+_c_alt         = #111a3d
+_c_cinema      = #05080f
+
+// lines
+_c_line        = rgba(255, 255, 255, 0.09)
+_c_line_soft   = rgba(255, 255, 255, 0.06)
+_c_line_strong = rgba(255, 255, 255, 0.18)
+
+// accents
+_c_accent      = #21409A
+_c_accent_soft = #5f7cf0
+_c_accent_pale = #9db4ff
+_c_secondary   = #35c8bd
+_c_glow        = rgba(95, 124, 240, 0.35)
+
+// text
+_c_text        = #eef1fa
+_c_text_soft   = rgba(238, 241, 250, 0.84)
+_c_text_muted  = rgba(238, 241, 250, 0.68)
+
+// radii
+_r_sm   = rem(8px)
+_r_md   = rem(14px)
+_r_lg   = rem(20px)
+_r_pill = 999px
+
+// shadows
+_sh_1 = 0 10px 28px rgba(0, 0, 0, 0.28)
+_sh_2 = 0 26px 60px rgba(0, 0, 0, 0.45)
+
+// widths
+_w_wide    = 1280px
+_w_content = 1120px
+_w_prose   = 740px
+
+// rhythm
+_pad_x = clamp(1rem, 4vw, 4rem)
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  UTILITIES  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.visually-hidden
+    position: absolute
+    width: 1px
+    height: 1px
+    margin: -1px
+    padding: 0
+    overflow: hidden
+    clip: rect(0 0 0 0)
+    white-space: nowrap
+    border: 0
+
+.skip-link
+    position: absolute
+    top: -60px
+    left: 12px
+    z-index: 200
+    padding: 10px 18px
+    color: #fff
+    background: _c_accent
+    border-radius: 0 0 _r_sm _r_sm
+    font-weight: 700
+    text-decoration: none
+    transition: top 0.2s ease
+    &:focus
+        top: 0
+
+// the base reset removes outlines; restore a visible ring for keyboard users
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible
+    outline: 3px solid _c_accent_pale
+    outline-offset: 2px
+    border-radius: rem(4px)
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  PAGE SHELL  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.page
+    color: _c_text
+    background: _c_surface
+
+    h1, h2, h3, h4
+        color: #fff
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  HEADER / NAV  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.site-header
+    position: sticky
+    top: 0
+    z-index: 100
+    width: 100%
+    background: rgba(8, 13, 28, 0.82)
+    border-bottom: 1px solid _c_line_soft
+    backdrop-filter: blur(16px)
+
+.site-header-inner
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: rem(16px)
+    width: 100%
+    max-width: _w_wide
+    margin: 0 auto
+    padding: rem(14px) _pad_x
+
+.site-brand
+    display: flex
+    align-items: center
+    gap: rem(12px)
+    color: #fff
+    font-weight: 700
+    text-decoration: none
+    white-space: nowrap
+    &:link, &:visited
+        color: #fff
+
+.site-brand-logo
+    display: block
+    width: rem(32px)
+    height: rem(32px)
+    fill: #fff
+    filter: drop-shadow(0 4px 12px rgba(33, 64, 154, 0.6))
+
+.site-brand-text
+    font-size: rem(17px)
+    letter-spacing: 0.4px
+    +max(1)
+        display: none
+
+.site-nav
+    ul
+        display: flex
+        align-items: center
+        gap: rem(4px)
+        margin: 0
+        padding: 0
+        list-style: none
+    a
+        display: inline-flex
+        align-items: center
+        min-height: rem(44px)
+        padding: 0 rem(13px)
+        color: rgba(238, 241, 250, 0.76)
+        font-size: rem(14px)
+        font-weight: 600
+        text-decoration: none
+        border-radius: _r_sm
+        transition: color 0.15s ease, background 0.15s ease
+        &:link, &:visited
+            color: rgba(238, 241, 250, 0.76)
+        &:hover, &:focus, &:active
+            color: #fff
+            background: rgba(255, 255, 255, 0.07)
+        &[aria-current="page"]
+            color: #fff
+            background: rgba(255, 255, 255, 0.07)
+
+.site-header-cta
+    display: inline-flex
+    align-items: center
+    min-height: rem(44px)
+    padding: 0 rem(20px)
+    color: #fff
+    background: linear-gradient(135deg, #2c50c0, _c_accent)
+    border-radius: _r_pill
+    font-size: rem(14px)
+    font-weight: 700
+    text-decoration: none
+    white-space: nowrap
+    box-shadow: 0 8px 20px rgba(33, 64, 154, 0.4)
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease
+    &:link, &:visited
+        color: #fff
+    &:hover, &:focus, &:active
+        color: _c_accent
+        background: #fff
+        transform: translateY(-1px)
+
+.nav-toggle
+    position: absolute
+    width: 1px
+    height: 1px
+    opacity: 0
+    pointer-events: none
+
+.nav-toggle-label
+    display: none
+    width: rem(44px)
+    height: rem(44px)
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    border: 1px solid rgba(255, 255, 255, 0.24)
+    border-radius: _r_sm
+
+.nav-toggle-bars
+    position: relative
+    display: block
+    width: rem(20px)
+    height: 2px
+    background: #fff
+    &::before, &::after
+        position: absolute
+        left: 0
+        width: 100%
+        height: 2px
+        background: #fff
+        content: ''
+    &::before
+        top: -6px
+    &::after
+        top: 6px
+
+.nav-toggle:focus-visible ~ .nav-toggle-label
+    outline: 3px solid _c_accent_pale
+    outline-offset: 2px
+
++max(2)
+    .nav-toggle-label
+        display: inline-flex
+
+    .site-nav
+        display: none
+        position: absolute
+        top: 100%
+        left: 0
+        width: 100%
+        padding: rem(8px) _pad_x rem(18px)
+        background: rgba(8, 13, 28, 0.98)
+        border-bottom: 1px solid _c_line_soft
+        ul
+            flex-direction: column
+            align-items: stretch
+            gap: 0
+        a
+            display: flex
+            min-height: rem(48px)
+            padding: 0 rem(4px)
+            border-bottom: 1px solid _c_line_soft
+
+    .nav-toggle:checked ~ .site-nav
+        display: block
+
+    .site-header-cta
+        display: none
+
+// desktop: the menu toggle is not rendered, so remove it from the tab order
++min(2)
+    .nav-toggle
+        display: none
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  LAYOUT WIDTHS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.section-inner
+    position: relative
+    z-index: 1
+    width: 100%
+    max-width: _w_content
+    margin: 0 auto
+    padding: 0 _pad_x
+
+.section-inner--wide
+    max-width: _w_wide
+
+.section-inner--prose
+    max-width: _w_prose
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SECTION TREATMENTS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.page-section
+    position: relative
+    width: 100%
+    padding: rem(84px) 0
+    scroll-margin-top: rem(88px)
+    +min(2)
+        padding: rem(120px) 0
+
+// 1 Â· editorial â€” clean, spacious, minimal framing
+.page-section--editorial
+    background: _c_surface
+
+// 2 Â· showcase â€” elevated, blue-tinted surface for products / conversion
+.page-section--showcase
+    background: linear-gradient(180deg, _c_alt 0%, _c_surface 100%)
+    border-top: 1px solid _c_line_soft
+
+// 3 Â· cinematic â€” full-bleed dark field with depth
+.page-section--cinematic
+    overflow: hidden
+    background: _c_cinema
+    border-top: 1px solid _c_line_soft
+
+// soft radial lift used by cinematic / hero surfaces
+.has-glow
+    overflow: hidden
+    &::before
+        position: absolute
+        top: 0
+        left: 50%
+        width: 150%
+        height: 80%
+        transform: translateX(-50%)
+        background: radial-gradient(46% 60% at 50% 0%, _c_glow, rgba(95, 124, 240, 0) 70%)
+        pointer-events: none
+        content: ''
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  TYPE HIERARCHY  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.section-heading
+    margin: 0 0 rem(48px)
+    max-width: _w_prose
+
+.section-eyebrow
+    display: block
+    margin: 0 0 rem(12px)
+    color: _c_accent_pale
+    font-size: rem(12px)
+    font-weight: 700
+    letter-spacing: 3px
+    text-transform: uppercase
+
+.section-title
+    margin: 0 0 rem(16px)
+    color: #fff
+    font-size: rem(32px)
+    font-weight: 700
+    line-height: 1.12
+    letter-spacing: -0.6px
+    +min(2)
+        font-size: rem(50px)
+
+.section-lead
+    margin: 0
+    color: _c_text_soft
+    font-size: rem(17px)
+    line-height: 1.75
+    +min(2)
+        font-size: rem(18px)
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  BUTTONS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.btn
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    min-height: rem(50px)
+    padding: 0 rem(32px)
+    border-radius: _r_pill
+    font-size: rem(15px)
+    font-weight: 700
+    text-align: center
+    text-decoration: none
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease
+
+.btn-primary
+    color: #fff
+    background: linear-gradient(135deg, #2c50c0, _c_accent)
+    box-shadow: 0 14px 30px rgba(33, 64, 154, 0.45)
+    &:link, &:visited
+        color: #fff
+    &:hover, &:focus, &:active
+        color: _c_accent
+        background: #fff
+        transform: translateY(-3px)
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.45)
+
+.btn-secondary
+    color: #fff
+    background: transparent
+    border: 2px solid rgba(255, 255, 255, 0.5)
+    &:link, &:visited
+        color: #fff
+    &:hover, &:focus, &:active
+        color: _c_accent
+        background: #fff
+        transform: translateY(-3px)
+
+.btn-ghost
+    color: _c_accent_pale
+    background: rgba(33, 64, 154, 0.22)
+    border: 1px solid rgba(157, 180, 255, 0.32)
+    &:link, &:visited
+        color: _c_accent_pale
+    &:hover, &:focus, &:active
+        color: #fff
+        background: rgba(33, 64, 154, 0.45)
+
+.btn:active
+    transform: translateY(-1px) scale(0.99)
+
+.section-actions
+    display: flex
+    flex-wrap: wrap
+    gap: rem(14px)
+    margin: rem(40px) 0 rem(44px)
+
+// when the action row closes a section, the section padding already provides
+// the exit space; the extra margin would double it
+.section-actions:last-child
+    margin-bottom: 0
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SERVICE CARDS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.card-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(22px)
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+
+.service-card
+    display: flex
+    flex-direction: column
+    padding: rem(32px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.02))
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease
+    &:hover
+        transform: translateY(-4px)
+        border-color: rgba(157, 180, 255, 0.32)
+        box-shadow: _sh_1
+
+.card-title
+    margin: 0 0 rem(12px)
+    color: #fff
+    font-size: rem(21px)
+    font-weight: 700
+    line-height: 1.28
+
+.card-text
+    margin: 0 0 rem(20px)
+    color: _c_text_soft
+    font-size: rem(15px)
+    line-height: 1.72
+
+.tag-list
+    display: flex
+    flex-wrap: wrap
+    gap: rem(6px) rem(14px)
+    margin: auto 0 0
+    padding: 0
+    list-style: none
+
+// chips are metadata, not decoration: small and quiet
+.tag
+    color: _c_text_muted
+    font-size: rem(12.5px)
+    font-weight: 600
+    letter-spacing: 0.2px
+    &::before
+        margin-right: rem(6px)
+        color: rgba(157, 180, 255, 0.55)
+        content: '\00B7'
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  PROJECT CARDS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.work-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(24px)
+    +min(2)
+        grid-template-columns: repeat(3, 1fr)
+
+.project-card
+    display: flex
+    flex-direction: column
+    overflow: hidden
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease
+    &:hover
+        transform: translateY(-4px)
+        border-color: rgba(157, 180, 255, 0.32)
+        box-shadow: _sh_1
+
+.card-body
+    display: flex
+    flex: 1
+    flex-direction: column
+    padding: rem(26px)
+
+.card-kicker
+    margin: 0 0 rem(8px)
+    color: _c_accent_pale
+    font-size: rem(12.5px)
+    font-weight: 700
+    letter-spacing: 1.5px
+    text-transform: uppercase
+
+.card-link
+    margin-top: rem(18px)
+    color: #fff
+    font-size: rem(14px)
+    font-weight: 700
+    text-decoration: underline
+    text-underline-offset: 3px
+    &:link, &:visited
+        color: #fff
+    &:hover, &:focus, &:active
+        color: _c_accent_pale
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  TOOLS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.tools-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(24px)
+    +min(2)
+        grid-template-columns: 3fr 2fr
+
+.tool-card
+    display: flex
+    flex-direction: column
+    padding: rem(34px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease
+    &:hover
+        transform: translateY(-4px)
+        border-color: rgba(157, 180, 255, 0.32)
+        box-shadow: _sh_1
+
+.tool-badge
+    align-self: flex-start
+    margin: 0 0 rem(16px)
+    padding: rem(5px) rem(13px)
+    color: #c8f7d0
+    background: rgba(38, 128, 62, 0.3)
+    border: 1px solid rgba(120, 220, 150, 0.32)
+    border-radius: _r_pill
+    font-size: rem(11.5px)
+    font-weight: 700
+    letter-spacing: 1px
+    text-transform: uppercase
+
+.tool-badge-soon
+    color: #ffe0ad
+    background: rgba(150, 105, 20, 0.26)
+    border-color: rgba(240, 190, 100, 0.3)
+
+// previous / next navigation closing a case study
+.case-nav
+    display: flex
+    justify-content: space-between
+    gap: rem(16px)
+    margin-top: rem(44px)
+    padding-top: rem(24px)
+    border-top: 1px solid _c_line_soft
+    .card-link
+        margin-top: 0
+
+.case-nav--next
+    justify-content: flex-end
+
+.tool-actions
+    display: flex
+    flex-wrap: wrap
+    gap: rem(12px)
+    margin: auto 0 0
+    padding-top: rem(24px)
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  ABOUT  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.about-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(40px)
+    +min(2)
+        grid-template-columns: 1fr 1.5fr
+
+.about-photo
+    width: 100%
+    max-width: rem(420px)
+    margin: 0 0 rem(26px)
+    overflow: hidden
+    border-radius: _r_lg
+    border: 1px solid _c_line
+    box-shadow: _sh_2
+    img
+        display: block
+        width: 100%
+        height: auto
+
+.about-body
+    p
+        max-width: 65ch
+        margin: 0 0 rem(18px)
+        color: _c_text_soft
+        font-size: rem(16px)
+        line-height: 1.85
+
+.proof-list
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(14px) rem(24px)
+    margin: rem(30px) 0 0
+    padding: 0
+    list-style: none
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+
+.proof-item
+    position: relative
+    margin: 0
+    padding: 0 0 0 rem(26px)
+    color: _c_text_soft
+    font-size: rem(15px)
+    line-height: 1.6
+    &::before
+        position: absolute
+        left: 0
+        top: rem(2px)
+        width: rem(14px)
+        height: rem(8px)
+        border-left: 2px solid _c_secondary
+        border-bottom: 2px solid _c_secondary
+        transform: rotate(-45deg)
+        content: ''
+
+.availability
+    padding: rem(26px)
+    background: linear-gradient(180deg, rgba(33, 64, 154, 0.3), rgba(33, 64, 154, 0.1))
+    border: 1px solid rgba(157, 180, 255, 0.24)
+    border-radius: _r_lg
+    h3
+        margin: 0 0 rem(14px)
+        font-size: rem(17px)
+        line-height: 1.42
+    ul
+        margin: 0
+        padding: 0
+        list-style: none
+        li
+            margin: 0 0 rem(9px)
+            padding-left: rem(18px)
+            color: _c_text_soft
+            font-size: rem(15px)
+            line-height: 1.62
+            &::before
+                margin-left: rem(-18px)
+                margin-right: rem(8px)
+                color: _c_accent_pale
+                content: '\2013'
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  PRICING / ENGAGEMENT PATHS  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.pricing-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(22px)
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+    +min(2)
+        grid-template-columns: repeat(3, 1fr)
+
+.price-path
+    display: flex
+    flex-direction: column
+    padding: rem(30px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    transition: transform 0.25s ease, border-color 0.25s ease
+    &:hover
+        transform: translateY(-4px)
+        border-color: rgba(157, 180, 255, 0.32)
+
+.price-path-title
+    margin: 0 0 rem(10px)
+    color: #fff
+    font-size: rem(20px)
+    font-weight: 700
+    line-height: 1.3
+
+.price-path-lead
+    margin: 0 0 rem(20px)
+    color: _c_text_soft
+    font-size: rem(14.5px)
+    line-height: 1.65
+
+.price-path-items
+    margin: 0
+    padding: 0
+    list-style: none
+
+.price-path-item
+    display: flex
+    flex-direction: column
+    gap: rem(4px)
+    padding: rem(14px) 0
+    border-top: 1px solid _c_line_soft
+    &:last-child
+        border-bottom: 1px solid _c_line_soft
+
+.price-path-label
+    color: _c_text_soft
+    font-size: rem(14.5px)
+    line-height: 1.5
+
+.price-path-value
+    color: _c_accent_pale
+    font-size: rem(18px)
+    font-weight: 700
+
+.pricing-note
+    margin: rem(30px) 0 0
+    max-width: _w_prose
+    color: _c_text_muted
+    font-size: rem(14px)
+    line-height: 1.75
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  CALL OUT / CTA BAND  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.callout
+    margin-top: rem(32px)
+    padding: rem(26px)
+    background: rgba(255, 255, 255, 0.045)
+    border-left: 3px solid _c_accent
+    border-radius: 0 _r_md _r_md 0
+
+.callout-title
+    margin: 0 0 rem(8px)
+    font-size: rem(16px)
+
+.callout-text
+    margin: 0
+    color: _c_text_soft
+    font-size: rem(15px)
+    line-height: 1.72
+
+.callout--honest
+    background: rgba(53, 200, 189, 0.08)
+    border-left-color: _c_secondary
+    .callout-title
+        color: _c_secondary
+
+.callout--caution
+    background: rgba(240, 190, 100, 0.08)
+    border-left-color: #f0be64
+    .callout-title
+        color: #ffe0ad
+
+.cta-band
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    gap: rem(20px)
+    padding: rem(36px)
+    background: linear-gradient(135deg, rgba(33, 64, 154, 0.42), rgba(33, 64, 154, 0.12))
+    border: 1px solid rgba(157, 180, 255, 0.2)
+    border-radius: _r_lg
+    +min(1)
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+
+.cta-band-lead
+    margin: 0
+    color: #fff
+    font-size: rem(20px)
+    font-weight: 600
+    line-height: 1.4
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SUBPAGE HERO / PROSE  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.page-hero
+    position: relative
+    width: 100%
+    padding: rem(72px) 0 rem(52px)
+    overflow: hidden
+    background: _c_cinema
+    &::before
+        position: absolute
+        top: 0
+        left: 50%
+        width: 140%
+        height: 130%
+        transform: translateX(-50%)
+        background: radial-gradient(42% 58% at 50% 0%, rgba(33, 64, 154, 0.5), rgba(33, 64, 154, 0) 70%)
+        pointer-events: none
+        content: ''
+    +min(2)
+        padding: rem(112px) 0 rem(72px)
+
+.page-hero-inner
+    position: relative
+    z-index: 1
+    width: 100%
+    max-width: _w_wide
+    margin: 0 auto
+    padding: 0 _pad_x
+    h1
+        max-width: rem(900px)
+        margin: 0 0 rem(18px)
+        color: #fff
+        font-size: rem(34px)
+        font-weight: 700
+        line-height: 1.12
+        letter-spacing: -0.8px
+        +min(2)
+            font-size: rem(54px)
+    p
+        max-width: _w_prose
+        margin: 0
+        color: _c_text_soft
+        font-size: rem(17px)
+        line-height: 1.75
+
+.breadcrumbs
+    display: flex
+    flex-wrap: wrap
+    gap: 0
+    margin: 0 0 rem(22px)
+    padding: 0
+    list-style: none
+    li
+        color: _c_text_muted
+        font-size: rem(13px)
+        &::after
+            margin: 0 rem(9px)
+            content: '/'
+        &:last-child
+            &::after
+                content: ''
+    a
+        color: _c_accent_pale
+        text-decoration: none
+        &:hover, &:focus, &:active
+            text-decoration: underline
+
+.prose
+    max-width: _w_prose
+    h2
+        margin: rem(44px) 0 rem(14px)
+        color: #fff
+        font-size: rem(26px)
+        font-weight: 700
+    h3
+        margin: rem(32px) 0 rem(10px)
+        color: #fff
+        font-size: rem(19px)
+        font-weight: 700
+    p
+        margin: 0 0 rem(16px)
+        color: _c_text_soft
+        font-size: rem(16px)
+        line-height: 1.85
+    ul
+        margin: 0 0 rem(18px)
+        padding: 0
+        list-style: none
+        li
+            position: relative
+            margin: 0 0 rem(10px)
+            padding-left: rem(24px)
+            color: _c_text_soft
+            font-size: rem(16px)
+            line-height: 1.75
+            &::before
+                position: absolute
+                left: 0
+                color: _c_accent_pale
+                content: '\2013'
+    strong
+        color: #fff
+    a
+        color: _c_accent_pale
+
+.career-timeline
+    position: relative
+    margin: 0
+    padding-left: rem(34px)
+    &::before
+        position: absolute
+        top: rem(8px)
+        bottom: rem(12px)
+        left: rem(7px)
+        width: 2px
+        background: _c_line
+        content: ''
+
+.career-timeline-item
+    position: relative
+    padding-bottom: rem(30px)
+    &:last-of-type
+        padding-bottom: 0
+    &::before
+        position: absolute
+        top: rem(4px)
+        left: rem(-33px)
+        width: rem(14px)
+        height: rem(14px)
+        background: _c_accent
+        border: 3px solid _c_surface
+        border-radius: _r_pill
+        box-shadow: 0 0 0 1px rgba(157, 180, 255, 0.32)
+        content: ''
+
+.career-timeline p.career-timeline-period
+    margin: 0 0 rem(4px)
+    color: _c_accent_pale
+    font-size: rem(12px)
+    font-weight: 700
+    letter-spacing: 1.5px
+    text-transform: uppercase
+
+.career-timeline-role
+    margin: 0 0 rem(8px) !important
+    color: _c_accent_pale !important
+    font-size: rem(19px)
+    line-height: 1.35
+
+.career-timeline-item p
+    margin: 0
+
+.career-timeline-note
+    margin: rem(24px) 0 0 !important
+    padding-top: rem(20px)
+    border-top: 1px solid _c_line_soft
+    color: _c_text_muted !important
+    font-size: rem(14px) !important
+    line-height: 1.72 !important
+
+.case-meta
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(18px)
+    margin: 0 0 rem(44px)
+    padding: rem(28px)
+    background: rgba(255, 255, 255, 0.045)
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+    +min(2)
+        grid-template-columns: repeat(4, 1fr)
+
+.case-meta-term
+    margin: 0 0 rem(4px)
+    color: _c_accent_pale
+    font-size: rem(12px)
+    font-weight: 700
+    letter-spacing: 1.5px
+    text-transform: uppercase
+
+.case-meta-value
+    margin: 0
+    color: #fff
+    font-size: rem(15px)
+    line-height: 1.5
+
+.case-figure
+    width: 100%
+    margin: 0 0 rem(36px)
+    overflow: hidden
+    border-radius: _r_lg
+    img
+        display: block
+        width: 100%
+        height: auto
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  CONTACT  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.contact-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(44px)
+    +min(2)
+        grid-template-columns: 3fr 2fr
+
+.contact-panel
+    padding: rem(34px)
+    background: rgba(8, 13, 28, 0.72)
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    box-shadow: _sh_2
+    +max(1)
+        padding: rem(22px)
+
+.contact-form
+    // the panel provides the surface; the form itself is unstyled chrome
+    display: block
+
+.contact-aside
+    p
+        margin: 0 0 rem(16px)
+        color: _c_text_soft
+        font-size: rem(15px)
+        line-height: 1.78
+    a
+        color: _c_accent_pale
+
+.contact-aside-title
+    margin: 0 0 rem(16px)
+    color: #fff
+    font-size: rem(19px)
+    font-weight: 700
+    line-height: 1.35
+
+.contact-expectations
+    margin: 0 0 rem(24px)
+    padding: 0
+    list-style: none
+    li
+        position: relative
+        margin: 0 0 rem(12px)
+        padding-left: rem(24px)
+        color: _c_text_soft
+        font-size: rem(15px)
+        line-height: 1.65
+        &::before
+            position: absolute
+            left: 0
+            top: rem(8px)
+            width: rem(10px)
+            height: rem(5px)
+            border-left: 2px solid _c_secondary
+            border-bottom: 2px solid _c_secondary
+            transform: rotate(-45deg)
+            content: ''
+
+.contact-links
+    margin: rem(22px) 0 0
+    padding: 0
+    list-style: none
+    li
+        margin: 0 0 rem(10px)
+
+.field
+    margin: 0 0 rem(18px)
+    label
+        display: block
+        margin: 0 0 rem(8px)
+        color: #fff
+        font-size: rem(14px)
+        font-weight: 600
+    input, select, textarea
+        width: 100%
+        min-height: rem(48px)
+        padding: rem(13px) rem(15px)
+        color: #fff
+        background: rgba(255, 255, 255, 0.04)
+        border: 1px solid _c_line_strong
+        border-radius: _r_sm
+        font-family: inherit
+        font-size: rem(15px)
+        &::placeholder
+            color: rgba(238, 241, 250, 0.42)
+        &:focus
+            outline: 2px solid _c_accent_pale
+            outline-offset: 1px
+    select
+        appearance: none
+        padding-right: rem(44px)
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%239db4ff' stroke-width='2' d='M1 1l5 5 5-5'/%3E%3C/svg%3E")
+        background-repeat: no-repeat
+        background-position: right rem(16px) center
+        background-size: rem(12px) rem(8px)
+    textarea
+        min-height: rem(120px)
+        resize: vertical
+
+.field-row
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(18px)
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+
+.field-consent
+    display: flex
+    align-items: flex-start
+    gap: rem(10px)
+    input
+        width: auto
+        min-height: 0
+        margin-top: rem(4px)
+    label
+        margin: 0
+        color: _c_text_soft
+        font-size: rem(14px)
+        font-weight: 400
+        line-height: 1.6
+    a
+        color: _c_accent_pale
+        text-decoration: underline
+        text-underline-offset: 2px
+
+.form-note
+    margin: rem(16px) 0 0
+    color: _c_text_muted
+    font-size: rem(13px)
+    line-height: 1.72
+
+.hp
+    position: absolute
+    width: 1px
+    height: 1px
+    overflow: hidden
+    clip: rect(0 0 0 0)
+    white-space: nowrap
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  SUCCESS PANEL  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+.success-panel
+    max-width: rem(640px)
+    margin: 0 auto
+    padding: rem(48px) rem(36px)
+    text-align: center
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02))
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    h1
+        margin: 0 0 rem(14px)
+        font-size: rem(32px)
+    p
+        margin: 0 0 rem(26px)
+        color: _c_text_soft
+        font-size: rem(16px)
+        line-height: 1.78
+/*?????????????  MOTION  ??????????????????????????????????????????*/
+
+// slow, non-essential hero depth; fully disabled for reduced-motion users
+@keyframes hero-drift
+    from
+        transform: scale(1.04) translate3d(0, 0, 0)
+    to
+        transform: scale(1.12) translate3d(-1.5%, -1%, 0)
+
+// slow bob for the hero's decorative particle field
+@keyframes hero-float
+    from
+        transform: translate3d(0, 16px, 0)
+    to
+        transform: translate3d(0, -26px, 0)
+
+// ambient glow pulse; opacity only, so it never fights the JS parallax transform
+@keyframes hero-breathe
+    from
+        opacity: 0.75
+    to
+        opacity: 1
+
+@media (prefers-reduced-motion: reduce)
+    .hero-bg
+        animation: none !important
+        transform: scale(1.04) !important
+    .hero-glow
+        animation: none !important
+    .hero-particles
+        display: none !important
+    .btn,
+    .service-card,
+    .project-card,
+    .tool-card,
+    .price-path,
+    .testimonial
+        transition: none
+    .btn:hover, .btn:focus, .btn:active,
+    .service-card:hover,
+    .project-card:hover,
+    .tool-card:hover,
+    .price-path:hover,
+    .testimonial:hover
+        transform: none
+/*?????????????  SERVICE CARD DETAIL  ??????????????????????????????*/
+
+.example-list
+    margin: rem(18px) 0 0
+    padding: 0
+    list-style: none
+
+.example-item
+    position: relative
+    margin: 0 0 rem(8px)
+    padding-left: rem(20px)
+    color: _c_text_soft
+    font-size: rem(14.5px)
+    line-height: 1.6
+    &::before
+        position: absolute
+        left: 0
+        top: rem(9px)
+        width: rem(9px)
+        height: rem(2px)
+        background: _c_accent_soft
+        content: ''
+
+.card-proof
+    margin: auto 0 0
+    padding-top: rem(16px)
+    border-top: 1px solid _c_line_soft
+    color: _c_accent_pale
+    font-size: rem(13px)
+    font-weight: 600
+    letter-spacing: 0.3px
+
+/*?????????????  PROJECT MEDIA  ????????????????????????????????????*/
+
+.project-media
+    position: relative
+    aspect-ratio: 16 / 10
+    overflow: hidden
+    background: _c_alt
+    img
+        display: block
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.project-card--featured
+    +min(1)
+        grid-column: 1 / -1
+    +min(2)
+        display: grid
+        grid-template-columns: 1.35fr 1fr
+        .project-media
+            aspect-ratio: auto
+            height: 100%
+            min-height: rem(400px)
+        .card-body
+            justify-content: center
+            padding: rem(38px)
+
+/*?????????????  PROJECT LIST (Work page)  ?????????????????????????*/
+
+.project-list
+    margin: 0
+    padding: 0
+    list-style: none
+
+.project-row
+    display: flex
+    flex-direction: column
+    gap: rem(8px)
+    padding: rem(26px) 0
+    border-top: 1px solid _c_line_soft
+    &:last-child
+        border-bottom: 1px solid _c_line_soft
+    +min(1)
+        flex-direction: row
+        align-items: flex-start
+        justify-content: space-between
+        gap: rem(36px)
+
+.project-row-main
+    +min(1)
+        flex: 1 1 48%
+
+.project-row-title
+    margin: 0 0 rem(6px)
+    color: #fff
+    font-size: rem(17px)
+    font-weight: 700
+    line-height: 1.42
+    a
+        color: #fff
+        text-decoration: underline
+        text-underline-offset: 3px
+        &:link, &:visited
+            color: #fff
+        &:hover, &:focus, &:active
+            color: _c_accent_pale
+
+.project-row-meta
+    margin: 0
+    color: _c_accent_pale
+    font-size: rem(13px)
+    font-weight: 600
+    letter-spacing: 0.3px
+
+.project-row-role
+    margin: 0
+    color: _c_text_soft
+    font-size: rem(14.5px)
+    line-height: 1.68
+    +min(1)
+        flex: 1 1 32%
+        text-align: right
+
+/*?????????????  STUDIO LOGOS  ?????????????????????????????????????*/
+
+.studio-strip
+    display: flex
+    flex-wrap: wrap
+    align-items: stretch
+    gap: rem(16px)
+
+.logo-chip
+    display: flex
+    align-items: center
+    justify-content: center
+    width: rem(176px)
+    height: rem(72px)
+    margin: 0
+    padding: rem(14px)
+    background: rgba(255, 255, 255, 0.05)
+    border: 1px solid _c_line_soft
+    border-radius: _r_md
+    img
+        display: block
+        width: auto
+        height: auto
+        max-width: 100%
+        max-height: 100%
+        object-fit: contain
+/*?????????????  CASE FIGURES / WORK STRIP  ????????????????????????*/
+
+.case-figure--narrow
+    max-width: rem(440px)
+
+.case-figure--wide
+    max-width: _w_content
+
+.case-figure figcaption
+    margin-top: rem(12px)
+    color: _c_text_muted
+    font-size: rem(13px)
+    line-height: 1.6
+
+.work-strip
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: rem(14px)
+    margin: rem(28px) 0 0
+    +min(2)
+        grid-template-columns: repeat(4, 1fr)
+    figure
+        margin: 0
+        overflow: hidden
+        border: 1px solid _c_line_soft
+        border-radius: _r_md
+        background: _c_alt
+        img
+            display: block
+            width: 100%
+            height: auto
+/*?????????????  TOOL MEDIA  ???????????????????????????????????????*/
+
+.tool-card--featured
+    padding: 0
+    overflow: hidden
+
+.tool-media
+    position: relative
+    aspect-ratio: 16 / 9
+    overflow: hidden
+    background: _c_alt
+    border-bottom: 1px solid _c_line_soft
+    img
+        display: block
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.tool-body
+    display: flex
+    flex: 1
+    flex-direction: column
+    padding: rem(30px)
+
+.tool-proof
+    margin: rem(24px) 0 0
+    padding-top: rem(22px)
+    border-top: 1px solid _c_line_soft
+    img
+        display: block
+        width: 100%
+        height: auto
+        border: 1px solid _c_line_soft
+        border-radius: _r_sm
+    figcaption
+        margin-top: rem(10px)
+        color: _c_text_muted
+        font-size: rem(13px)
+        line-height: 1.6
+
+/*â”â”â”â”â”â”â”â”â”â”â”â”â”  CINEMATIC CLOSE  â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”*/
+
+// NOTE: deliberately a class, not `#contact`. The contact page's <body> carries
+// id="contact", so an ID selector here also padded the whole page body.
+.section-close
+    padding: rem(104px) 0 rem(96px)
+    +min(2)
+        padding: rem(156px) 0 rem(140px)
+    &::after
+        position: absolute
+        inset: 0
+        background: radial-gradient(80% 60% at 50% 100%, rgba(95, 124, 240, 0.18), rgba(95, 124, 240, 0) 70%)
+        pointer-events: none
+        content: ''
+/*?????????????  IN-PAGE SECTION LABEL  ????????????????????????????*/
+
+// quieter than .section-title so it can sit directly under a page h1
+.section-subtitle
+    margin: 0 0 rem(22px)
+    color: #fff
+    font-size: rem(23px)
+    font-weight: 700
+    line-height: 1.32
+.project-row-thumb
+    flex: 0 0 auto
+    width: rem(140px)
+    height: rem(140px)
+    margin: 0
+    overflow: hidden
+    background: _c_alt
+    border: 1px solid _c_line_soft
+    border-radius: _r_sm
+    img
+        display: block
+        width: 100%
+        height: 100%
+        object-fit: cover
+.tool-video
+    display: block
+    width: 100%
+    height: auto
+    background: #05080f
+    border: 1px solid _c_line_soft
+    border-radius: _r_lg
+/*━━━━━━━━━━━━━  RECOMMENDATIONS  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.testimonial-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(22px)
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+    +min(2)
+        grid-template-columns: repeat(3, 1fr)
+
+.testimonial
+    display: flex
+    flex-direction: column
+    margin: 0
+    padding: rem(30px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02))
+    border: 1px solid _c_line
+    border-radius: _r_lg
+    transition: transform 0.25s ease, border-color 0.25s ease
+    &:hover
+        transform: translateY(-4px)
+        border-color: rgba(157, 180, 255, 0.32)
+
+.testimonial-quote
+    margin: 0 0 rem(22px)
+    padding: 0 0 0 rem(18px)
+    border: 0
+    border-left: 2px solid rgba(157, 180, 255, 0.45)
+    p
+        margin: 0
+        color: _c_text_soft
+        font-size: rem(15.5px)
+        font-style: normal
+        line-height: 1.75
+
+.testimonial-meta
+    display: flex
+    flex-direction: column
+    gap: rem(3px)
+    margin: auto 0 0
+    padding-top: rem(18px)
+    border-top: 1px solid _c_line_soft
+
+.testimonial-name
+    color: #fff
+    font-size: rem(15px)
+    font-weight: 700
+
+.testimonial-role
+    color: _c_accent_pale
+    font-size: rem(13.5px)
+    line-height: 1.45
+
+.testimonial-context
+    color: _c_text_muted
+    font-size: rem(12.5px)
+    line-height: 1.45
+/*━━━━━━━━━━━━━  CONSENT BANNER  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+.consent-banner
+    position: fixed
+    left: rem(16px)
+    right: rem(16px)
+    bottom: rem(16px)
+    z-index: 150
+    display: flex
+    flex-direction: column
+    gap: rem(16px)
+    max-width: rem(680px)
+    margin: 0 auto
+    padding: rem(20px) rem(22px)
+    background: rgba(8, 13, 28, 0.97)
+    border: 1px solid _c_line_strong
+    border-radius: _r_md
+    box-shadow: _sh_2
+    +min(1)
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
+    &[hidden]
+        display: none
+
+.consent-text
+    margin: 0
+    color: _c_text_soft
+    font-size: rem(13.5px)
+    line-height: 1.65
+    a
+        color: _c_accent_pale
+
+.consent-actions
+    display: flex
+    flex: 0 0 auto
+    gap: rem(10px)
+    .btn
+        min-height: rem(42px)
+        padding: 0 rem(20px)
+        font-size: rem(14px)
+// featured single recommendation on the homepage: keep it to a readable measure
+.testimonial-featured
+    max-width: _w_content

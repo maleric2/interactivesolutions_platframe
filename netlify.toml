@@ -1,0 +1,19 @@
+# Netlify configuration for interactivesolutions.hr
+# Exact, declarative deploy settings. The Netlify dashboard should mirror these;
+# if dashboard values differ, this file takes precedence for the build itself.
+
+[build]
+  command = "npm run build"
+  publish = "prd"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Preview deploys must never be indexed: Netlify headers cannot be scoped by
+# context directly, so per the documented workaround the preview build commands
+# copy a noindex _headers file into the publish directory after the build.
+[context.deploy-preview]
+  command = "npm run build && cp netlify-preview-headers/_headers prd/_headers"
+
+[context.branch-deploy]
+  command = "npm run build && cp netlify-preview-headers/_headers prd/_headers"
