@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [master, visual-redesign, preview/**]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    name: Build and lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Production build
+        run: npm run build
+
+      - name: Lint
+        run: npm test
+
+      - name: Verify build output
+        run: |
+          test -f prd/index.html || (echo "missing prd/index.html" && exit 1)
+          test -f prd/contact/index.html || (echo "missing prd/contact/index.html" && exit 1)
+          test -f prd/robots.txt || (echo "missing prd/robots.txt" && exit 1)
+          test -f prd/sitemap.xml || (echo "missing prd/sitemap.xml" && exit 1)
+          echo "build output OK"
