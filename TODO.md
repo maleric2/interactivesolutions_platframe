@@ -21,6 +21,10 @@ Tracked work that is not yet done. Newest context first.
 - **Visual review follow-up** - tool-card bodies now fill their equal-height grid
   cells so actions align consistently; buttons have a pressed state; card/button
   motion is disabled under `prefers-reduced-motion`.
+- **Career timeline corrected** - `/about/` now follows the owner-confirmed path:
+  Nanobit, Exordium Games, Async Labs, parallel Cybertale Studio, Interactive
+  Solutions obrt with Dubit/Cybertale work, Room 8 Studio, then Algebra and Light
+  Film / Blue Raven after the 2023 layoffs.
 
 
 ## P0 — blockers before the site goes live
