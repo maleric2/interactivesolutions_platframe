@@ -730,6 +730,18 @@ summary:focus-visible,
     font-size: rem(15px)
     line-height: 1.72
 
+.callout--honest
+    background: rgba(53, 200, 189, 0.08)
+    border-left-color: _c_secondary
+    .callout-title
+        color: _c_secondary
+
+.callout--caution
+    background: rgba(240, 190, 100, 0.08)
+    border-left-color: #f0be64
+    .callout-title
+        color: #ffe0ad
+
 .cta-band
     display: flex
     flex-direction: column
@@ -855,6 +867,53 @@ summary:focus-visible,
         color: #fff
     a
         color: _c_accent_pale
+
+.career-timeline
+    position: relative
+    margin: 0
+    padding-left: rem(34px)
+    &::before
+        position: absolute
+        top: rem(8px)
+        bottom: rem(12px)
+        left: rem(7px)
+        width: 2px
+        background: _c_line
+        content: ''
+
+.career-timeline-item
+    position: relative
+    padding-bottom: rem(30px)
+    &:last-of-type
+        padding-bottom: 0
+    &::before
+        position: absolute
+        top: rem(4px)
+        left: rem(-33px)
+        width: rem(14px)
+        height: rem(14px)
+        background: _c_accent
+        border: 3px solid _c_surface
+        border-radius: _r_pill
+        box-shadow: 0 0 0 1px rgba(157, 180, 255, 0.32)
+        content: ''
+
+.career-timeline-role
+    margin: 0 0 rem(8px) !important
+    color: _c_accent_pale !important
+    font-size: rem(19px)
+    line-height: 1.35
+
+.career-timeline-item p
+    margin: 0
+
+.career-timeline-note
+    margin: rem(24px) 0 0 !important
+    padding-top: rem(20px)
+    border-top: 1px solid _c_line_soft
+    color: _c_text_muted !important
+    font-size: rem(14px) !important
+    line-height: 1.72 !important
 
 .case-meta
     display: grid

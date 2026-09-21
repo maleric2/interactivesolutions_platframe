@@ -25,6 +25,10 @@ Tracked work that is not yet done. Newest context first.
   Nanobit, Exordium Games, Async Labs, parallel Cybertale Studio, Interactive
   Solutions obrt with Dubit/Cybertale work, Room 8 Studio, then Algebra and Light
   Film / Blue Raven after the 2023 layoffs.
+- **Cross-page review follow-up** - renamed the My Dubrovnik route to
+  `/work/my-dubrovnik/` with a legacy redirect, standardized all case-study
+  metadata bars, added career timeline markers, and highlighted honest/cautionary
+  product notes without duplicating the existing callout component.
 
 
 ## P0 — blockers before the site goes live
