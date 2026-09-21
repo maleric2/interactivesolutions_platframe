@@ -48,8 +48,16 @@ Tracked work that is not yet done. Newest context first.
   case studies have prev/next navigation and timeline roles link to them;
   structured data is page-appropriate (Person, Service, CollectionPage,
   Article, SoftwareApplication); preview deploys send X-Robots-Tag noindex;
-  muted-text contrast raised. Owner-side remains: verify Dubit artwork
-  source/permission, disable the Netlify preview overlay before launch.
+  muted-text contrast raised. Owner-side remains: disable the Netlify preview
+  overlay before launch.
+- **Dubit artwork cleared** - owner confirmed the BestLife / Hooked on Phonics /
+  Hooked on Spelling visuals are public and OK to use; no neutral-cover fallback
+  needed.
+- **Favicon rebuilt for tab visibility** - the old mark was dark ink on
+  transparency (invisible on dark browser themes and on iOS, which fills
+  transparency with black). The set is now a white mark on a solid navy tile,
+  with an SVG-first link and PNG/ICO fallbacks; header brand text raised
+  15px to 17px.
 
 
 ## P0 — blockers before the site goes live
