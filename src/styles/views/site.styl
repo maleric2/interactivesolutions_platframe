@@ -28,7 +28,7 @@ _c_glow        = rgba(95, 124, 240, 0.35)
 // text
 _c_text        = #eef1fa
 _c_text_soft   = rgba(238, 241, 250, 0.84)
-_c_text_muted  = rgba(238, 241, 250, 0.6)
+_c_text_muted  = rgba(238, 241, 250, 0.68)
 
 // radii
 _r_sm   = rem(8px)
@@ -165,6 +165,9 @@ summary:focus-visible,
         &:link, &:visited
             color: rgba(238, 241, 250, 0.76)
         &:hover, &:focus, &:active
+            color: #fff
+            background: rgba(255, 255, 255, 0.07)
+        &[aria-current="page"]
             color: #fff
             background: rgba(255, 255, 255, 0.07)
 
@@ -553,6 +556,20 @@ summary:focus-visible,
     color: #ffe0ad
     background: rgba(150, 105, 20, 0.26)
     border-color: rgba(240, 190, 100, 0.3)
+
+// previous / next navigation closing a case study
+.case-nav
+    display: flex
+    justify-content: space-between
+    gap: rem(16px)
+    margin-top: rem(44px)
+    padding-top: rem(24px)
+    border-top: 1px solid _c_line_soft
+    .card-link
+        margin-top: 0
+
+.case-nav--next
+    justify-content: flex-end
 
 .tool-actions
     display: flex

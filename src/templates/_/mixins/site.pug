@@ -1,10 +1,16 @@
 //- site-wide building blocks shared by every page
 
 mixin site-header({ home })
+    //- `home` is kept for call compatibility. Since the Sol review, global nav
+    //- targets are the full index pages on every page (including the homepage);
+    //- homepage sections keep their own local CTAs. Active item derives from bodyId.
+    -
+        const _navActiveMap = {about: 'about', work: 'work', 'case-light-film': 'work', 'case-hooked-on-math': 'work', 'case-my-dubrovnik': 'work', services: 'services', tools: 'tools', 'mesh-merge': 'tools', 'easy-house': 'tools', contact: 'contact', 'contact-success': 'contact'}
+        const _navActive = (typeof bodyId !== 'undefined' && _navActiveMap[bodyId]) ? _navActiveMap[bodyId] : null
     header(class="site-header" id="site-header")
         div(class="site-header-inner")
 
-            a(class="site-brand" href=(home ? "#front" : "/") aria-label="Interactive Solutions — home")
+            a(class="site-brand" href="/" aria-label="Interactive Solutions — home")
                 svg(class="site-brand-logo" aria-hidden="true" focusable="false"): use(xlink:href="/assets/images/_sprites/symbols.svg#brand-mark-white")
                 span(class="site-brand-text") Interactive Solutions
 
@@ -15,13 +21,13 @@ mixin site-header({ home })
 
             nav(class="site-nav" aria-label="Primary")
                 ul
-                    li: a(href=(home ? "#services" : "/services/")) Services
-                    li: a(href=(home ? "#work" : "/work/")) Work
-                    li: a(href=(home ? "#tools" : "/tools/")) Unity Tools
-                    li: a(href=(home ? "#about" : "/about/")) About
-                    li: a(href=(home ? "#contact" : "/contact/")) Contact
+                    li: a(href="/services/" aria-current=(_navActive === 'services' ? 'page' : false)) Services
+                    li: a(href="/work/" aria-current=(_navActive === 'work' ? 'page' : false)) Work
+                    li: a(href="/tools/" aria-current=(_navActive === 'tools' ? 'page' : false)) Unity Tools
+                    li: a(href="/about/" aria-current=(_navActive === 'about' ? 'page' : false)) About
+                    li: a(href="/contact/" aria-current=(_navActive === 'contact' ? 'page' : false)) Contact
 
-            a(class="site-header-cta" href=(home ? "#contact" : "/contact/") data-analytics="header_cta") Discuss a Project
+            a(class="site-header-cta" href="/contact/" data-analytics="header_cta") Discuss a Project
 
 mixin tag-list(tags)
     ul(class="tag-list")

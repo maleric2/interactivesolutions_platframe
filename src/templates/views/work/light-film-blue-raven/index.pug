@@ -7,6 +7,7 @@ block context
     - pageTitle = 'Official browser game & cross-device Unity platform — Case Study | Interactive Solutions';
     - pageDescription = 'Case study: the official Jurassic World Rebirth: A New Era browser game built in Phaser, plus extensive Unity work on an unreleased cross-device multiplayer entertainment platform.';
     - pageCanonical = 'https://interactivesolutions.hr/work/light-film-blue-raven/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Official browser game and cross-device Unity platform", "description": pageDescription, "mainEntityOfPage": pageCanonical, "author": {"@type": "Person", "name": "Marko Alerić", "url": "https://interactivesolutions.hr/about/"}};
 
 block main
 
@@ -81,6 +82,9 @@ block main
                         completed as part of the Light Film team; brand names are used to describe the
                         work accurately and do not imply direct employment or commissioning by the brand
                         owners.
+
+                nav(class="case-nav case-nav--next" aria-label="More case studies")
+                    a(class="card-link" href="/work/hooked-on-math/") Next: Hooked on Math →
 
         section(class="page-section page-section--showcase")
             div(class="section-inner")

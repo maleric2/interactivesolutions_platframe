@@ -31,7 +31,9 @@ head
         const _linkedin = "https://www.linkedin.com/in/markoaleric"
         const _github = "https://github.com/maleric2"
         const _assetstore = "https://assetstore.unity.com/publishers/40273"
-        const _structured = {
+        // Pages may define `pageSchema` in their context block for page-appropriate
+        // structured data (Sol review); otherwise the ProfessionalService identity applies.
+        const _structured = (typeof pageSchema !== 'undefined' && pageSchema) ? pageSchema : {
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
             "name": "Interactive Solutions",

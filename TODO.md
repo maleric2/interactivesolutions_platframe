@@ -41,6 +41,15 @@ Tracked work that is not yet done. Newest context first.
   Learning, CARNET, Voodoo, SelfDevices); 2023 transition softened to
   restructuring framing per owner approval; Education & recognition block added;
   public "since 2013" aligned to the CV's 2014.
+- **Sol review P0 (pre-production)** - global nav now targets the full index
+  pages on every page with an aria-current active state; obrt framed as an
+  independent studio (restructuring sentence removed per owner approval);
+  tool headings renamed to user-facing wording; hero carries a recruiter route;
+  case studies have prev/next navigation and timeline roles link to them;
+  structured data is page-appropriate (Person, Service, CollectionPage,
+  Article, SoftwareApplication); preview deploys send X-Robots-Tag noindex;
+  muted-text contrast raised. Owner-side remains: verify Dubit artwork
+  source/permission, disable the Netlify preview overlay before launch.
 
 
 ## P0 — blockers before the site goes live

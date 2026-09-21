@@ -7,6 +7,7 @@ block context
     - pageTitle = 'Hooked on Math — lead Unity developer — Case Study | Interactive Solutions';
     - pageDescription = 'Case study: leading Unity development on Hooked on Math at Dubit Limited, from planning through launch and post-release across multiple stores.';
     - pageCanonical = 'https://interactivesolutions.hr/work/hooked-on-math/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "Hooked on Math — leading a cross-functional team to launch", "description": pageDescription, "mainEntityOfPage": pageCanonical, "author": {"@type": "Person", "name": "Marko Alerić", "url": "https://interactivesolutions.hr/about/"}};
 
 block main
 
@@ -93,6 +94,10 @@ block main
                         This was client project work delivered at Dubit Limited. It is presented to
                         describe the role and contribution accurately, not to imply that I was employed
                         by the product owner or publisher.
+
+                nav(class="case-nav" aria-label="More case studies")
+                    a(class="card-link" href="/work/light-film-blue-raven/") ← Previous: Light Film / Blue Raven
+                    a(class="card-link" href="/work/my-dubrovnik/") Next: My Dubrovnik →
 
         section(class="page-section page-section--cinematic has-glow")
             div(class="section-inner")

@@ -7,6 +7,7 @@ block context
     - pageTitle = 'My Dubrovnik — 3D mobile city-management game — Case Study | Interactive Solutions';
     - pageDescription = 'Case study: leading a 3D mobile city-management game from concept to first release with the Async Labs team, building the MVP in about ten months.';
     - pageCanonical = 'https://interactivesolutions.hr/work/my-dubrovnik/';
+    - pageSchema = {"@context": "https://schema.org", "@type": "Article", "headline": "My Dubrovnik — a 3D mobile city-management game", "description": pageDescription, "mainEntityOfPage": pageCanonical, "author": {"@type": "Person", "name": "Marko Alerić", "url": "https://interactivesolutions.hr/about/"}};
 
 block main
 
@@ -90,6 +91,9 @@ block main
                         I worked embedded with the Async Labs team to develop My Dubrovnik, while being
                         formally employed through a partner company. The role described here is technical
                         leadership and hands-on development within that team.
+
+                nav(class="case-nav" aria-label="More case studies")
+                    a(class="card-link" href="/work/hooked-on-math/") ← Previous: Hooked on Math
 
         section(class="page-section page-section--cinematic has-glow")
             div(class="section-inner")
