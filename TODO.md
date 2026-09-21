@@ -18,6 +18,9 @@ Tracked work that is not yet done. Newest context first.
   12/16/20/24/32, with five deliberate micro-values for chevron clearance and
   list indents). No refactor was warranted; normalising them would be churn
   with no visible benefit.
+- **Visual review follow-up** - tool-card bodies now fill their equal-height grid
+  cells so actions align consistently; buttons have a pressed state; card/button
+  motion is disabled under `prefers-reduced-motion`.
 
 
 ## P0 — blockers before the site goes live
