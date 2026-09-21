@@ -35,9 +35,10 @@ mixin tag-list(tags)
             li(class="tag")= tag
 
 mixin service-card(item, compact)
-    article(class="service-card")
+    article(class="service-card" id=item.slug)
         h3(class="card-title")= item.title
         p(class="card-text")= item.text
+        p(class="service-card-fit")= item.fit
         if !compact
             ul(class="example-list")
                 each example in item.examples

@@ -48,8 +48,7 @@ Tracked work that is not yet done. Newest context first.
   case studies have prev/next navigation and timeline roles link to them;
   structured data is page-appropriate (Person, Service, CollectionPage,
   Article, SoftwareApplication); preview deploys send X-Robots-Tag noindex;
-  muted-text contrast raised. Owner-side remains: disable the Netlify preview
-  overlay before launch.
+  muted-text contrast raised. The redesign is now published on `master`.
 - **Dubit artwork cleared** - owner confirmed the BestLife / Hooked on Phonics /
   Hooked on Spelling visuals are public and OK to use; no neutral-cover fallback
   needed.
@@ -58,25 +57,30 @@ Tracked work that is not yet done. Newest context first.
   transparency with black). The set is now a white mark on a solid navy tile,
   with an SVG-first link and PNG/ICO fallbacks; header brand text raised
   15px to 17px.
+- **Production published** - PR #2 was merged into `master` on 2026-09-21;
+  production routes, redirects, metadata, sitemap, robots and favicon were
+  verified live. The superseded PR #1 is closed.
 
 
-## P0 — blockers before the site goes live
+## P0 — launch gates
 
 ### 1. ~~Contact form does not submit~~ — RESOLVED, awaiting one real submission
 
-**Status:** Netlify form detection was enabled by the owner and a redeploy ran.
-Verified against the deployed HTML: `data-netlify="true"` has now been **stripped
-by Netlify** and the form is registered, exactly as their docs describe for a
-working form:
+**Status:** Netlify form detection was enabled by the owner and production is
+live. Verified against the deployed HTML: `data-netlify="true"` has been
+**stripped by Netlify** and the form is registered, exactly as their docs
+describe for a working form:
 
 ```html
 <form action='/contact/success/' class='contact-form' method='POST' name='project-inquiry'>
 ```
 
-**Still to confirm by hand:** submit the form once and check the entry appears
-under **Forms → project-inquiry** and the browser lands on `/contact/success/`
-without a 404. Use a real email address and full sentences, or Akismet may file
-the test as spam (check the **Spam submissions** tab before concluding it failed).
+**Still to confirm by hand:** submit the production form once and check the
+entry appears under **Forms → project-inquiry** and the browser lands on
+`/contact/success/` without a 404. Use a real email address and full sentences,
+or Akismet may file the test as spam (check the **Spam submissions** tab before
+concluding it failed). An automated preview POST reached the success response;
+it did not replace this dashboard check.
 
 <details>
 <summary>Original diagnosis (kept for the record)</summary>
@@ -94,17 +98,17 @@ path as a plain request — hence the 404. The success page itself was always fi
 **Fix applied:** enabling form detection in the Netlify UI, then redeploying.
 </details>
 
-### 2. Production has never been deployed
+### 2. ~~Production has never been deployed~~ — RESOLVED
 
-`origin/master` is still the old site (`9361770`). Live `interactivesolutions.hr`
-has no `/contact/` page at all — both `/contact/` and `/contact/success/` return
-404 there. Everything built in this branch exists only on the deploy preview and
-in `prd/`. See `DEPLOY.md` for the exact Netlify settings and the rollback steps.
+`master` now contains the validated redesign and `interactivesolutions.hr` is
+serving it. See `DEPLOY.md` for the production verification and rollback steps.
 
 ---
 
 ## P1 — content and assets awaiting the owner
 
+- **Netlify preview overlay** — disable it in the dashboard; it is not a site
+  code setting.
 - **MeshMerge demo video** — the animated GIF is in place for now.
 - **GA4 verification** — confirm Realtime shows traffic after accepting the consent
   banner. Optional: add a custom dimension for the `cta` event parameter so
