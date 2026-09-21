@@ -61,9 +61,11 @@ deploy, confirm the deploy log scanned HTML containing `data-netlify="true"`.
 ## Smoke-test checklist (preview URL)
 
 - [ ] Direct-load every non-root route: `/services/`, `/work/`,
-      `/work/light-film-blue-raven/`, `/work/mydubrovnik/`, `/tools/`,
+      `/work/light-film-blue-raven/`, `/work/my-dubrovnik/`, `/tools/`,
       `/tools/mesh-merge/`, `/tools/easy-house/`, `/about/`, `/contact/`,
       `/privacy/` — all HTTP 200, correct title/meta per page.
+- [ ] Confirm the legacy `/work/mydubrovnik/` URL redirects to
+      `/work/my-dubrovnik/`.
 - [ ] Test submission of `project-inquiry` appears under Forms; browser lands on
       `/contact/success/`.
 - [ ] Mobile nav (≤ 1024 px): opens/closes, a nav link closes it, `Escape`
