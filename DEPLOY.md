@@ -6,19 +6,22 @@ dashboard must mirror the values below.
 
 ## Current handoff state (2026-09-21)
 
-- Production branch: `master`, published from merge commit `4d610df`.
-- PR #2 (`visual-redesign`) is merged; the superseded PR #1 is closed.
+- Production branch: `master`, published from merge commit `3e9fd07`.
+- PR #2 (`visual-redesign`) and PR #8 (`phase-1-conversion`) are merged;
+  the superseded PR #1 is closed.
 - Production site: <https://interactivesolutions.hr/>.
-- Current development branch: `phase-1-conversion` (branched from the
-  published `master` for post-launch improvements).
+- Current development branch: `master` (the next feature branch should start
+  from this published baseline).
 - Netlify site slug: `naughty-goldberg-dfe5e7`.
 - Agent-verified in production: all public routes return HTTP 200, the legacy
   My Dubrovnik URL redirects, per-page metadata and JSON-LD are present, the
   favicon set serves, the sitemap and robots files are live, and production has
   no preview `X-Robots-Tag: noindex`.
-- Left for human verification: confirm the form entry under Forms,
-  disable the Netlify preview overlay, check mobile navigation at 320/375 px,
-  and confirm the share card after the cache settles.
+- Confirmed by owner: analytics is working and the Netlify preview overlay is
+  disabled.
+- Left for human verification: configure/verify the email notification for the
+  `project-inquiry` form, check mobile navigation at 320/375 px, and confirm
+  the share card after the cache settles.
 
 ## Exact Netlify configuration
 

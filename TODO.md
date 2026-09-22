@@ -64,7 +64,7 @@ Tracked work that is not yet done. Newest context first.
 
 ## P0 — launch gates
 
-### 1. ~~Contact form does not submit~~ — RESOLVED, awaiting one real submission
+### 1. ~~Contact form does not submit~~ — RESOLVED; email notification remains
 
 **Status:** Netlify form detection was enabled by the owner and production is
 live. Verified against the deployed HTML: `data-netlify="true"` has been
@@ -75,12 +75,12 @@ describe for a working form:
 <form action='/contact/success/' class='contact-form' method='POST' name='project-inquiry'>
 ```
 
-**Still to confirm by hand:** submit the production form once and check the
-entry appears under **Forms → project-inquiry** and the browser lands on
-`/contact/success/` without a 404. Use a real email address and full sentences,
-or Akismet may file the test as spam (check the **Spam submissions** tab before
-concluding it failed). An automated preview POST reached the success response;
-it did not replace this dashboard check.
+**Confirmed:** the owner submitted the production form and the browser showed
+`Message sent`. A direct reproduction against both `/contact/` and the exact
+`/contact/success/` action returned HTTP 200 with the same success page.
+Netlify form handling is therefore working. Netlify does not email submissions
+unless a Form notification is configured; the missing step is the email
+notification, not the HTML form.
 
 <details>
 <summary>Original diagnosis (kept for the record)</summary>
@@ -107,12 +107,12 @@ serving it. See `DEPLOY.md` for the production verification and rollback steps.
 
 ## P1 — content and assets awaiting the owner
 
-- **Netlify preview overlay** — disable it in the dashboard; it is not a site
-  code setting.
+- **Netlify form email notification** — add/verify an email notification for
+  `project-inquiry`; form submissions are currently accepted but not forwarded
+  by email.
 - **MeshMerge demo video** — the animated GIF is in place for now.
-- **GA4 verification** — confirm Realtime shows traffic after accepting the consent
-  banner. Optional: add a custom dimension for the `cta` event parameter so
-  `cta_click` can be broken down by button.
+- **GA4 verification** — confirmed by owner. Optional: add a custom dimension
+  for the `cta` event parameter so `cta_click` can be broken down by button.
 - **Two unused recommendations** — Oleksandr Shevtsov and Hrvoje Drinovac are
   transcribed and available; only three are published.
 - **Four unused Dubit images** — Phonics gameplay + logo, Spelling cover + small
