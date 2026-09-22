@@ -13,6 +13,9 @@ head
 
     link(rel="canonical" href= _canonical)
 
+    - if (typeof pageRobots !== 'undefined' && pageRobots)
+        meta(name="robots" content= pageRobots)
+
     meta(property="og:type" content="website")
     meta(property="og:site_name" content="Interactive Solutions")
     meta(property="og:url" content= _canonical)
