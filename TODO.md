@@ -60,6 +60,14 @@ Tracked work that is not yet done. Newest context first.
 - **Production published** - PR #2 was merged into `master` on 2026-09-21;
   production routes, redirects, metadata, sitemap, robots and favicon were
   verified live. The superseded PR #1 is closed.
+- **GPT live-review P0** - removed the redundant hero proof line (stats bar kept,
+  recentered to the section container, third stat corrected to Mobile / PC /
+  console / web); consent banner compacted so it stops covering CTAs; success
+  page carries `noindex, follow`; homepage About swaps a redundant proof item
+  for the verified Algebra external-lecturer signal; About timeline uses
+  international sole-proprietor wording (legal footer/privacy designations
+  unchanged). Kept per review: hero headline, section order, single homepage
+  testimonial, budget field, case-study structure, founder-led positioning.
 
 
 ## P0 — launch gates
