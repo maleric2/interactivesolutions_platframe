@@ -38,7 +38,7 @@
     "@babel/register": "^7.9.0",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "@rollup/plugin-replace": "^2.3.1",
+    "@rollup/plugin-replace": "^2.4.2",
     "autoprefixer": "^9.7.5",
     "browser-sync": "^2.26.7",
     "cross-env": "^10.1.0",
