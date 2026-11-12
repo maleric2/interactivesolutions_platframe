@@ -1615,3 +1615,80 @@ summary:focus-visible,
 // featured single recommendation on the homepage: keep it to a readable measure
 .testimonial-featured
     max-width: _w_content
+
+/*━━━━━━━━━━━━━  PRODUCT PAGES  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+// the homepage stat strip, reused inside a product page section
+.proof-strip-inner--flush
+    margin: 0 0 rem(12px)
+    padding: rem(24px) 0
+    border-top: 1px solid _c_line_soft
+    border-bottom: 1px solid _c_line_soft
+
+.feature-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(16px)
+    margin: rem(28px) 0 rem(36px)
+    padding: 0
+    list-style: none
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+    +min(2)
+        grid-template-columns: repeat(4, 1fr)
+
+.feature-card
+    margin: 0
+    padding: rem(22px)
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015))
+    border: 1px solid _c_line
+    border-radius: _r_md
+
+.feature-title
+    margin: 0 0 rem(8px)
+    color: #fff
+    font-size: rem(16px)
+    font-weight: 700
+    line-height: 1.35
+
+.feature-text
+    margin: 0
+    color: _c_text_soft
+    font-size: rem(14px)
+    line-height: 1.65
+
+.table-wrap
+    margin: 0 0 rem(18px)
+    overflow-x: auto
+    border: 1px solid _c_line
+    border-radius: _r_md
+
+.spec-table
+    width: 100%
+    margin: 0
+    border-collapse: collapse
+    font-size: rem(15px)
+    line-height: 1.55
+    th,
+    td
+        padding: rem(12px) rem(16px)
+        border: 0
+        border-bottom: 1px solid _c_line_soft
+        text-align: left
+        vertical-align: top
+    tr:last-child th,
+    tr:last-child td
+        border-bottom: 0
+    thead th
+        color: _c_text_muted
+        font-size: rem(12.5px)
+        font-weight: 700
+        letter-spacing: 0.06em
+        text-transform: uppercase
+        background: rgba(255, 255, 255, 0.03)
+    tbody th
+        color: #fff
+        font-weight: 700
+        white-space: nowrap
+    td
+        color: _c_text_soft
