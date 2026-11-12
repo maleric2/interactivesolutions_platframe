@@ -1726,3 +1726,26 @@ summary:focus-visible,
     font-size: rem(12.5px)
     font-style: italic
     line-height: 1.55
+
+.shot-grid
+    display: grid
+    grid-template-columns: 1fr
+    gap: rem(22px)
+    margin: rem(12px) 0 rem(36px)
+    +min(1)
+        grid-template-columns: repeat(2, 1fr)
+    figure
+        margin: 0
+        overflow: hidden
+        background: _c_alt
+        border: 1px solid _c_line_soft
+        border-radius: _r_md
+        img
+            display: block
+            width: 100%
+            height: auto
+        figcaption
+            padding: rem(12px) rem(16px)
+            color: _c_text_muted
+            font-size: rem(13px)
+            line-height: 1.55
