@@ -5,9 +5,9 @@ block context
     - bodyClass = 'page';
     - isHome = false;
     - pageTitle = 'MeshMerge — Mesh Combiner & Texture Array Baker for Unity | Interactive Solutions';
-    - pageDescription = 'MeshMerge combines meshes and materials into an optimized Unity workflow using atlas or texture-array baking. Available on the Unity Asset Store.';
+    - pageDescription = 'MeshMerge merges static meshes and bakes their materials into one Texture Array or Atlas material for fewer draw calls. Unity 2022.3, 6.3 and 6.6, URP and Built-in.';
     - pageCanonical = 'https://interactivesolutions.hr/tools/mesh-merge/';
-    - pageSchema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MeshMerge — Mesh Combiner and Texture Array Baker", "applicationCategory": "DeveloperApplication", "description": pageDescription, "url": pageCanonical, "offers": {"@type": "Offer", "url": "https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726", "availability": "https://schema.org/InStock"}};
+    - pageSchema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MeshMerge — Mesh Combiner and Texture Array Baker", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows, macOS, Linux (Unity Editor 2022.3, 6.3, 6.6)", "description": pageDescription, "url": pageCanonical, "offers": {"@type": "Offer", "url": "https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726", "availability": "https://schema.org/InStock"}};
 
 block main
 
@@ -20,7 +20,7 @@ block main
                     li: a(href="/tools/") Unity Tools
                     li MeshMerge
                 h1 MeshMerge — Mesh Combiner &amp; Texture Array Baker
-                p Combine meshes and materials into an optimized workflow built for real Unity projects.
+                p Merge static meshes and bake their materials into one Texture Array or Atlas material, so real Unity scenes render with far fewer draw calls.
 
         section(class="page-section")
             div(class="section-inner")
@@ -49,40 +49,115 @@ block main
                         loading="lazy")
                     figcaption Baking to a single atlas material.
 
+                div(class="proof-strip-inner proof-strip-inner--flush" aria-label="MeshMerge at a glance")
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") 139 → 13 draw calls
+                        span(class="proof-stat-label") Showcase scene after a Texture Array bake
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") 139 → 5 SetPass calls
+                        span(class="proof-stat-label") Same scene, same measurement
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") Unity 2022.3 · 6.3 · 6.6
+                        span(class="proof-stat-label") URP recommended, Built-in supported
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") No third-party dependencies
+                        span(class="proof-stat-label") Editor tool plus a small runtime
+
                 div(class="prose")
                     h2 What it does
                     p.
-                        MeshMerge combines multiple meshes and materials so scenes and prefabs can be
-                        rendered with fewer draw calls. It supports two baking workflows — a texture
-                        atlas and a texture array — so the right approach can be chosen per material setup.
-                    ul
-                        li Combine meshes into a single mesh.
-                        li Bake materials into a texture atlas or a texture array.
-                        li Reduce material and submesh complexity in production scenes.
-                        li Designed as an editor tool for real Unity projects rather than toy scenes.
+                        MeshMerge combines static meshes and materials so scenes and prefabs render with
+                        fewer draw calls. Merge a hierarchy into one mesh, then bake its materials into a
+                        single Texture Array or Atlas material, all from one Inspector component.
 
-                    h2 Two baking workflows
-                    h3 Bake to Atlas
+                ul(class="feature-grid")
+                    li(class="feature-card")
+                        h3(class="feature-title") Mesh Combiner
+                        p(class="feature-text") Merge child MeshRenderers into one mesh, or split a multi-submesh mesh back into separate objects.
+                    li(class="feature-card")
+                        h3(class="feature-title") Texture Array bake
+                        p(class="feature-text") Many tiling materials become one texture-array material. Each keeps its own slice, metallic and smoothness.
+                    li(class="feature-card")
+                        h3(class="feature-title") Atlas bake
+                        p(class="feature-text") Non-tiling textures pack into one atlas. The bake is refused up front if UVs would break it.
+                    li(class="feature-card")
+                        h3(class="feature-title") LOD groups
+                        p(class="feature-text") Merge per LOD level and keep the switch distances of the source LODGroups.
+                    li(class="feature-card")
+                        h3(class="feature-title") Optimize Scene window
+                        p(class="feature-text") Find and process the combiners in a scene from one window instead of one object at a time.
+                    li(class="feature-card")
+                        h3(class="feature-title") Honest statistics
+                        p(class="feature-text") The Inspector shows facts and estimates from the real merge plan, kept apart so nothing is overstated.
+                    li(class="feature-card")
+                        h3(class="feature-title") Safe to undo
+                        p(class="feature-text") Merges and bakes are single Undo steps, roll back on failure, and an Edit Mode restores the source parts.
+                    li(class="feature-card")
+                        h3(class="feature-title") Scriptable and headless
+                        p(class="feature-text") A MeshMergeApi and a batch-mode command line run merges in CI, with a JSON report and a render check.
+
+                div(class="prose")
+                    h2 Which bake to use
+                    div(class="table-wrap")
+                        table(class="spec-table")
+                            thead
+                                tr
+                                    th(scope="col") Bake
+                                    th(scope="col") Best for
+                                    th(scope="col") Result
+                            tbody
+                                tr
+                                    th(scope="row") Texture Array
+                                    td Tiling textures: walls, roofs, floors
+                                    td One texture-array material, UVs can repeat freely
+                                tr
+                                    th(scope="row") Atlas
+                                    td Non-tiling textures with UVs inside 0–1
+                                    td One atlas material
+
+                    h2 Compatibility
+                    div(class="table-wrap")
+                        table(class="spec-table")
+                            tbody
+                                tr
+                                    th(scope="row") Unity
+                                    td 2022.3 LTS, 6.3 and 6.6
+                                tr
+                                    th(scope="row") Render pipeline
+                                    td URP 14+ (recommended) or Built-in
+                                tr
+                                    th(scope="row") Input
+                                    td Static MeshRenderer + MeshFilter hierarchies
+                                tr
+                                    th(scope="row") Dependencies
+                                    td None beyond Unity's own URP package
+                                tr
+                                    th(scope="row") Release checks
+                                    td 576 automated editor tests, run on every supported Unity version
+
+                    h2 What's new in 1.4
+                    ul
+                        li A showcase scene (#[strong GameObject › MeshMerge › Create Showcase Scene]) to see a full merge and bake in seconds.
+                        li Measured draw calls from the command line, so the numbers on this page come from real frames.
+                        li Fixes for the demo scene on Built-in and for the User Guide's runtime example.
                     p.
-                        Packs material textures into a single atlas texture, letting combined geometry
-                        share one material. Best where materials share comparable texture requirements.
-                    h3 Bake to Texture Array
-                    p.
-                        Packs textures into a texture array, keeping per-material texture detail without
-                        an atlas layout. Best where atlas packing would otherwise distort or degrade results.
+                        Version 1.4 is on its way to the Asset Store. Version 1.3 added the headless API and
+                        command line, the Optimize Scene window, LOD merging per level and per-slice
+                        metallic/smoothness for Texture Array bakes.
 
                     h2 Support and documentation
                     p.
-                        Documentation and support are handled through the Asset Store listing and by
-                        email. If you run into an issue with a specific Unity version or render pipeline,
-                        include the version and a short description in your message.
+                        A full User Guide ships with the package. Support is handled through the Asset Store
+                        listing and by email. If you run into an issue with a specific Unity version or render
+                        pipeline, include the version and a short description in your message.
 
                 div(class="callout callout--honest")
-                    h3(class="callout-title") Performance notes and limitations
+                    h3(class="callout-title") How the numbers were measured
                     p(class="callout-text").
-                        Performance varies by scene, material setup and target platform. The tool reduces
-                        draw calls and material complexity; it is not a universal guarantee of a specific
-                        frame-rate improvement.
+                        139 → 13 draw calls and 139 → 5 SetPass calls were measured on the bundled showcase scene
+                        in Unity 2022.3, Built-in pipeline, shadows off, after a Texture Array bake. Your results
+                        depend on the scene, material setup and target platform. MeshMerge supports static meshes
+                        only; skinned meshes are not merged.
 
         section(class="page-section")
             div(class="section-inner")
