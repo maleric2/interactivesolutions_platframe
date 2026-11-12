@@ -1692,3 +1692,37 @@ summary:focus-visible,
         white-space: nowrap
     td
         color: _c_text_soft
+
+.tool-stats
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: rem(16px)
+    margin: rem(24px) 0 0
+    padding-top: rem(22px)
+    border-top: 1px solid _c_line_soft
+
+.tool-stat
+    display: flex
+    flex-direction: column
+    gap: rem(4px)
+    margin: 0
+    padding-left: rem(14px)
+    border-left: 2px solid rgba(53, 200, 189, 0.55)
+
+.tool-stat-value
+    color: #fff
+    font-size: rem(24px)
+    font-weight: 700
+    line-height: 1.2
+
+.tool-stat-label
+    color: _c_text_muted
+    font-size: rem(13px)
+    line-height: 1.45
+
+.tool-stats-note
+    margin: rem(14px) 0 0
+    color: _c_text_muted
+    font-size: rem(12.5px)
+    font-style: italic
+    line-height: 1.55

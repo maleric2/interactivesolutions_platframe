@@ -138,21 +138,21 @@ mixin tools-grid()
                 span(class="tool-badge") Available on the Unity Asset Store
                 h3(class="card-title") MeshMerge — Mesh Combiner &amp; Texture Array Baker
                 p(class="card-text").
-                    Combine meshes and materials so scenes and prefabs render with fewer draw
-                    calls, using either an atlas or a texture-array workflow.
+                    Merge static meshes and bake their materials into one Texture Array or Atlas
+                    material. Works on Unity 2022.3, 6.3 and 6.6, URP and Built-in.
                 +tag-list(['Mesh Combining', 'Texture Arrays', 'Draw Call Reduction', 'Editor Tools'])
                 div(class="tool-actions")
                     a(class="btn btn-primary" href="https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726?utm_source=portfolio&utm_medium=website" target="_blank" rel="noopener" data-analytics="meshmerge_store") View on the Asset Store
                     a(class="btn btn-ghost" href="/tools/mesh-merge/") Learn more →
 
-                figure(class="tool-proof")
-                    img(
-                        src="/assets/images/tools/mesh-merge/_linked/draw-calls.jpg"
-                        width="1140"
-                        height="225"
-                        alt="MeshMerge statistics panel showing Draw Calls: 9 before merging and 1 after"
-                        loading="lazy")
-                    figcaption Draw calls: 9 → 1 after merging. Results vary by scene and material setup.
+                div(class="tool-stats")
+                    p(class="tool-stat")
+                        span(class="tool-stat-value") 139 → 13
+                        span(class="tool-stat-label") draw calls in the showcase scene
+                    p(class="tool-stat")
+                        span(class="tool-stat-value") 139 → 5
+                        span(class="tool-stat-label") SetPass calls, same scene
+                p(class="tool-stats-note") Measured in Unity 2022.3 after a Texture Array bake. Results vary by scene and material setup.
 
         article(class="tool-card")
 
