@@ -1749,3 +1749,50 @@ summary:focus-visible,
             color: _c_text_muted
             font-size: rem(13px)
             line-height: 1.55
+
+.page-hero-inner .page-hero-badge
+    display: inline-block
+    margin: 0 0 rem(16px)
+    padding: rem(5px) rem(12px)
+    color: _c_secondary
+    font-size: rem(12px)
+    font-weight: 700
+    letter-spacing: 0.08em
+    line-height: 1.4
+    text-transform: uppercase
+    background: rgba(53, 200, 189, 0.1)
+    border: 1px solid rgba(53, 200, 189, 0.35)
+    border-radius: _r_pill
+
+.feature-grid--three
+    +min(2)
+        grid-template-columns: repeat(3, 1fr)
+
+// highlighted "what's new" block near the top of a product page
+.release-band
+    margin: rem(8px) 0 rem(40px)
+    padding: rem(28px) rem(22px) rem(4px)
+    background: radial-gradient(90% 120% at 0% 0%, rgba(53, 200, 189, 0.12), rgba(53, 200, 189, 0) 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015))
+    border: 1px solid rgba(53, 200, 189, 0.28)
+    border-radius: _r_lg
+    +min(1)
+        padding: rem(36px) rem(36px) rem(8px)
+    .section-eyebrow
+        color: _c_secondary
+
+.release-band-title
+    margin: 0 0 rem(12px)
+    color: #fff
+    font-size: rem(28px)
+    font-weight: 700
+    line-height: 1.2
+
+.release-band-lead
+    max-width: _w_prose
+    margin: 0 0 rem(8px)
+    color: _c_text_soft
+    font-size: rem(16px)
+    line-height: 1.75
+
+.release-band-video
+    margin-top: rem(20px)
