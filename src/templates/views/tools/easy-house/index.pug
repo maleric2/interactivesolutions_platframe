@@ -7,7 +7,7 @@ block context
     - pageTitle = 'Easy House — Procedural House Generator for Unity | Interactive Solutions';
     - pageDescription = 'Easy House turns a footprint into a finished house in Unity: roofs on any outline, real door and window openings, 13 house types, LODs, texture atlas and full C# source. A free Lite edition comes first.';
     - pageCanonical = 'https://interactivesolutions.hr/tools/easy-house/';
-    - ehTrailer = null;
+    - ehTrailer = {src: '/media/easy-house-editor.mp4', poster: '/assets/images/tools/easy-house/_linked/editor-poster.jpg'};
     - pageSchema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy House — procedural house generator for Unity", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows, macOS, Linux (Unity Editor 2022.3 LTS)", "description": pageDescription, "url": pageCanonical, "image": "https://interactivesolutions.hr/assets/images/tools/easy-house/_linked/full-street-day.jpg"};
 
 block main
@@ -40,7 +40,7 @@ block main
                             poster=ehTrailer.poster)
                             source(src=ehTrailer.src type="video/mp4")
                             | Your browser does not support embedded video. Download the #[a(href=ehTrailer.src) video file].
-                        figcaption The Easy House trailer.
+                        figcaption The House Editor: roofs, walls, house types and parts, all from one panel.
                 else
                     figure(class="case-figure case-figure--wide product-media")
                         img(
@@ -213,6 +213,20 @@ block main
                             alt="Houses sketched on the ground with garden walls, fences and paths"
                             loading="lazy")
                         figcaption Sketch add-on: drag an outline to get a house, then draw fences, walls and paths.
+
+                figure(class="case-figure case-figure--wide product-media product-media--after")
+                    video(
+                        class="tool-video"
+                        controls
+                        muted
+                        preload="none"
+                        playsinline
+                        width="1280"
+                        height="720"
+                        poster="/assets/images/tools/easy-house/_linked/sketch-poster.jpg")
+                        source(src="/media/easy-house-sketch.mp4" type="video/mp4")
+                        | Your browser does not support embedded video. Download the #[a(href="/media/easy-house-sketch.mp4") video file].
+                    figcaption Sketch add-on: drag a footprint or draw any outline, paint styles over houses, then add walls, fences and paths.
 
         section(class="page-section page-section--showcase" id="lite")
             div(class="section-inner")
