@@ -567,7 +567,7 @@ summary:focus-visible,
     grid-template-columns: 1fr
     gap: rem(24px)
     +min(2)
-        grid-template-columns: 3fr 2fr
+        grid-template-columns: repeat(2, 1fr)
 
 .tool-card
     display: flex
@@ -1796,3 +1796,45 @@ summary:focus-visible,
 
 .release-band-video
     margin-top: rem(20px)
+
+
+/*━━━━━━━━━━━━━  PRODUCT LAYOUT FIXES  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━*/
+
+// tool cards share one structure: media, body, stats, actions pinned to the bottom
+a.tool-media
+    display: block
+.tool-card .card-title a
+    color: inherit
+    text-decoration: none
+    &:hover, &:focus
+        color: _c_accent_pale
+.tool-card .tag-list
+    margin: 0
+.tool-card .tool-stats
+    margin-top: rem(22px)
+
+// the hero above already gives the first section its top space
+.page-section--product-top
+    padding-top: rem(48px)
+    +min(2)
+        padding-top: rem(64px)
+
+.product-media
+    margin-bottom: 0
+
+.page-section .shot-grid:last-child,
+.page-section .feature-grid:last-child,
+.page-section .prose:last-child
+    margin-bottom: 0
+
+.page-section .feature-grid + .shot-grid
+    margin-top: rem(36px)
+
+.page-section .cta-band
+    margin-top: rem(56px)
+
+.prose h3:first-child
+    margin-top: 0
+
+.prose--wide
+    max-width: none
