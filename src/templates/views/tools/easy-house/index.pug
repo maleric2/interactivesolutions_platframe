@@ -4,10 +4,10 @@ block context
     - bodyId = 'easy-house';
     - bodyClass = 'page';
     - isHome = false;
-    - pageTitle = 'Easy House — Procedural Houses for Unity, Lite Edition Free | Interactive Solutions';
-    - pageDescription = 'Easy House builds procedural houses in Unity. Easy House Lite is free: footprints, floors, roofs, doors, windows and three styles from one Inspector. The full edition adds a House Editor, 13 house types and full C# source.';
+    - pageTitle = 'Easy House — Procedural House Generator for Unity | Interactive Solutions';
+    - pageDescription = 'Easy House turns a footprint into a finished house in Unity: roofs on any outline, real door and window openings, 13 house types, LODs, texture atlas and full C# source. A free Lite edition comes first.';
     - pageCanonical = 'https://interactivesolutions.hr/tools/easy-house/';
-    - pageSchema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy House — procedural house generation for Unity", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows, macOS, Linux (Unity Editor 2022.3 or newer)", "description": pageDescription, "url": pageCanonical, "image": "https://interactivesolutions.hr/assets/images/tools/easy-house/_linked/lite-village.jpg"};
+    - pageSchema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Easy House — procedural house generator for Unity", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows, macOS, Linux (Unity Editor 2022.3 LTS)", "description": pageDescription, "url": pageCanonical, "image": "https://interactivesolutions.hr/assets/images/tools/easy-house/_linked/full-street-day.jpg"};
 
 block main
 
@@ -19,11 +19,204 @@ block main
                     li: a(href="/") Home
                     li: a(href="/tools/") Unity Tools
                     li Easy House
-                h1 Easy House — procedural houses for Unity
-                p Build a house in seconds, a village in minutes. Easy House Lite is free and comes to the Asset Store first; the full Easy House follows.
+                p(class="page-hero-badge") Coming to the Unity Asset Store
+                h1 Easy House — draw a footprint, get a finished house
+                p Procedural houses for Unity: roofs on any outline, real door and window openings, 13 house types, LODs and full C# source.
 
         section(class="page-section")
             div(class="section-inner")
+
+                figure(class="case-figure case-figure--wide")
+                    img(
+                        src="/assets/images/tools/easy-house/_linked/full-street-day.jpg"
+                        srcset="/assets/images/tools/easy-house/_linked/full-street-day-800.jpg 800w, /assets/images/tools/easy-house/_linked/full-street-day.jpg 1600w"
+                        sizes="(min-width: 1024px) 1120px, 92vw"
+                        width="1600"
+                        height="1067"
+                        alt="A sunny street of detailed houses built with Easy House: suburban, cottage, stone and timber-framed houses along a road")
+                    figcaption A street of houses built with Easy House.
+
+                div(class="section-actions")
+                    a(class="btn btn-primary" href="mailto:marko@interactivesolutions.hr?subject=Easy%20House%20launch%20list" data-analytics="easyhouse_waitlist") Join the launch list
+                    a(class="btn btn-ghost" href="#lite") Start free with Lite →
+
+                div(class="proof-strip-inner proof-strip-inner--flush" aria-label="Easy House at a glance")
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") 13 house types
+                        span(class="proof-stat-label") Suburban, Modern, Cottage, Stone, Tudor and more
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") Roofs on any outline
+                        span(class="proof-stat-label") 9 presets plus custom, one solver
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") LOD0–2 and atlas
+                        span(class="proof-stat-label") Ready for real scenes and mobile
+                    div(class="proof-stat")
+                        span(class="proof-stat-value") Full C# source
+                        span(class="proof-stat-label") No external dependencies
+
+                div(class="prose")
+                    h2 A house editor, not a prefab pack
+                    p.
+                        Easy House builds houses from data. Draw or edit the footprint in the Scene view, pick a
+                        house type, and the walls, openings, roof and details are generated for you. Change
+                        anything later and the house rebuilds, so a whole street stays editable.
+
+                ul(class="feature-grid")
+                    li(class="feature-card")
+                        h3(class="feature-title") House Editor
+                        p(class="feature-text") Edit footprints in the Scene view with handles, grid and object snapping, live dimensions and edge push/pull.
+                    li(class="feature-card")
+                        h3(class="feature-title") Roofs on any outline
+                        p(class="feature-text") Flat, Gable, Hip, Gambrel, Mansard, Saltbox, Shed and more from one straight-skeleton solver.
+                    li(class="feature-card")
+                        h3(class="feature-title") Real openings
+                        p(class="feature-text") Thick walls with real door and window openings, multiple floors, wings, courtyards and attached garages.
+                    li(class="feature-card")
+                        h3(class="feature-title") House types and styles
+                        p(class="feature-text") 13 sample houses and 15 style presets, with surface detail, weathering and exterior lights.
+                    li(class="feature-card")
+                        h3(class="feature-title") Details that sell it
+                        p(class="feature-text") Five gutter styles with downpipes, balconies, porches, decks, chimneys, dormers and awnings.
+                    li(class="feature-card")
+                        h3(class="feature-title") Openable parts
+                        p(class="feature-text") Doors, windows and garage doors open and slide at runtime without a rebuild.
+                    li(class="feature-card")
+                        h3(class="feature-title") Production output
+                        p(class="feature-text") Bake to a static mesh, prefab or OBJ with LOD0–2, a texture atlas, colliders and lightmap UVs.
+                    li(class="feature-card")
+                        h3(class="feature-title") Runtime and batch
+                        p(class="feature-text") Houses as versioned JSON, a build and upgrade animation in player builds, and batch builds from recipes.
+
+                div(class="prose")
+                    h2 House types
+                div(class="shot-grid")
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/type-suburban.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/type-suburban-800.jpg 800w, /assets/images/tools/easy-house/_linked/type-suburban.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="1067"
+                            alt="A white suburban house with a grey roof, balcony and porch"
+                            loading="lazy")
+                        figcaption Suburban
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/type-cottage.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/type-cottage-800.jpg 800w, /assets/images/tools/easy-house/_linked/type-cottage.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="1067"
+                            alt="A blue cottage with an orange roof, porch, steps and mailbox"
+                            loading="lazy")
+                        figcaption Cottage
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/type-modern.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/type-modern-800.jpg 800w, /assets/images/tools/easy-house/_linked/type-modern.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="900"
+                            alt="A modern two-storey house with dark timber cladding and large windows at dusk"
+                            loading="lazy")
+                        figcaption Modern
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/type-tudor.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/type-tudor-800.jpg 800w, /assets/images/tools/easy-house/_linked/type-tudor.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="900"
+                            alt="A Tudor house with timber framing and a steep tiled roof"
+                            loading="lazy")
+                        figcaption Tudor
+
+                div(class="prose")
+                    h2 Built for production
+                div(class="shot-grid")
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/feature-lod.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/feature-lod-800.jpg 800w, /assets/images/tools/easy-house/_linked/feature-lod.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="1067"
+                            alt="The same house at LOD0, LOD1 and LOD2 with 2,681, 1,193 and 655 triangles, shaded and as wireframe"
+                            loading="lazy")
+                        figcaption LOD0 / LOD1 / LOD2: 2,681 / 1,193 / 655 triangles on the Suburban house.
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/feature-gutters.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/feature-gutters-800.jpg 800w, /assets/images/tools/easy-house/_linked/feature-gutters.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="1067"
+                            alt="Close-up of a half-round gutter, swan-neck outlet and bracketed downpipe on a house corner"
+                            loading="lazy")
+                        figcaption Connected gutters and downpipes, five styles.
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/feature-editor.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/feature-editor-800.jpg 800w, /assets/images/tools/easy-house/_linked/feature-editor.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="900"
+                            alt="The Easy House House Editor next to a house in the Unity Scene view"
+                            loading="lazy")
+                        figcaption The House Editor, docked next to the Scene view.
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/feature-openable.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/feature-openable-800.jpg 800w, /assets/images/tools/easy-house/_linked/feature-openable.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="900"
+                            alt="Doors, windows and garage doors shown closed and open"
+                            loading="lazy")
+                        figcaption Openable doors, windows and garage doors.
+
+        section(class="page-section page-section--showcase")
+            div(class="section-inner")
+
+                div(class="section-heading")
+                    p(class="section-eyebrow") Add-ons
+                    h2(class="section-title") Go further with Part Designer and Sketch
+                    p(class="section-lead").
+                        Two optional add-ons for Easy House. Houses made with them build with Easy House alone,
+                        so your team or your players never need them installed.
+
+                div(class="shot-grid")
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/addon-part-designer.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/addon-part-designer-800.jpg 800w, /assets/images/tools/easy-house/_linked/addon-part-designer.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="900"
+                            alt="Part Designer showing an arched window drawn in 2D and its live 3D preview"
+                            loading="lazy")
+                        figcaption Part Designer: draw doors, windows and arches in 2D with a live 3D preview.
+                    figure
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/addon-sketch.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/addon-sketch-800.jpg 800w, /assets/images/tools/easy-house/_linked/addon-sketch.jpg 1600w"
+                            sizes="(min-width: 1024px) 550px, 92vw"
+                            width="1600"
+                            height="900"
+                            alt="Houses sketched on the ground with garden walls, fences and paths"
+                            loading="lazy")
+                        figcaption Sketch: drag an outline to get a house, then draw fences, walls and paths.
+
+        section(class="page-section" id="lite")
+            div(class="section-inner")
+
+                div(class="section-heading")
+                    p(class="section-eyebrow") Free
+                    h2(class="section-title") Start with Easy House Lite
+                    p(class="section-lead").
+                        A small, free house builder that comes to the Asset Store first: rectangle, L and T
+                        footprints, any number of floors, Flat, Gable and Hip roofs, doors, windows and three
+                        styles, all from one Inspector. Built-in, URP and HDRP.
 
                 figure(class="case-figure case-figure--wide")
                     img(
@@ -32,123 +225,15 @@ block main
                         sizes="(min-width: 1024px) 1120px, 92vw"
                         width="1600"
                         height="900"
-                        alt="A village square of twelve houses in Cottage, Stone and Modern styles, every house built with Easy House Lite")
+                        alt="A village square of twelve houses in Cottage, Stone and Modern styles, every house built with Easy House Lite"
+                        loading="lazy")
                     figcaption A 12-house village square, every house built with Easy House Lite.
 
-                div(class="section-actions")
-                    a(class="btn btn-primary" href="mailto:marko@interactivesolutions.hr?subject=Easy%20House%20launch%20list" data-analytics="easyhouse_waitlist") Tell me when Lite is live
-                    a(class="btn btn-ghost" href="#lite-vs-full") Compare Lite and full →
-
-                div(class="proof-strip-inner proof-strip-inner--flush" aria-label="Easy House Lite at a glance")
-                    div(class="proof-stat")
-                        span(class="proof-stat-value") Free
-                        span(class="proof-stat-label") Easy House Lite, coming first
-                    div(class="proof-stat")
-                        span(class="proof-stat-value") About 5 ms per house
-                        span(class="proof-stat-label") Typical Lite build time
-                    div(class="proof-stat")
-                        span(class="proof-stat-value") Built-in · URP · HDRP
-                        span(class="proof-stat-label") Unity 2022.3 or newer
-                    div(class="proof-stat")
-                        span(class="proof-stat-value") Mono · IL2CPP · WebGL
-                        span(class="proof-stat-label") Tested in player builds
-
                 div(class="prose")
-                    h2 Easy House Lite
                     p.
-                        A small, free house builder. Add one component, set the size, and you have a house
-                        with walls, a roof, a door and windows, ready to use as a prefab or an OBJ.
+                        When you outgrow it, import Easy House and run #[strong Tools › EasyHouse › Convert Lite Houses].
+                        Footprint, floors, roof, door and windows carry over into fully editable houses.
 
-                ul(class="feature-grid")
-                    li(class="feature-card")
-                        h3(class="feature-title") Footprints
-                        p(class="feature-text") Rectangle, L and T shapes from one click, with up to two wings.
-                    li(class="feature-card")
-                        h3(class="feature-title") Floors and roofs
-                        p(class="feature-text") Any number of floors. Flat, Gable and Hip roofs, and wing roofs meet the main roof properly.
-                    li(class="feature-card")
-                        h3(class="feature-title") Doors and windows
-                        p(class="feature-text") Click a wall to place a door, then add windows by hand or spread them automatically.
-                    li(class="feature-card")
-                        h3(class="feature-title") Three styles
-                        p(class="feature-text") Cottage, Stone and Modern. No textures to import and nothing to set up.
-                    li(class="feature-card")
-                        h3(class="feature-title") Quick villages
-                        p(class="feature-text") Randomize for instant variety, then save a prefab or export an OBJ.
-                    li(class="feature-card")
-                        h3(class="feature-title") Recipes and batch builds
-                        p(class="feature-text") Every house is a small JSON recipe, and one batch command builds a whole street.
-                    li(class="feature-card")
-                        h3(class="feature-title") Any pipeline
-                        p(class="feature-text") Built-in, URP and HDRP, on Unity 2022.3 and Unity 6.3.
-                    li(class="feature-card")
-                        h3(class="feature-title") Upgrade keeps your houses
-                        p(class="feature-text") The full Easy House converts Lite houses and prefabs into fully editable houses.
-
-                div(class="shot-grid")
-                    figure
-                        img(
-                            src="/assets/images/tools/easy-house/_linked/lite-editor.jpg"
-                            srcset="/assets/images/tools/easy-house/_linked/lite-editor-800.jpg 800w, /assets/images/tools/easy-house/_linked/lite-editor.jpg 1600w"
-                            sizes="(min-width: 1024px) 550px, 92vw"
-                            width="1600"
-                            height="900"
-                            alt="Easy House Lite Inspector next to a two-storey house with a red gable roof"
-                            loading="lazy")
-                        figcaption One small window: size, wings, floors, roof, doors and style.
-                    figure
-                        img(
-                            src="/assets/images/tools/easy-house/_linked/lite-shapes.jpg"
-                            srcset="/assets/images/tools/easy-house/_linked/lite-shapes-800.jpg 800w, /assets/images/tools/easy-house/_linked/lite-shapes.jpg 1600w"
-                            sizes="(min-width: 1024px) 550px, 92vw"
-                            width="1600"
-                            height="900"
-                            alt="Three stone houses with rectangle, L and T footprints"
-                            loading="lazy")
-                        figcaption Rectangle, L and T footprints. Wing roofs join the main roof.
-                    figure
-                        img(
-                            src="/assets/images/tools/easy-house/_linked/lite-roofs.jpg"
-                            srcset="/assets/images/tools/easy-house/_linked/lite-roofs-800.jpg 800w, /assets/images/tools/easy-house/_linked/lite-roofs.jpg 1600w"
-                            sizes="(min-width: 1024px) 550px, 92vw"
-                            width="1600"
-                            height="900"
-                            alt="Three houses with flat, gable and hip roofs"
-                            loading="lazy")
-                        figcaption Flat, Gable and Hip roofs.
-                    figure
-                        img(
-                            src="/assets/images/tools/easy-house/_linked/lite-styles.jpg"
-                            srcset="/assets/images/tools/easy-house/_linked/lite-styles-800.jpg 800w, /assets/images/tools/easy-house/_linked/lite-styles.jpg 1600w"
-                            sizes="(min-width: 1024px) 550px, 92vw"
-                            width="1600"
-                            height="900"
-                            alt="Houses in the Cottage, Stone and Modern styles side by side"
-                            loading="lazy")
-                        figcaption Three styles: Cottage, Stone and Modern.
-
-        section(class="page-section page-section--showcase" id="lite-vs-full")
-            div(class="section-inner")
-
-                div(class="section-heading")
-                    p(class="section-eyebrow") The full edition
-                    h2(class="section-title") Easy House: when you need more than a box with a roof
-                    p(class="section-lead").
-                        A House Editor in the Scene view, free-form footprints, a roof solver for any outline,
-                        13 ready house types and full C# source. Lite houses carry over when you upgrade.
-
-                figure(class="case-figure case-figure--wide")
-                    img(
-                        src="/assets/images/tools/easy-house/_linked/full-street.jpg"
-                        srcset="/assets/images/tools/easy-house/_linked/full-street-800.jpg 800w, /assets/images/tools/easy-house/_linked/full-street.jpg 1600w"
-                        sizes="(min-width: 1024px) 1120px, 92vw"
-                        width="1600"
-                        height="900"
-                        alt="A street of detailed houses built with the full Easy House: timber framing, stone walls, tiled roofs and a road"
-                        loading="lazy")
-                    figcaption A street built with the full Easy House.
-
-                div(class="prose")
                     h2 Lite and full, side by side
                     div(class="table-wrap")
                         table(class="spec-table")
@@ -183,75 +268,26 @@ block main
                                     td Prefab, OBJ, mesh collider
                                     td Prefab, OBJ, LOD0–2, texture atlas, lightmap UVs
                                 tr
-                                    th(scope="row") Runtime
-                                    td Lite recipe and batch build
-                                    td Runtime JSON, build and upgrade animation, area batch from map data
+                                    th(scope="row") Render pipelines
+                                    td Built-in, URP and HDRP
+                                    td URP; Built-in after a one-click material conversion
                                 tr
                                     th(scope="row") Source code
                                     td Compiled assemblies
                                     td Full C# source
-
-                    h2 Add-ons for the full edition
-                    ul
-                        li #[strong Part Designer:] draw your own doors, windows and arches in a 2D elevation editor with a live 3D preview.
-                        li #[strong Sketch:] drag or draw outlines in the Scene view and get finished houses, plus fences, garden walls and paths.
-                    p.
-                        Houses made with the add-ons build with Easy House alone, so your team or your
-                        players never need them installed.
-
-                div(class="shot-grid")
-                    figure
-                        img(
-                            src="/assets/images/tools/easy-house/_linked/lite-vs-full.jpg"
-                            srcset="/assets/images/tools/easy-house/_linked/lite-vs-full-800.jpg 800w, /assets/images/tools/easy-house/_linked/lite-vs-full.jpg 1600w"
-                            sizes="(min-width: 1024px) 550px, 92vw"
-                            width="1600"
-                            height="900"
-                            alt="The same house built with Easy House Lite on the left and converted to the full Easy House on the right"
-                            loading="lazy")
-                        figcaption The same house in Lite, then converted to the full edition.
-                    figure
-                        img(
-                            src="/assets/images/tools/easy-house/_linked/full-aerial.jpg"
-                            srcset="/assets/images/tools/easy-house/_linked/full-aerial-800.jpg 800w, /assets/images/tools/easy-house/_linked/full-aerial.jpg 1600w"
-                            sizes="(min-width: 1024px) 550px, 92vw"
-                            width="1600"
-                            height="900"
-                            alt="Aerial view of a village built with the full Easy House, with a road and a roundabout"
-                            loading="lazy")
-                        figcaption A whole village from the full edition.
 
                 div(class="callout callout--caution")
                     h3(class="callout-title") Where things stand
                     p(class="callout-text").
                         Easy House Lite is finished and being prepared for the Asset Store. The full edition and
                         its add-ons follow after Lite is live. The full edition is developed and tested on Unity
-                        2022.3 LTS with URP; Built-in works after a one-click material conversion. Unity 6 support
-                        for the full edition is not claimed until it passes the full test suite there.
-
-        section(class="page-section")
-            div(class="section-inner")
-
-                div(class="prose")
-                    h2 See it in motion
-                figure(class="case-figure case-figure--wide")
-                    video(
-                        class="tool-video"
-                        controls
-                        preload="metadata"
-                        playsinline
-                        width="1234"
-                        height="694"
-                        poster="/assets/images/tools/easy-house/_linked/showcase-poster.jpg")
-                        source(src="/media/easy-house-showcase.mp4" type="video/mp4")
-                        | Your browser does not support embedded video. Download the showcase from the #[a(href="/media/easy-house-showcase.mp4") MP4 file].
-                    figcaption The House Editor of the full Easy House: walls, roof and material work in Unity.
+                        2022.3 LTS with URP; Unity 6 support is not claimed until it passes the full test suite there.
 
                 div(class="callout")
                     h3(class="callout-title") Join the launch list
                     p(class="callout-text").
-                        Want to know the day Easy House Lite goes live? Send a short email and you'll get one
-                        message when it is on the Asset Store, nothing else.
+                        Want to know the day Easy House goes live? Send a short email and you'll get one message
+                        when it is on the Asset Store, nothing else.
 
                 div(class="section-actions")
                     a(class="btn btn-primary" href="mailto:marko@interactivesolutions.hr?subject=Easy%20House%20launch%20list" data-analytics="easyhouse_waitlist_bottom") Join the launch list
