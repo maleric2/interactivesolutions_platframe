@@ -5,8 +5,9 @@ block context
     - bodyClass = 'page';
     - isHome = false;
     - pageTitle = 'MeshMerge — Mesh Combiner & Texture Array Baker for Unity | Interactive Solutions';
-    - pageDescription = 'MeshMerge merges static meshes and bakes their materials into one Texture Array or Atlas material for fewer draw calls. Unity 2022.3, 6.3 and 6.6, URP and Built-in.';
+    - pageDescription = 'MeshMerge is a free Unity tool that merges static meshes and bakes their materials into one Texture Array or Atlas material for fewer draw calls. Unity 2022.3, 6.3 and 6.6, URP and Built-in.';
     - pageCanonical = 'https://interactivesolutions.hr/tools/mesh-merge/';
+    - mmTrailer = null;
     - pageSchema = {"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "MeshMerge — Mesh Combiner and Texture Array Baker", "applicationCategory": "DeveloperApplication", "operatingSystem": "Windows, macOS, Linux (Unity Editor 2022.3, 6.3, 6.6)", "description": pageDescription, "url": pageCanonical, "offers": {"@type": "Offer", "url": "https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726", "availability": "https://schema.org/InStock"}};
 
 block main
@@ -19,15 +20,45 @@ block main
                     li: a(href="/") Home
                     li: a(href="/tools/") Unity Tools
                     li MeshMerge
+                p(class="page-hero-badge") New in 1.4 · Free
                 h1 MeshMerge — Mesh Combiner &amp; Texture Array Baker
-                p Merge static meshes and bake their materials into one Texture Array or Atlas material, so real Unity scenes render with far fewer draw calls.
+                p A free Unity tool. Merge static meshes and bake their materials into one Texture Array or Atlas material, so real Unity scenes render with far fewer draw calls.
 
         section(class="page-section")
             div(class="section-inner")
 
                 div(class="section-actions")
                     a(class="btn btn-primary" href="https://assetstore.unity.com/packages/tools/utilities/meshmerge-mesh-combiner-texture-array-baker-392726?utm_source=portfolio&utm_medium=website" target="_blank" rel="noopener" data-analytics="meshmerge_page_store") View on the Unity Asset Store
-                    a(class="btn btn-ghost" href="https://assetstore.unity.com/publishers/40273?utm_source=portfolio&utm_medium=website" target="_blank" rel="noopener" data-analytics="meshmerge_page_publisher") More tools by Interactive Solutions
+                    a(class="btn btn-ghost" href="#new-in-1-4") What's new in 1.4 →
+
+                div(class="release-band" id="new-in-1-4")
+                    p(class="section-eyebrow") New in 1.4
+                    h2(class="release-band-title") Measured, not estimated
+                    p(class="release-band-lead").
+                        1.4 adds a showcase scene and a way to measure real draw calls in a player, so you can
+                        check the numbers on this page against your own project.
+                    if mmTrailer
+                        figure(class="case-figure case-figure--wide release-band-video")
+                            video(
+                                class="tool-video"
+                                controls
+                                preload="none"
+                                playsinline
+                                width="1920"
+                                height="1080"
+                                poster=mmTrailer.poster)
+                                source(src=mmTrailer.src type="video/mp4")
+                            figcaption The MeshMerge 1.4 trailer.
+                    ul(class="feature-grid feature-grid--three")
+                        li(class="feature-card")
+                            h3(class="feature-title") Showcase scene
+                            p(class="feature-text") #[strong GameObject › MeshMerge › Create Showcase Scene] builds a town square of 9 buildings and 135 renderers to try the whole workflow on.
+                        li(class="feature-card")
+                            h3(class="feature-title") Measured draw calls
+                            p(class="feature-text") The command line builds a short development player and records draw calls, SetPass calls, batches and triangles before and after a merge or bake.
+                        li(class="feature-card")
+                            h3(class="feature-title") Release fixes
+                            p(class="feature-text") The render check no longer saves its camera colour, release players skip the merge trace log, and the User Guide's runtime example compiles.
 
                 figure(class="case-figure case-figure--wide")
                     img(
@@ -60,8 +91,8 @@ block main
                         span(class="proof-stat-value") Unity 2022.3 · 6.3 · 6.6
                         span(class="proof-stat-label") URP recommended, Built-in supported
                     div(class="proof-stat")
-                        span(class="proof-stat-value") No third-party dependencies
-                        span(class="proof-stat-label") Editor tool plus a small runtime
+                        span(class="proof-stat-value") Free, full source
+                        span(class="proof-stat-label") MIT license, no third-party dependencies
 
                 div(class="prose")
                     h2 What it does
@@ -124,7 +155,7 @@ block main
                                     td 2022.3 LTS, 6.3 and 6.6
                                 tr
                                     th(scope="row") Render pipeline
-                                    td URP 14+ (recommended) or Built-in
+                                    td URP 14+ (recommended) or Built-in. HDRP is not supported
                                 tr
                                     th(scope="row") Input
                                     td Static MeshRenderer + MeshFilter hierarchies
@@ -135,15 +166,24 @@ block main
                                     th(scope="row") Release checks
                                     td 576 automated editor tests, run on every supported Unity version
 
-                    h2 What's new in 1.4
-                    ul
-                        li A showcase scene (#[strong GameObject › MeshMerge › Create Showcase Scene]) to see a full merge and bake in seconds.
-                        li Measured draw calls from the command line, so the numbers on this page come from real frames.
-                        li Fixes for the demo scene on Built-in and for the User Guide's runtime example.
+                    h2 Version history
+                    div(class="table-wrap")
+                        table(class="spec-table")
+                            tbody
+                                tr
+                                    th(scope="row") 1.4
+                                    td Showcase scene, measured draw calls from the command line, release fixes
+                                tr
+                                    th(scope="row") 1.3
+                                    td Headless API and command line, Optimize Scene, LOD merging per level, per-slice metallic and smoothness
+                                tr
+                                    th(scope="row") 1.2
+                                    td Reliable large merges with rollback, safe bakes, honest statistics, dockable window, Unity 6.3 and 6.6
+                                tr
+                                    th(scope="row") 1.0
+                                    td First release: Mesh Combiner, Texture Array and Atlas bakers, Mesh Splitter, runtime merging
                     p.
-                        Version 1.4 is on its way to the Asset Store. Version 1.3 added the headless API and
-                        command line, the Optimize Scene window, LOD merging per level and per-slice
-                        metallic/smoothness for Texture Array bakes.
+                        Version 1.4 is on its way to the Asset Store.
 
                     h2 Support and documentation
                     p.
