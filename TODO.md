@@ -115,6 +115,12 @@ serving it. See `DEPLOY.md` for the production verification and rollback steps.
 
 ## P1 — content and assets awaiting the owner
 
+- **Owner reminders (deferred by request)** - (a) Search Console: verify the
+  property, submit the sitemap and request indexing for `/`, Services, Work,
+  Tools and About so the stale `Full-Cycle…` snapshot is replaced; (b) hash
+  links (`/#work`, `/#tools`, `/services/#pricing`) need a manual desktop +
+  mobile check — anchors verified present in HTML only; (c) form email
+  notification + a later full form test.
 - **Netlify form email notification** — add/verify an email notification for
   `project-inquiry`; form submissions are currently accepted but not forwarded
   by email.
