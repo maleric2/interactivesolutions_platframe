@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Easy House: build a house in your browser</title>
+    <link rel="canonical" href="https://interactivesolutions.hr/tools/easy-house/demo/">
+    <meta name="description" content="Easy House for Unity: procedural houses from a footprint, a roof and a style. Try it in the browser.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M4 15 16 5l12 10' fill='none' stroke='%23f2a633' stroke-width='3'/%3E%3Crect x='8' y='15' width='16' height='12' fill='%23eef0f3'/%3E%3Crect x='14' y='20' width='4' height='7' fill='%2314171c'/%3E%3C/svg%3E">
+    <style>
+      :root {
+        --bg: #14171c; --panel: rgba(20, 24, 30, 0.86); --panel-solid: #1a1f26; --line: rgba(255, 255, 255, 0.1);
+        --text: #eef0f3; --muted: #a3aab5; --accent: #f2a633; --accent-ink: #1d1404; --chip: rgba(255, 255, 255, 0.08);
+        --chip-on: #f2a633; --radius: 12px; --gutter: 16px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--text); }
+      #unity-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; background: var(--bg); outline: none; touch-action: none; }
+      button, select, input { font: inherit; color: inherit; }
+      button { cursor: pointer; border: 0; }
+      .hidden { display: none !important; }
+
+      /* Loader */
+      #loader { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+                background: radial-gradient(ellipse at 50% 35%, #26303c 0%, var(--bg) 70%); z-index: 20; padding: var(--gutter); text-align: center; }
+      #loader .logo { font-size: 30px; font-weight: 700; letter-spacing: 0.2px; }
+      #loader .logo span { color: var(--accent); }
+      #loader .sub { color: var(--muted); margin: 8px 0 22px; font-size: 15px; }
+      #bar { width: min(320px, 80vw); height: 6px; background: #313844; border-radius: 3px; overflow: hidden; }
+      #fill { width: 0; height: 100%; background: var(--accent); transition: width .2s; }
+      #pct { margin-top: 10px; color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+      #error { color: #ff9a8f; margin-top: 14px; max-width: 520px; font-size: 14px; }
+
+      /* Top bar */
+      #top { position: absolute; top: var(--gutter); left: var(--gutter); right: var(--gutter); display: flex; gap: 10px; align-items: center;
+             z-index: 5; pointer-events: none; flex-wrap: wrap; }
+      #top > * { pointer-events: auto; }
+      .brand { background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--line);
+               border-radius: 999px; padding: 9px 16px; font-weight: 700; font-size: 15px; white-space: nowrap; }
+      .brand span { color: var(--accent); }
+      .tabs { display: flex; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--line);
+              border-radius: 999px; padding: 4px; gap: 2px; }
+      .tabs button { background: transparent; border-radius: 999px; padding: 8px 14px; font-size: 14px; font-weight: 600; color: var(--muted); min-height: 36px; white-space: nowrap; }
+      .tabs button.on { background: var(--accent); color: var(--accent-ink); }
+      .tabs button:not(.on):hover { color: var(--text); }
+      #store { margin-left: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 9px 14px; font-size: 13px;
+               color: var(--text); text-decoration: none; white-space: nowrap; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+      #store:hover { border-color: var(--accent); }
+
+      /* Street caption */
+      #street { position: absolute; left: var(--gutter); right: var(--gutter); bottom: var(--gutter); z-index: 4; display: flex; justify-content: center; pointer-events: none; }
+      #street .card { pointer-events: auto; background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--line);
+                      border-radius: var(--radius); padding: 14px 16px; max-width: 860px; width: 100%; }
+      #street h2 { margin: 0 0 4px; font-size: 17px; }
+      #street p { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+      .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+      .chip { background: var(--chip); border-radius: 999px; padding: 7px 12px; font-size: 13px; min-height: 34px; }
+      .chip:hover { background: rgba(255, 255, 255, 0.16); }
+      .chip.on { background: var(--chip-on); color: var(--accent-ink); font-weight: 600; }
+      .cta { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+      .btn { background: var(--chip); border-radius: 10px; padding: 10px 14px; font-weight: 600; font-size: 14px; min-height: 42px; }
+      .btn:hover { background: rgba(255, 255, 255, 0.16); }
+      .btn.primary { background: var(--accent); color: var(--accent-ink); }
+      .btn.primary:hover { filter: brightness(1.08); }
+
+      /* Build panel: right column on wide screens, bottom sheet on phones */
+      #panel { position: absolute; z-index: 4; top: 76px; right: var(--gutter); bottom: var(--gutter); width: 330px; display: flex; flex-direction: column;
+               background: var(--panel); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: var(--radius); }
+      #panel .head { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px 6px; }
+      #panel .head h2 { margin: 0; font-size: 16px; }
+      #sheet-toggle { display: none; background: var(--chip); border-radius: 8px; padding: 6px 10px; font-size: 13px; }
+      #panel .body { overflow-y: auto; padding: 4px 14px 14px; -webkit-overflow-scrolling: touch; }
+      .group { padding: 10px 0; border-top: 1px solid var(--line); }
+      .group:first-child { border-top: 0; }
+      .group > label, .group > .label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); margin-bottom: 7px; font-weight: 600; }
+      .seg { display: flex; flex-wrap: wrap; gap: 5px; }
+      .seg button { background: var(--chip); border-radius: 8px; padding: 7px 11px; font-size: 13px; min-height: 36px; min-width: 40px; }
+      .seg button.on { background: var(--chip-on); color: var(--accent-ink); font-weight: 600; }
+      .row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; font-size: 13px; }
+      .row span.k { width: 48px; color: var(--muted); }
+      .row span.v { width: 46px; text-align: right; font-variant-numeric: tabular-nums; }
+      input[type=range] { flex: 1; accent-color: var(--accent); height: 28px; }
+      select { width: 100%; background: var(--panel-solid); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; min-height: 40px; margin-bottom: 6px; }
+      .files { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+      .files .btn { font-size: 13px; padding: 9px 8px; }
+      .files .wide { grid-column: span 2; }
+      .tags { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+      /* Draw bar */
+      #drawbar { position: absolute; z-index: 6; left: 50%; transform: translateX(-50%); top: 76px; width: min(560px, calc(100% - 2 * var(--gutter)));
+                 background: var(--panel); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+      #drawbar p { margin: 0 0 10px; font-size: 14px; }
+      #drawbar .cta { margin: 0; }
+
+      /* Status */
+      #status { position: absolute; z-index: 7; left: 50%; transform: translateX(-50%); bottom: calc(var(--gutter) + 6px); max-width: min(560px, calc(100% - 2 * var(--gutter)));
+                background: rgba(12, 14, 18, 0.92); border: 1px solid var(--line); border-radius: 10px; padding: 9px 14px; font-size: 13px; color: var(--text);
+                opacity: 0; transition: opacity .25s; pointer-events: none; text-align: center; }
+      #status.show { opacity: 1; }
+      #busy { position: absolute; z-index: 5; top: 76px; left: var(--gutter); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; font-size: 13px; color: var(--muted); }
+      #hint { position: absolute; z-index: 3; left: var(--gutter); bottom: var(--gutter); font-size: 12px; color: rgba(255, 255, 255, 0.75); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6); }
+
+      @media (max-width: 760px) {
+        :root { --gutter: 10px; }
+        .brand { padding: 8px 12px; font-size: 14px; }
+        .tabs button { padding: 7px 10px; font-size: 13px; }
+        #store { order: 3; margin-left: 0; }
+        #panel { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 48%; border-radius: 16px 16px 0 0; border-bottom: 0; }
+        #panel.collapsed .body { display: none; }
+        #sheet-toggle { display: inline-block; }
+        #status { bottom: calc(48% + 10px); }
+        #panel.collapsed ~ #status { bottom: 72px; }
+        #busy, #drawbar { top: 104px; }
+        #street h2 { font-size: 15px; }
+        #street p { font-size: 13px; }
+        #hint { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Easy House browser demo</h1>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+
+    <div id="top" class="hidden">
+      <div class="brand">Easy <span>House</span></div>
+      <div class="tabs" role="tablist">
+        <button id="tab-street" class="on" data-cmd="street">Street</button>
+        <button id="tab-build" data-cmd="build">Build your own</button>
+        <button id="tab-random" data-cmd="random">Random house</button>
+      </div>
+      <a id="store" class="hidden" target="_blank" rel="noopener">Easy House on the Unity Asset Store &rarr;</a>
+    </div>
+
+    <div id="busy" class="hidden"></div>
+
+    <div id="street" class="hidden">
+      <div class="card">
+        <h2>A street built from one-line recipes</h2>
+        <p>Each house comes from a short tag recipe like <em>"dalmatian, old, chimney"</em>. Tap a name to look closer, or drag to orbit.</p>
+        <div class="chips" id="street-chips"></div>
+        <div class="cta">
+          <button class="btn primary" data-cmd="build">Build your own</button>
+          <button class="btn" data-cmd="random">Random house from tags</button>
+          <button class="btn" data-cmd="obj">Download street (OBJ)</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel" class="hidden">
+      <div class="head"><h2 id="panel-title">Your house</h2><button id="sheet-toggle">Hide</button></div>
+      <div class="body">
+        <div class="group">
+          <div class="label">Footprint</div>
+          <div class="seg" id="shape">
+            <button data-v="rect">Rectangle</button><button data-v="L">L</button><button data-v="U">U</button><button data-v="T">T</button><button data-v="draw">Draw&hellip;</button>
+          </div>
+          <div class="row" style="margin-top:8px"><span class="k">Width</span><input type="range" id="width" min="5" max="22" step="0.5"><span class="v" id="width-v"></span></div>
+          <div class="row"><span class="k">Depth</span><input type="range" id="depth" min="5" max="22" step="0.5"><span class="v" id="depth-v"></span></div>
+        </div>
+        <div class="group">
+          <div class="label">Floors</div>
+          <div class="seg" id="floors"><button data-v="1">1</button><button data-v="2">2</button><button data-v="3">3</button><button data-v="4">4</button></div>
+        </div>
+        <div class="group">
+          <div class="label">Roof</div>
+          <div class="seg" id="roof"></div>
+        </div>
+        <div class="group">
+          <label for="type">House type</label>
+          <select id="type"></select>
+          <label for="style" style="margin-top:6px">Style</label>
+          <select id="style"></select>
+          <div class="seg" id="look" style="margin-top:4px"><button data-v="realistic">Realistic</button><button data-v="stylized">Stylized</button></div>
+          <div class="tags" id="tags"></div>
+        </div>
+        <div class="group">
+          <div class="label">Doors &amp; windows</div>
+          <div class="row"><span class="k">Windows</span></div>
+          <div class="seg" id="windows"><button data-v="auto">Auto</button><button data-v="2">2</button><button data-v="3">3</button><button data-v="4">4</button><button data-v="5">5</button></div>
+          <div class="row" style="margin-top:8px"><span class="k">Porch</span></div>
+          <div class="seg" id="porch"><button data-v="auto">Auto</button><button data-v="none">None</button><button data-v="simple">Simple</button><button data-v="columns">Columns</button><button data-v="timber">Timber</button></div>
+          <div class="row" style="margin-top:8px"><span class="k">Extras</span></div>
+          <div class="seg" id="extras"><button data-v="shutters">Shutters</button><button data-v="balconies">Balcony</button><button data-v="chimneys">Chimney</button></div>
+        </div>
+        <div class="group">
+          <div class="label">Save</div>
+          <div class="files">
+            <button class="btn" data-cmd="json">Download JSON</button>
+            <button class="btn" data-cmd="open-json">Open JSON&hellip;</button>
+            <button class="btn wide" data-cmd="obj">Download OBJ (3D model)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="drawbar" class="hidden">
+      <p id="draw-msg">Tap the grid to place corners. Tap the first corner or Finish to close.</p>
+      <div class="cta">
+        <button class="btn primary" data-cmd="draw-finish">Finish</button>
+        <button class="btn" data-cmd="draw-undo">Undo corner</button>
+        <button class="btn" data-cmd="draw-cancel">Cancel</button>
+      </div>
+    </div>
+
+    <div id="status"></div>
+    <div id="hint">Drag to orbit &middot; right-drag to pan &middot; wheel or pinch to zoom</div>
+
+    <div id="loader">
+      <div class="logo">Easy <span>House</span></div>
+      <div class="sub">Procedural houses for Unity, live in your browser</div>
+      <div id="bar"><div id="fill"></div></div>
+      <div id="pct">0%</div>
+      <div id="error"></div>
+    </div>
+
+    <script>
+      // Link to the Asset Store page; empty = the link is hidden.
+      var STORE_URL = "";
+
+      window.easyHouseLoadStart = performance.now();
+      var canvas = document.querySelector("#unity-canvas");
+      canvas.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+      var $ = function (id) { return document.getElementById(id); };
+      var state = null, statusTimer = 0, lastMessage = "";
+
+      function send(line) {
+        if (window.unityInstance) window.unityInstance.SendMessage("Showcase", "Command", line);
+      }
+      window.easyHouseCommand = send;
+
+      function toast(text) {
+        if (!text) return;
+        var s = $("status");
+        s.textContent = text;
+        s.classList.add("show");
+        clearTimeout(statusTimer);
+        statusTimer = setTimeout(function () { s.classList.remove("show"); }, 4200);
+      }
+
+      function setOn(groupId, value) {
+        var buttons = $(groupId).querySelectorAll("button");
+        for (var i = 0; i < buttons.length; i++) buttons[i].classList.toggle("on", buttons[i].getAttribute("data-v") === String(value));
+      }
+
+      function fillSelect(sel, items, current, firstLabel) {
+        var key = items.join("|") + "#" + firstLabel;
+        if (sel.getAttribute("data-key") !== key) {
+          sel.innerHTML = "";
+          if (firstLabel !== null) { var o = document.createElement("option"); o.value = ""; o.textContent = firstLabel; sel.appendChild(o); }
+          items.forEach(function (it) { var o = document.createElement("option"); o.value = it; o.textContent = it; sel.appendChild(o); });
+          sel.setAttribute("data-key", key);
+        }
+        sel.value = current || "";
+      }
+
+      window.onEasyHouseState = function (json) {
+        state = JSON.parse(json);
+        var build = state.mode === "build";
+        $("tab-street").classList.toggle("on", !build);
+        $("tab-build").classList.toggle("on", build);
+        $("street").classList.toggle("hidden", build || state.drawing);
+        $("panel").classList.toggle("hidden", !build || state.drawing);
+        $("drawbar").classList.toggle("hidden", !state.drawing);
+        $("hint").classList.toggle("hidden", state.drawing);
+
+        var chips = $("street-chips");
+        if (chips.childElementCount !== state.street.length) {
+          chips.innerHTML = "";
+          state.street.forEach(function (n, i) {
+            var b = document.createElement("button");
+            b.className = "chip";
+            b.textContent = n;
+            b.onclick = function () { send("house " + i); };
+            chips.appendChild(b);
+          });
+        }
+        for (var i = 0; i < chips.children.length; i++) chips.children[i].disabled = i >= state.streetBuilt;
+
+        var busy = state.busy && state.streetBuilt < state.streetCount;
+        $("busy").classList.toggle("hidden", !busy || build);
+        $("busy").textContent = "Building the street: " + state.streetBuilt + " / " + state.streetCount;
+
+        $("panel-title").textContent = state.name || "Your house";
+        setOn("shape", state.shape === "points" ? "draw" : (state.shape || "rect"));
+        var w = state.width || 10, d = state.depth || 8;
+        $("width").value = w; $("width-v").textContent = (+w).toFixed(1) + " m";
+        $("depth").value = d; $("depth-v").textContent = (+d).toFixed(1) + " m";
+        setOn("floors", state.floors);
+        var roof = $("roof");
+        if (roof.getAttribute("data-key") !== state.roofs.join("|")) {
+          roof.innerHTML = "";
+          state.roofs.forEach(function (r) {
+            var b = document.createElement("button");
+            b.setAttribute("data-v", r);
+            b.textContent = r.replace("OpenGable", "Open gable");
+            roof.appendChild(b);
+          });
+          roof.setAttribute("data-key", state.roofs.join("|"));
+        }
+        setOn("roof", state.roof);
+        fillSelect($("type"), state.types, state.type, state.type ? null : "From the tags");
+        fillSelect($("style"), state.styles, state.style, "The house type's own");
+        setOn("look", state.look);
+        $("tags").textContent = state.tags.length ? "Tags: " + state.tags.join(", ") : "";
+        setOn("windows", state.windows);
+        setOn("porch", state.porch);
+        var ex = $("extras").querySelectorAll("button");
+        ex[0].classList.toggle("on", state.shutters);
+        ex[1].classList.toggle("on", state.balconies > 0);
+        ex[2].classList.toggle("on", state.chimneys > 0);
+
+        if (state.drawing) $("draw-msg").textContent = state.message || "Tap the grid to place corners.";
+        else if (state.message && state.message !== lastMessage) toast(state.message);
+        lastMessage = state.message;
+      };
+
+      window.onEasyHouseDownload = function (name) { toast("Downloaded " + name); };
+
+      document.addEventListener("click", function (e) {
+        var b = e.target.closest("[data-cmd]");
+        if (b) { send(b.getAttribute("data-cmd")); return; }
+        var seg = e.target.closest(".seg button");
+        if (!seg || !state) return;
+        var group = seg.parentElement.id, v = seg.getAttribute("data-v");
+        if (group === "shape") send(v === "draw" ? "draw-begin" : "shape " + v);
+        else if (group === "floors") send("floors " + v);
+        else if (group === "roof") send("roof " + v);
+        else if (group === "look") send("look " + v);
+        else if (group === "windows") send("windows " + v);
+        else if (group === "porch") send("porch " + v);
+        else if (group === "extras") {
+          if (v === "shutters") send("shutters " + (state.shutters ? "off" : "on"));
+          else send(v + " " + (state[v] > 0 ? 0 : 1));
+        }
+      });
+      $("type").addEventListener("change", function () { if (this.value) send("type " + this.value); });
+      $("style").addEventListener("change", function () { send("style " + (this.value || "auto")); });
+      ["width", "depth"].forEach(function (id) {
+        $(id).addEventListener("input", function () { $(id + "-v").textContent = (+this.value).toFixed(1) + " m"; });
+        $(id).addEventListener("change", function () { send("size " + $("width").value + " " + $("depth").value); });
+      });
+      $("sheet-toggle").addEventListener("click", function () {
+        var p = $("panel");
+        p.classList.toggle("collapsed");
+        this.textContent = p.classList.contains("collapsed") ? "Show" : "Hide";
+      });
+      if (STORE_URL) { $("store").href = STORE_URL; $("store").classList.remove("hidden"); }
+
+      var script = document.createElement("script");
+      script.src = "Build/WebGL-Showcase.loader.js";
+      script.onload = function () {
+        createUnityInstance(canvas, {
+          dataUrl: "Build/WebGL-Showcase.data.unityweb",
+          frameworkUrl: "Build/WebGL-Showcase.framework.js.unityweb",
+          codeUrl: "Build/WebGL-Showcase.wasm.unityweb",
+          streamingAssetsUrl: "StreamingAssets",
+          companyName: "maleric",
+          productName: "Easy House",
+          productVersion: "0.1.0",
+          devicePixelRatio: Math.min(window.devicePixelRatio || 1, 1.5)
+        }, function (progress) {
+          var p = Math.round(progress * 100);
+          $("fill").style.width = p + "%";
+          $("pct").textContent = p < 90 ? p + "%" : "Starting...";
+        }).then(function (instance) {
+          window.unityInstance = instance;
+          window.easyHouseLoadMs = Math.round(performance.now() - window.easyHouseLoadStart);
+          $("loader").classList.add("hidden");
+          $("top").classList.remove("hidden");
+          if (window.easyHouseState) window.onEasyHouseState(window.easyHouseState);
+          canvas.focus();
+        }).catch(function (message) {
+          $("error").textContent = String(message);
+        });
+      };
+      script.onerror = function () { $("error").textContent = "Could not load the Unity loader (Build/WebGL-Showcase.loader.js)."; };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
