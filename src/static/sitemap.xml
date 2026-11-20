@@ -42,8 +42,13 @@
     </url>
     <url>
         <loc>https://interactivesolutions.hr/tools/easy-house/</loc>
-        <lastmod>2026-09-19</lastmod>
+        <lastmod>2026-11-15</lastmod>
         <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://interactivesolutions.hr/tools/easy-house/demo/</loc>
+        <lastmod>2026-11-15</lastmod>
+        <priority>0.5</priority>
     </url>
     <url>
         <loc>https://interactivesolutions.hr/about/</loc>

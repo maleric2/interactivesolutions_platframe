@@ -56,7 +56,7 @@ block main
 
                 div(class="section-actions")
                     a(class="btn btn-primary" href="mailto:marko@interactivesolutions.hr?subject=Easy%20House%20launch%20list" data-analytics="easyhouse_waitlist") Join the launch list
-                    a(class="btn btn-ghost" href="#lite" data-analytics="easyhouse_page_lite") Start free with Lite →
+                    a(class="btn btn-ghost" href="#demo" data-analytics="easyhouse_page_demo") Try it in your browser →
 
                 div(class="proof-strip-inner proof-strip-inner--flush" aria-label="Easy House at a glance")
                     div(class="proof-stat")
@@ -230,7 +230,32 @@ block main
                         | Your browser does not support embedded video. Download the #[a(href="/media/easy-house-sketch.mp4") video file].
                     figcaption Sketch add-on: drag a footprint or draw any outline, paint styles over houses, then add walls, fences and paths.
 
-        section(class="page-section page-section--showcase" id="lite")
+        section(class="page-section page-section--showcase" id="demo")
+            div(class="section-inner")
+
+                div(class="section-heading")
+                    p(class="section-eyebrow") Live demo
+                    h2(class="section-title") Try Easy House in your browser
+                    p(class="section-lead").
+                        A street of houses built from one-line recipes. Build your own from a footprint, floors, a roof and a style, roll a random house, and download the result as a recipe or an OBJ.
+
+                figure(class="case-figure case-figure--wide product-media")
+                    a(class="demo-launch" href="/tools/easy-house/demo/" target="_blank" rel="noopener" data-analytics="easyhouse_demo_poster")
+                        img(
+                            src="/assets/images/tools/easy-house/_linked/demo-street.jpg"
+                            srcset="/assets/images/tools/easy-house/_linked/demo-street-800.jpg 800w, /assets/images/tools/easy-house/_linked/demo-street.jpg 1280w"
+                            sizes="(min-width: 1024px) 1120px, 92vw"
+                            width="1280"
+                            height="720"
+                            alt="The Easy House browser demo: a street of stone houses with a panel to build your own"
+                            loading="lazy")
+                        span(class="demo-launch-label") Open the live demo
+                    figcaption Runs in the browser with WebGL 2. About 23 MB, loaded only when you open it; best on a desktop browser.
+
+                div(class="section-actions")
+                    a(class="btn btn-primary" href="/tools/easy-house/demo/" target="_blank" rel="noopener" data-analytics="easyhouse_demo") Open the live demo
+
+        section(class="page-section" id="lite")
             div(class="section-inner")
 
                 div(class="section-heading")
@@ -258,7 +283,7 @@ block main
                         When you outgrow it, import Easy House and run #[strong Tools › EasyHouse › Convert Lite Houses].
                         Footprint, floors, roof, door and windows carry over into fully editable houses.
 
-        section(class="page-section")
+        section(class="page-section page-section--showcase")
             div(class="section-inner")
 
                 div(class="section-heading")

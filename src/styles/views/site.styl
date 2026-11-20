@@ -1825,6 +1825,30 @@ a.tool-media
 .shot-grid + .product-media--after
     margin-top: rem(36px)
 
+// poster that opens the browser demo
+a.demo-launch
+    position: relative
+    display: block
+    img
+        display: block
+        transition: filter .2s ease
+    &:hover img,
+    &:focus-visible img
+        filter: brightness(.8)
+
+.demo-launch-label
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    padding: rem(14px) rem(26px)
+    border-radius: 999px
+    background: rgba(10, 14, 36, .82)
+    border: 1px solid rgba(255, 255, 255, .25)
+    color: #fff
+    font-weight: 700
+    white-space: nowrap
+
 .page-section .shot-grid:last-child,
 .page-section .feature-grid:last-child,
 .page-section .prose:last-child
